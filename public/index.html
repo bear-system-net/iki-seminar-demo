@@ -379,7 +379,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.7; }
         </div>
       </div>
       <div class="chat-input-row">
-        <input type="text" id="chat-input" placeholder="質問を入力してください..." onkeydown="if(event.key==='Enter')botSend()">
+        <input type="text" id="chat-input" placeholder="質問を入力してください..." onkeydown="if(event.key==='Enter'&&!event.isComposing)botSend()">
         <button class="chat-send-btn" onclick="botSend()" id="bot-send-btn">送信</button>
       </div>
     </div>
@@ -488,7 +488,7 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.7; }
         </div>
       </div>
       <div class="chat-input-row">
-        <input type="text" id="guide-input" placeholder="観光について何でも聞いてください..." onkeydown="if(event.key==='Enter')guideSend()">
+        <input type="text" id="guide-input" placeholder="観光について何でも聞いてください..." onkeydown="if(event.key==='Enter'&&!event.isComposing)guideSend()">
         <button class="chat-send-btn" onclick="guideSend()" id="guide-send-btn">送信</button>
       </div>
     </div>
