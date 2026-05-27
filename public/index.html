@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>壱岐AI活用デモ — Bear System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0B2545;
+  --navy-mid: #1D3F60;
+  --sea: #1A6B8A;
+  --sea-light: #E8F4F8;
+  --sea-mid: #5BA3BC;
+  --green: #2A6B3A;
+  --green-light: #EBF3ED;
+  --gold: #B8860B;
+  --gold-light: #FBF5E0;
+  --sand: #F4F6F0;
+  --white: #FFFFFF;
+  --text: #1A2820;
+  --text-muted: #5A6B70;
+  --border: rgba(0,0,0,0.1);
+  --radius: 14px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans JP', sans-serif; background: #F2F4F7; color: var(--text); min-height: 100vh; }
+
+/* ─── GLOBAL NAV ─── */
+.g-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--navy);
+  height: 52px;
+  display: flex; align-items: center;
+  padding: 0 24px; gap: 0;
+}
+.g-nav .brand {
+  font-size: 13px; font-weight: 500; color: #fff;
+  margin-right: 32px; white-space: nowrap;
+  letter-spacing: 0.03em;
+}
+.g-nav .nav-tabs { display: flex; gap: 2px; }
+.nav-tab {
+  font-size: 12px; padding: 6px 16px;
+  border-radius: 6px; cursor: pointer;
+  color: rgba(255,255,255,0.55);
+  transition: all 0.15s; border: none; background: transparent;
+  font-family: 'Noto Sans JP', sans-serif;
+  white-space: nowrap;
+}
+.nav-tab:hover { color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.08); }
+.nav-tab.active { color: #fff; background: rgba(255,255,255,0.15); }
+.g-nav .nav-right { margin-left: auto; font-size: 11px; color: rgba(255,255,255,0.4); }
+
+/* ─── PAGES ─── */
+.page { display: none; padding-top: 52px; min-height: 100vh; }
+.page.active { display: block; }
+
+/* ─── TOP PAGE ─── */
+.top-hero {
+  background: var(--navy);
+  padding: 64px 24px 56px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.top-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(26,107,138,0.3) 0%, transparent 60%);
+}
+.top-hero .tag {
+  display: inline-block; font-size: 11px; letter-spacing: 0.1em;
+  color: var(--sea-mid); border: 1px solid rgba(91,163,188,0.4);
+  padding: 4px 14px; border-radius: 999px; margin-bottom: 20px;
+}
+.top-hero h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 28px; font-weight: 400; color: #fff;
+  line-height: 1.5; margin-bottom: 12px;
+  position: relative;
+}
+.top-hero p {
+  font-size: 14px; color: rgba(255,255,255,0.55);
+  line-height: 1.8; position: relative;
+}
+
+.demo-cards {
+  max-width: 860px; margin: 0 auto;
+  padding: 40px 24px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+.demo-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  text-align: left;
+}
+.demo-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.demo-card .dc-num {
+  font-size: 11px; letter-spacing: 0.08em;
+  color: var(--text-muted); margin-bottom: 16px;
+}
+.demo-card .dc-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; margin-bottom: 16px;
+}
+.demo-card.card-sns .dc-icon { background: #EBF4EE; }
+.demo-card.card-ja .dc-icon { background: var(--green-light); }
+.demo-card.card-bot .dc-icon { background: var(--sea-light); }
+.demo-card .dc-title { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 8px; }
+.demo-card .dc-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; }
+.demo-card .dc-target {
+  font-size: 11px; padding: 3px 10px; border-radius: 999px;
+  display: inline-block;
+}
+.card-sns .dc-target { background: #EBF4EE; color: var(--green); }
+.card-ja .dc-target { background: var(--green-light); color: var(--green); }
+.card-bot .dc-target { background: var(--sea-light); color: var(--sea); }
+.demo-card .dc-btn {
+  display: block; width: 100%; margin-top: 16px;
+  padding: 10px; text-align: center;
+  border-radius: 8px; font-size: 13px; font-weight: 500;
+  border: none; cursor: pointer; font-family: 'Noto Sans JP', sans-serif;
+  transition: opacity 0.15s;
+}
+.demo-card.card-sns .dc-btn { background: var(--green); color: #fff; }
+.demo-card.card-ja .dc-btn { background: var(--green); color: #fff; }
+.demo-card.card-bot .dc-btn { background: var(--sea); color: #fff; }
+.demo-card .dc-btn:hover { opacity: 0.85; }
+
+/* ─── INNER PAGE WRAPPER ─── */
+.inner-page { max-width: 860px; margin: 0 auto; padding: 32px 24px 64px; }
+.page-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 28px; padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.page-header .ph-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; font-size: 18px;
+}
+.page-header .ph-title { font-size: 17px; font-weight: 500; color: var(--text); }
+.page-header .ph-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.page-header .ph-badge {
+  margin-left: auto; font-size: 11px; padding: 3px 12px;
+  border-radius: 999px; background: var(--navy); color: rgba(255,255,255,0.7);
+}
+
+/* ─── CARD ─── */
+.card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px 28px; margin-bottom: 16px;
+}
+.card-label {
+  font-size: 11px; letter-spacing: 0.07em; color: var(--sea);
+  text-transform: uppercase; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.card-label::before {
+  content: ''; width: 3px; height: 13px;
+  background: var(--sea); border-radius: 2px; display: block;
+}
+.card-label.green { color: var(--green); }
+.card-label.green::before { background: var(--green); }
+
+/* ─── FORM ELEMENTS ─── */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-group.full { grid-column: 1 / -1; }
+label { font-size: 12px; color: var(--text-muted); }
+select, input[type="text"], textarea {
+  width: 100%; padding: 9px 13px;
+  font-size: 13px; font-family: 'Noto Sans JP', sans-serif;
+  background: #F8FAF8; border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text); outline: none;
+  transition: border-color 0.2s;
+}
+select:focus, input:focus, textarea:focus {
+  border-color: var(--sea); background: var(--white);
+}
+textarea { resize: vertical; min-height: 72px; line-height: 1.7; }
+.hint { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
+
+/* chips */
+.chip-wrap { display: flex; flex-wrap: wrap; gap: 7px; }
+.chip {
+  font-size: 12px; padding: 5px 13px; border-radius: 999px;
+  border: 1px solid var(--border); cursor: pointer;
+  color: var(--text-muted); background: var(--white);
+  transition: all 0.15s; user-select: none;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.chip:hover { border-color: var(--green); color: var(--green); }
+.chip.on { background: var(--green-light); color: var(--green); border-color: var(--green); }
+
+/* subsidy chips */
+.s-chip {
+  font-size: 12px; padding: 7px 14px; border-radius: 8px;
+  border: 1px solid var(--border); cursor: pointer;
+  color: var(--text-muted); background: var(--white);
+  transition: all 0.15s; line-height: 1.4;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.s-chip .chip-sub { font-size: 10px; color: var(--text-muted); display: block; margin-top: 2px; }
+.s-chip.on { background: var(--green-light); color: var(--green); border-color: var(--green); }
+.s-chip.on .chip-sub { color: var(--green); }
+
+/* ─── BUTTONS ─── */
+.gen-btn {
+  width: 100%; padding: 13px;
+  border: none; border-radius: 10px;
+  font-size: 14px; font-weight: 500;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer; transition: opacity 0.15s;
+  letter-spacing: 0.03em;
+}
+.gen-btn.green { background: var(--green); color: #fff; }
+.gen-btn.sea { background: var(--sea); color: #fff; }
+.gen-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.gen-btn:hover:not(:disabled) { opacity: 0.85; }
+
+/* ─── LOADING ─── */
+.loading { text-align: center; padding: 40px; color: var(--text-muted); font-size: 13px; }
+.spinner {
+  width: 22px; height: 22px;
+  border: 2px solid var(--border); border-top-color: var(--sea);
+  border-radius: 50%; animation: spin 0.8s linear infinite;
+  margin: 0 auto 14px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── RESULT ─── */
+.result-label {
+  font-size: 11px; letter-spacing: 0.07em; color: var(--green);
+  text-transform: uppercase; margin-bottom: 8px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.result-text {
+  font-size: 14px; line-height: 1.9; color: var(--text);
+  background: var(--sand); border-radius: 8px;
+  padding: 14px 18px; white-space: pre-wrap; word-break: break-word;
+  font-family: 'Noto Serif JP', serif; border: 1px solid var(--border);
+  margin-bottom: 14px;
+}
+.hashtags { font-size: 12px; color: var(--sea); line-height: 1.8; margin-bottom: 10px; }
+.copy-btn {
+  font-size: 11px; padding: 4px 12px;
+  border: 1px solid var(--border); border-radius: 6px;
+  cursor: pointer; background: var(--white); color: var(--text-muted);
+  font-family: 'Noto Sans JP', sans-serif; transition: all 0.15s;
+}
+.copy-btn:hover { border-color: var(--green); color: var(--green); }
+.copy-btn.done { background: var(--green-light); color: var(--green); border-color: var(--green); }
+.copy-row { display: flex; gap: 8px; margin-top: 8px; }
+.divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+.time-badge {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--green-light); border-radius: 8px;
+  padding: 11px 16px; font-size: 13px; color: var(--green); margin-top: 12px;
+}
+.all-copy-btn {
+  width: 100%; padding: 10px;
+  background: var(--white); color: var(--green);
+  border: 1px solid var(--green); border-radius: 10px;
+  font-size: 13px; font-weight: 500; cursor: pointer;
+  font-family: 'Noto Sans JP', sans-serif; transition: all 0.15s; margin-top: 8px;
+}
+.all-copy-btn:hover { background: var(--green-light); }
+.result-section { margin-bottom: 24px; }
+.error-box {
+  background: #FFF0F0; border: 1px solid #F0B0B0;
+  border-radius: 8px; padding: 14px;
+  font-size: 13px; color: #A03030;
+}
+
+/* ─── BOT CHAT ─── */
+.chat-wrap {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+}
+.chat-header {
+  background: var(--sea); padding: 14px 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.chat-header .bot-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+.chat-header .bot-name { font-size: 14px; font-weight: 500; color: #fff; }
+.chat-header .bot-status { font-size: 11px; color: rgba(255,255,255,0.65); }
+.chat-header .online-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #5FDB8A; display: inline-block; margin-right: 5px;
+}
+.chat-messages {
+  height: 340px; overflow-y: auto;
+  padding: 20px; display: flex; flex-direction: column; gap: 14px;
+  background: #F8FAFB;
+}
+.msg { display: flex; gap: 10px; align-items: flex-start; max-width: 85%; }
+.msg.user { flex-direction: row-reverse; align-self: flex-end; }
+.msg .avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; flex-shrink: 0;
+}
+.msg.bot .avatar { background: var(--sea-light); color: var(--sea); }
+.msg.user .avatar { background: var(--navy); color: #fff; }
+.msg .bubble {
+  padding: 10px 14px; border-radius: 12px;
+  font-size: 13px; line-height: 1.75; word-break: break-word;
+}
+.msg.bot .bubble { background: var(--white); border: 1px solid var(--border); color: var(--text); }
+.msg.user .bubble { background: var(--sea); color: #fff; }
+.msg .bubble.typing { color: var(--text-muted); font-style: italic; }
+
+.chat-input-row {
+  display: flex; gap: 10px; padding: 14px 16px;
+  border-top: 1px solid var(--border); background: var(--white);
+}
+.chat-input-row input {
+  flex: 1; padding: 9px 14px; font-size: 13px;
+  background: #F8FAFB; border: 1px solid var(--border);
+  border-radius: 8px; outline: none;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.chat-input-row input:focus { border-color: var(--sea); background: var(--white); }
+.chat-send-btn {
+  padding: 9px 20px; background: var(--sea); color: #fff;
+  border: none; border-radius: 8px; font-size: 13px;
+  cursor: pointer; font-family: 'Noto Sans JP', sans-serif;
+  transition: opacity 0.15s; white-space: nowrap;
+}
+.chat-send-btn:hover { opacity: 0.85; }
+.chat-send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.quick-questions {
+  padding: 12px 16px; border-top: 1px solid var(--border);
+  background: var(--white);
+}
+.quick-label { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; }
+.quick-btns { display: flex; flex-wrap: wrap; gap: 7px; }
+.q-btn {
+  font-size: 12px; padding: 5px 13px;
+  border: 1px solid var(--border); border-radius: 999px;
+  cursor: pointer; background: var(--white); color: var(--text-muted);
+  font-family: 'Noto Sans JP', sans-serif; transition: all 0.15s;
+}
+.q-btn:hover { border-color: var(--sea); color: var(--sea); }
+.chat-reset {
+  font-size: 12px; color: var(--text-muted); cursor: pointer;
+  background: none; border: none; font-family: 'Noto Sans JP', sans-serif;
+  padding: 4px 8px; text-decoration: underline; margin-top: 10px;
+}
+.chat-stats {
+  display: flex; gap: 16px; margin-top: 14px;
+}
+.stat-item {
+  flex: 1; background: var(--white); border: 1px solid var(--border);
+  border-radius: 10px; padding: 14px 16px; text-align: center;
+}
+.stat-num { font-size: 22px; font-weight: 500; color: var(--sea); }
+.stat-label { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+</style>
+</head>
+<body>
+
+<!-- GLOBAL NAV -->
+<nav class="g-nav">
+  <div class="brand">🏝 壱岐AI活用デモ</div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showPage('top')">トップ</button>
+    <button class="nav-tab" onclick="showPage('sns')">デモ1 SNS生成</button>
+    <button class="nav-tab" onclick="showPage('subsidy')">デモ2 補助金申請</button>
+    <button class="nav-tab" onclick="showPage('bot')">デモ3 問い合わせbot</button>
+  </div>
+  <div class="nav-right">Bear System</div>
+</nav>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- TOP PAGE -->
+<!-- ══════════════════════════════════════════ -->
+<div class="page active" id="page-top">
+  <div class="top-hero">
+    <div class="tag">2026年6月9日 ／ 壱岐AIセミナー</div>
+    <h1>AIで変わる、島の仕事と暮らし</h1>
+    <p>3つのデモを通じて、壱岐の各業種でのAI活用を体験してください</p>
+  </div>
+
+  <div class="demo-cards">
+    <div class="demo-card card-sns" onclick="showPage('sns')">
+      <div class="dc-num">DEMO 01</div>
+      <div class="dc-icon">🪸</div>
+      <div class="dc-title">SNS投稿文ジェネレーター</div>
+      <div class="dc-desc">工房アオとミドリの商品・体験情報を入力するだけで、日本語＋英語のInstagram投稿文を自動生成。</div>
+      <div class="dc-target">観光・工芸向け</div>
+      <button class="dc-btn">デモを見る →</button>
+    </div>
+
+    <div class="demo-card card-ja" onclick="showPage('subsidy')">
+      <div class="dc-num">DEMO 02</div>
+      <div class="dc-icon">📋</div>
+      <div class="dc-title">補助金申請書ドラフト生成</div>
+      <div class="dc-desc">農家ヒアリングのメモを入力するだけで、補助金申請書（事業概要・必要性・期待効果）を自動作成。</div>
+      <div class="dc-target">農業・JA向け</div>
+      <button class="dc-btn">デモを見る →</button>
+    </div>
+
+    <div class="demo-card card-bot" onclick="showPage('bot')">
+      <div class="dc-num">DEMO 03</div>
+      <div class="dc-icon">🏛</div>
+      <div class="dc-title">壱岐市AI問い合わせbot</div>
+      <div class="dc-desc">住民からのよくある問い合わせに24時間自動応答。ゴミ収集・補助金・観光施設・市役所窓口に対応。</div>
+      <div class="dc-target">行政・議会向け</div>
+      <button class="dc-btn">デモを見る →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- DEMO 1: SNS Generator -->
+<!-- ══════════════════════════════════════════ -->
+<div class="page" id="page-sns">
+  <div class="inner-page">
+    <div class="page-header">
+      <div class="ph-icon" style="background:#EBF4EE;">🪸</div>
+      <div>
+        <div class="ph-title">工房アオとミドリ — SNS投稿文ジェネレーター</div>
+        <div class="ph-sub">Instagram投稿文を日本語＋英語で自動生成</div>
+      </div>
+      <div class="ph-badge">観光・工芸向け</div>
+    </div>
+
+    <div class="card">
+      <div class="card-label green">投稿内容の設定</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>今日の商品・体験</label>
+          <select id="sns-product">
+            <option value="シーグラスアート体験ワークショップ">シーグラスアート体験</option>
+            <option value="カラーサンドアート体験">カラーサンドアート体験</option>
+            <option value="シーグラスを使ったインテリアアート作品">シーグラスインテリア作品</option>
+            <option value="貝殻と流木を使ったハンドメイド雑貨">貝殻×流木ハンドメイド</option>
+            <option value="壱岐の海で集めたシーグラスのアクセサリー">シーグラスアクセサリー</option>
+            <option value="出張ワークショップ（島内イベント向け）">出張ワークショップ</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>天気・季節感</label>
+          <select id="sns-weather">
+            <option value="壱岐の青い海が美しい晴れの日">晴れ・海が綺麗</option>
+            <option value="梅雨の合間の穏やかな曇り空">梅雨の合間</option>
+            <option value="夏の強い日差しと潮風">夏・潮風</option>
+            <option value="秋の澄んだ空気と静かな海">秋・澄んだ空</option>
+            <option value="冬の穏やかな島の朝">冬・静かな朝</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>投稿のトーン（複数選択可）</label>
+          <div class="chip-wrap" id="sns-tones">
+            <div class="chip on" data-val="温かみのある">温かみ</div>
+            <div class="chip on" data-val="壱岐の自然を感じる">壱岐の自然</div>
+            <div class="chip" data-val="体験者の感動を伝える">感動・体験談</div>
+            <div class="chip" data-val="インバウンド向けのおしゃれな">インバウンド向け</div>
+            <div class="chip" data-val="リニューアルオープンの新鮮な雰囲気">リニューアル感</div>
+            <div class="chip" data-val="SDGs・自然素材へのこだわりを伝える">SDGs・自然派</div>
+          </div>
+        </div>
+        <div class="form-group full">
+          <label>一言メモ（任意）</label>
+          <input type="text" id="sns-memo" placeholder="例：今日は家族連れのお客様が来てくれました">
+        </div>
+      </div>
+    </div>
+
+    <button class="gen-btn green" onclick="snsGenerate()" id="sns-btn">投稿文を生成する（日本語 + 英語）</button>
+
+    <div id="sns-loading" style="display:none;" class="card" style="margin-top:16px;">
+      <div class="loading"><div class="spinner"></div>AIが生成中...</div>
+    </div>
+    <div id="sns-result" style="display:none; margin-top:16px;"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- DEMO 2: Subsidy -->
+<!-- ══════════════════════════════════════════ -->
+<div class="page" id="page-subsidy">
+  <div class="inner-page">
+    <div class="page-header">
+      <div class="ph-icon" style="background:#EBF3ED;">📋</div>
+      <div>
+        <div class="ph-title">JA壱岐市 — 補助金申請書ドラフト生成</div>
+        <div class="ph-sub">ヒアリングメモから申請書文章を自動作成</div>
+      </div>
+      <div class="ph-badge">農業・JA向け</div>
+    </div>
+
+    <div class="card">
+      <div class="card-label green">対象補助金を選ぶ</div>
+      <div class="chip-wrap" id="subsidy-chips">
+        <div class="s-chip on" data-val="産地生産基盤パワーアップ事業" data-org="農林水産省">
+          産地生産基盤パワーアップ事業<span class="chip-sub">農林水産省</span>
+        </div>
+        <div class="s-chip" data-val="農山漁村振興交付金（農泊推進型）" data-org="農林水産省">
+          農山漁村振興交付金（農泊推進型）<span class="chip-sub">農林水産省</span>
+        </div>
+        <div class="s-chip" data-val="強い農業・担い手づくり総合支援交付金" data-org="農林水産省">
+          強い農業・担い手づくり総合支援交付金<span class="chip-sub">農林水産省</span>
+        </div>
+        <div class="s-chip" data-val="6次産業化ネットワーク活動交付金" data-org="農林水産省">
+          6次産業化ネットワーク活動交付金<span class="chip-sub">農林水産省</span>
+        </div>
+        <div class="s-chip" data-val="離島活性化交付金" data-org="総務省">
+          離島活性化交付金<span class="chip-sub">総務省</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label green">農家ヒアリング内容を入力</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>農家名・経営体名</label>
+          <input type="text" id="sub-farmer" placeholder="例：壱岐市勝本町　山田農園">
+        </div>
+        <div class="form-group">
+          <label>主な作物・品目</label>
+          <input type="text" id="sub-crop" placeholder="例：壱岐牛、アスパラガス、麦">
+        </div>
+        <div class="form-group">
+          <label>現在の課題（ヒアリングメモ）</label>
+          <textarea id="sub-issue" placeholder="例：後継者不足で収穫作業が追いつかない。農機具が古く効率が悪い。"></textarea>
+        </div>
+        <div class="form-group">
+          <label>導入したいもの・やりたいこと</label>
+          <textarea id="sub-plan" placeholder="例：スマート農業機器の導入、直売所の開設。"></textarea>
+        </div>
+        <div class="form-group">
+          <label>事業規模・金額感（任意）</label>
+          <input type="text" id="sub-budget" placeholder="例：約500万円、機器導入2台分">
+        </div>
+        <div class="form-group">
+          <label>期待する効果</label>
+          <input type="text" id="sub-effect" placeholder="例：作業時間3割削減、売上2割増">
+        </div>
+      </div>
+      <p class="hint">※ 箇条書きや話し言葉でOK。AIが申請書の文体に整えます。</p>
+    </div>
+
+    <button class="gen-btn green" onclick="subsidyGenerate()" id="sub-btn">申請書ドラフトを生成する</button>
+
+    <div id="sub-loading" style="display:none; margin-top:16px;" class="card">
+      <div class="loading"><div class="spinner"></div>申請書の文章を構成中です...（約15秒）</div>
+    </div>
+    <div id="sub-result" style="display:none; margin-top:16px;"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- DEMO 3: Bot -->
+<!-- ══════════════════════════════════════════ -->
+<div class="page" id="page-bot">
+  <div class="inner-page">
+    <div class="page-header">
+      <div class="ph-icon" style="background:#E8F4F8;">🏛</div>
+      <div>
+        <div class="ph-title">壱岐市 AI問い合わせbot</div>
+        <div class="ph-sub">住民からのよくある問い合わせに自動応答</div>
+      </div>
+      <div class="ph-badge">行政・議会向け</div>
+    </div>
+
+    <div class="chat-wrap">
+      <div class="chat-header">
+        <div class="bot-avatar">🏛</div>
+        <div>
+          <div class="bot-name">壱岐市 AIアシスタント</div>
+          <div class="bot-status"><span class="online-dot"></span>24時間対応中</div>
+        </div>
+        <button class="chat-reset" onclick="botReset()">会話をリセット</button>
+      </div>
+
+      <div class="chat-messages" id="chat-messages">
+        <div class="msg bot">
+          <div class="avatar">🏛</div>
+          <div class="bubble">
+            こんにちは！壱岐市AIアシスタントです。<br>
+            ゴミの収集日、補助金、観光施設の営業時間、市役所の手続きなど、なんでもお気軽にご質問ください。
+          </div>
+        </div>
+      </div>
+
+      <div class="quick-questions">
+        <div class="quick-label">よくある質問から選ぶ</div>
+        <div class="quick-btns">
+          <button class="q-btn" onclick="botQuick('燃えるゴミはいつ収集ですか？')">ゴミの収集日</button>
+          <button class="q-btn" onclick="botQuick('移住支援金について教えてください')">移住支援金</button>
+          <button class="q-btn" onclick="botQuick('一支国博物館の営業時間を教えてください')">博物館の営業時間</button>
+          <button class="q-btn" onclick="botQuick('市役所の開庁時間はいつですか？')">市役所の窓口</button>
+          <button class="q-btn" onclick="botQuick('子育て支援について知りたいです')">子育て支援</button>
+          <button class="q-btn" onclick="botQuick('農業を始めるための補助金はありますか？')">農業の補助金</button>
+        </div>
+      </div>
+
+      <div class="chat-input-row">
+        <input type="text" id="chat-input" placeholder="質問を入力してください..." onkeydown="if(event.key==='Enter')botSend()">
+        <button class="chat-send-btn" onclick="botSend()" id="bot-send-btn">送信</button>
+      </div>
+    </div>
+
+    <div class="chat-stats" id="chat-stats" style="display:none;">
+      <div class="stat-item">
+        <div class="stat-num" id="stat-count">0</div>
+        <div class="stat-label">このデモでの応答数</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">24h</div>
+        <div class="stat-label">対応時間（職員不在でも）</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">〜10秒</div>
+        <div class="stat-label">平均応答時間</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+      <div class="card-label">このbotで削減できる業務</div>
+      <p style="font-size:13px;color:var(--text-muted);line-height:1.8;">
+        壱岐市役所への電話問い合わせのうち、約60〜70%は定型的な内容（ゴミ・施設・手続き案内）と言われています。このbotを導入することで、職員は複雑な相談業務に集中できます。
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── PAGE NAVIGATION ───
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  const tabs = document.querySelectorAll('.nav-tab');
+  const idx = ['top','sns','subsidy','bot'].indexOf(name);
+  if (idx >= 0) tabs[idx].classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// ─── CHIP TOGGLES ───
+document.querySelectorAll('#sns-tones .chip').forEach(c => {
+  c.addEventListener('click', () => c.classList.toggle('on'));
+});
+document.querySelectorAll('#subsidy-chips .s-chip').forEach(c => {
+  c.addEventListener('click', () => {
+    document.querySelectorAll('#subsidy-chips .s-chip').forEach(x => x.classList.remove('on'));
+    c.classList.add('on');
+  });
+});
+
+// ─── API CALL ───
+async function callClaude(payload) {
+  const res = await fetch('/api/claude', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(JSON.stringify(data));
+  return data;
+}
+
+// ─── DEMO 1: SNS ───
+async function snsGenerate() {
+  const product = document.getElementById('sns-product').value;
+  const weather = document.getElementById('sns-weather').value;
+  const memo = document.getElementById('sns-memo').value;
+  const tones = [...document.querySelectorAll('#sns-tones .chip.on')].map(c => c.dataset.val).join('、') || '自然体で温かみのある';
+
+  document.getElementById('sns-btn').disabled = true;
+  document.getElementById('sns-loading').style.display = 'block';
+  document.getElementById('sns-result').style.display = 'none';
+
+  const prompt = `あなたは工房アオとミドリ（長崎県壱岐島の体験型ハンドメイド工房）のSNS担当です。
+【商品・体験】${product}
+【天気・季節】${weather}
+【トーン】${tones}
+【追加メモ】${memo || 'なし'}
+
+JSONのみ返答。前置き・マークダウン記号不要。
+{"ja":{"text":"日本語投稿文（150〜200字、改行あり、絵文字なし）","hashtags":["タグ1","タグ2","タグ3","タグ4","タグ5","タグ6","タグ7","タグ8"]},"en":{"text":"English post (80-120 words, natural tone)","hashtags":["tag1","tag2","tag3","tag4","tag5"]}}`;
+
+  try {
+    const data = await callClaude({ model: 'claude-sonnet-4-6', max_tokens: 1000, messages: [{ role: 'user', content: prompt }] });
+    const raw = data.content.find(b => b.type === 'text')?.text || '';
+    const parsed = JSON.parse(raw.replace(/```json|```/g, '').trim());
+    window._sns = parsed;
+
+    document.getElementById('sns-result').innerHTML = `
+      <div class="card">
+        <div class="result-label">日本語<button class="copy-btn" onclick="cp('ja-text',this)">コピー</button></div>
+        <div class="result-text" id="ja-text">${parsed.ja.text}</div>
+        <div class="hashtags">${parsed.ja.hashtags.map(t=>'#'+t).join('　')}</div>
+        <div class="copy-row">
+          <button class="copy-btn" onclick="cpAll('ja',this)">タグ込みでコピー</button>
+        </div>
+        <hr class="divider">
+        <div class="result-label">English<button class="copy-btn" onclick="cp('en-text',this)">Copy</button></div>
+        <div class="result-text" id="en-text">${parsed.en.text}</div>
+        <div class="hashtags">${parsed.en.hashtags.map(t=>'#'+t).join('　')}</div>
+        <div class="copy-row">
+          <button class="copy-btn" onclick="cpAll('en',this)">Copy with tags</button>
+        </div>
+        <div class="time-badge">⏱ 手書きなら30〜60分かかる作業が、約10秒で完成しました</div>
+      </div>`;
+    document.getElementById('sns-result').style.display = 'block';
+  } catch(e) {
+    document.getElementById('sns-result').innerHTML = `<div class="error-box">エラー: ${e.toString()}</div>`;
+    document.getElementById('sns-result').style.display = 'block';
+  } finally {
+    document.getElementById('sns-loading').style.display = 'none';
+    document.getElementById('sns-btn').disabled = false;
+  }
+}
+
+// ─── DEMO 2: SUBSIDY ───
+async function subsidyGenerate() {
+  const subsidy = document.querySelector('#subsidy-chips .s-chip.on')?.dataset.val || '産地生産基盤パワーアップ事業';
+  const org = document.querySelector('#subsidy-chips .s-chip.on')?.dataset.org || '農林水産省';
+  const farmer = document.getElementById('sub-farmer').value || '壱岐市内農業経営体';
+  const crop = document.getElementById('sub-crop').value || '（未入力）';
+  const issue = document.getElementById('sub-issue').value || '（未入力）';
+  const plan = document.getElementById('sub-plan').value || '（未入力）';
+  const budget = document.getElementById('sub-budget').value || '詳細検討中';
+  const effect = document.getElementById('sub-effect').value || '生産性・収益性の向上';
+
+  document.getElementById('sub-btn').disabled = true;
+  document.getElementById('sub-loading').style.display = 'block';
+  document.getElementById('sub-result').style.display = 'none';
+
+  const prompt = `あなたは農林水産省・自治体への補助金申請書作成の専門家です。
+【対象補助金】${subsidy}（${org}）
+【申請者】${farmer}
+【作物・品目】${crop}
+【現状の課題】${issue}
+【事業計画】${plan}
+【事業規模】${budget}
+【期待効果】${effect}
+【地域】長崎県壱岐市（離島・SDGs未来都市）
+
+3セクションを申請書文体（です・ます調）で作成。JSONのみ返答。前置き不要。
+{"overview":"（1）事業概要：200〜300字","necessity":"（2）事業の必要性：200〜300字。離島特有の事情も含む","expected_effect":"（3）期待される効果：200〜300字。定量・定性両面"}`;
+
+  try {
+    const data = await callClaude({ model: 'claude-sonnet-4-6', max_tokens: 1500, messages: [{ role: 'user', content: prompt }] });
+    const raw = data.content.find(b => b.type === 'text')?.text || '';
+    const parsed = JSON.parse(raw.replace(/```json|```/g, '').trim());
+    window._sub = parsed;
+
+    document.getElementById('sub-result').innerHTML = `
+      <div class="card">
+        <div class="card-label green">${subsidy} — 生成されたドラフト</div>
+        <div class="result-section">
+          <div class="result-label">（1）事業概要<button class="copy-btn" onclick="cp('sub-overview',this)">コピー</button></div>
+          <div class="result-text" id="sub-overview">${parsed.overview}</div>
+        </div>
+        <div class="result-section">
+          <div class="result-label">（2）事業の必要性<button class="copy-btn" onclick="cp('sub-necessity',this)">コピー</button></div>
+          <div class="result-text" id="sub-necessity">${parsed.necessity}</div>
+        </div>
+        <div class="result-section">
+          <div class="result-label">（3）期待される効果<button class="copy-btn" onclick="cp('sub-effect-r',this)">コピー</button></div>
+          <div class="result-text" id="sub-effect-r">${parsed.expected_effect}</div>
+        </div>
+        <button class="all-copy-btn" onclick="subCopyAll()">3セクションをまとめてコピー（Word貼り付け用）</button>
+        <div class="time-badge">⏱ 担当者が1〜3時間かけていた下書きが、約15秒で完成。あとは数字と固有名詞の確認だけ。</div>
+      </div>`;
+    document.getElementById('sub-result').style.display = 'block';
+  } catch(e) {
+    document.getElementById('sub-result').innerHTML = `<div class="error-box">エラー: ${e.toString()}</div>`;
+    document.getElementById('sub-result').style.display = 'block';
+  } finally {
+    document.getElementById('sub-loading').style.display = 'none';
+    document.getElementById('sub-btn').disabled = false;
+  }
+}
+
+function subCopyAll() {
+  if (!window._sub) return;
+  const t = `【事業概要】\n${window._sub.overview}\n\n【事業の必要性】\n${window._sub.necessity}\n\n【期待される効果】\n${window._sub.expected_effect}`;
+  navigator.clipboard.writeText(t);
+}
+
+// ─── DEMO 3: BOT ───
+const BOT_SYSTEM = `あなたは長崎県壱岐市の市役所AI窓口アシスタントです。住民からの問い合わせに丁寧かつ簡潔に日本語で答えてください。
+
+【壱岐市の基本情報】
+- 人口：約25,000人、離島、SDGs未来都市（2018年、離島初選定）
+- 主要産業：農業（壱岐牛・麦・アスパラガス）、漁業、観光
+
+【よくある問い合わせ】
+ゴミ収集：燃えるゴミ週2回、燃えないゴミ月2回、資源ゴミ月1〜2回、粗大ゴミ要事前申込（環境課 0920-45-1111）
+子育て：児童手当（中学校修了まで）、保育所8か所、子育て支援センター4か所
+観光：一支国博物館9:00〜17:00・月曜休・入館500円、原の辻遺跡・猿岩は見学自由
+市役所：平日8:30〜17:15、電話0920-48-1111
+移住支援金：UIターン移住者向け（要件あり）
+農業補助：新規就農者向け次世代人材投資資金あり
+
+【回答ルール】
+- 150字以内で簡潔に
+- 不明な点は「詳しくは市役所（0920-48-1111）へ」と案内
+- 親しみやすく丁寧な口調`;
+
+let botHistory = [];
+let botCount = 0;
+
+async function botSend() {
+  const input = document.getElementById('chat-input');
+  const msg = input.value.trim();
+  if (!msg) return;
+  input.value = '';
+  await botReply(msg);
+}
+
+async function botQuick(msg) {
+  await botReply(msg);
+}
+
+async function botReply(userMsg) {
+  addMsg('user', userMsg);
+  botHistory.push({ role: 'user', content: userMsg });
+
+  const typingId = addMsg('bot', '...', true);
+  document.getElementById('bot-send-btn').disabled = true;
+
+  try {
+    const data = await callClaude({
+      model: 'claude-sonnet-4-6',
+      max_tokens: 300,
+      system: BOT_SYSTEM,
+      messages: botHistory
+    });
+    const reply = data.content.find(b => b.type === 'text')?.text || '';
+    botHistory.push({ role: 'assistant', content: reply });
+
+    document.getElementById(typingId)?.remove();
+    addMsg('bot', reply);
+
+    botCount++;
+    document.getElementById('stat-count').textContent = botCount;
+    document.getElementById('chat-stats').style.display = 'flex';
+  } catch(e) {
+    document.getElementById(typingId)?.remove();
+    addMsg('bot', 'エラーが発生しました。もう一度お試しください。');
+  } finally {
+    document.getElementById('bot-send-btn').disabled = false;
+  }
+}
+
+function addMsg(role, text, isTyping = false) {
+  const wrap = document.getElementById('chat-messages');
+  const id = 'msg-' + Date.now();
+  const avatar = role === 'bot' ? '🏛' : '👤';
+  const div = document.createElement('div');
+  div.className = 'msg ' + role;
+  div.id = id;
+  div.innerHTML = `
+    <div class="avatar">${avatar}</div>
+    <div class="bubble ${isTyping ? 'typing' : ''}">${text.replace(/\n/g, '<br>')}</div>`;
+  wrap.appendChild(div);
+  wrap.scrollTop = wrap.scrollHeight;
+  return id;
+}
+
+function botReset() {
+  botHistory = [];
+  botCount = 0;
+  document.getElementById('stat-count').textContent = '0';
+  document.getElementById('chat-stats').style.display = 'none';
+  document.getElementById('chat-messages').innerHTML = `
+    <div class="msg bot">
+      <div class="avatar">🏛</div>
+      <div class="bubble">こんにちは！壱岐市AIアシスタントです。<br>ゴミの収集日、補助金、観光施設の営業時間、市役所の手続きなど、なんでもお気軽にご質問ください。</div>
+    </div>`;
+}
+
+// ─── COPY UTILS ───
+function cp(id, btn) {
+  const t = document.getElementById(id)?.innerText;
+  if (!t) return;
+  navigator.clipboard.writeText(t).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = 'コピーしました'; btn.classList.add('done');
+    setTimeout(() => { btn.textContent = orig; btn.classList.remove('done'); }, 2000);
+  });
+}
+function cpAll(lang, btn) {
+  if (!window._sns) return;
+  const d = window._sns[lang];
+  const t = d.text + '\n\n' + d.hashtags.map(h => '#' + h).join(' ');
+  navigator.clipboard.writeText(t).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = 'コピーしました'; btn.classList.add('done');
+    setTimeout(() => { btn.textContent = orig; btn.classList.remove('done'); }, 2000);
+  });
+}
+</script>
+</body>
+</html>
