@@ -13,6 +13,8 @@
   --amber:#C05A00;--amber-l:#FEF0E0;
   --purple:#5A3A8A;--purple-l:#F0EAF8;
   --teal:#1A7A6A;--teal-l:#E4F5F2;
+  --orange:#C06000;--orange-l:#FEF0E0;
+  --red:#B03020;--red-l:#FDECEA;
   --sand:#F4F6F0;--white:#FFF;
   --text:#1A2820;--muted:#5A6B70;--border:rgba(0,0,0,0.1);--r:14px;
 }
@@ -56,6 +58,9 @@ body{font-family:'Noto Sans JP',sans-serif;background:#F2F4F7;color:var(--text);
 .t-amber .dc-icon{background:var(--amber-l);}.t-amber .dc-wow{background:var(--amber-l);color:var(--amber);}.t-amber .dc-btn{background:var(--amber);color:#fff;}
 .t-purple .dc-icon{background:var(--purple-l);}.t-purple .dc-wow{background:var(--purple-l);color:var(--purple);}.t-purple .dc-btn{background:var(--purple);color:#fff;}
 .t-teal .dc-icon{background:var(--teal-l);}.t-teal .dc-wow{background:var(--teal-l);color:var(--teal);}.t-teal .dc-btn{background:var(--teal);color:#fff;}
+.t-orange .dc-icon{background:#FEF0E0;}.t-orange .dc-wow{background:#FEF0E0;color:#C06000;}.t-orange .dc-btn{background:#C06000;color:#fff;}
+.t-red .dc-icon{background:#FDECEA;}.t-red .dc-wow{background:#FDECEA;color:#B03020;}.t-red .dc-btn{background:#B03020;color:#fff;}
+.t-navy .dc-icon{background:#E8EDF4;}.t-navy .dc-wow{background:#E8EDF4;color:var(--navy);}.t-navy .dc-btn{background:var(--navy);color:#fff;}
 
 /* INNER PAGE */
 .inner{max-width:860px;margin:0 auto;padding:24px 20px 64px;}
@@ -77,6 +82,9 @@ body{font-family:'Noto Sans JP',sans-serif;background:#F2F4F7;color:var(--text);
 .cl.amber{color:var(--amber);}.cl.amber::before{background:var(--amber);}
 .cl.purple{color:var(--purple);}.cl.purple::before{background:var(--purple);}
 .cl.teal{color:var(--teal);}.cl.teal::before{background:var(--teal);}
+.cl.orange{color:var(--orange);}.cl.orange::before{background:var(--orange);}
+.cl.red{color:var(--red);}.cl.red::before{background:var(--red);}
+.cl.navy2{color:var(--navy);}.cl.navy2::before{background:var(--navy);}
 
 .fg{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
 .fgf{grid-column:1/-1;}
@@ -98,6 +106,9 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
 .gen-btn.green{background:var(--green);color:#fff;}.gen-btn.sea{background:var(--sea);color:#fff;}
 .gen-btn.amber{background:var(--amber);color:#fff;}.gen-btn.purple{background:var(--purple);color:#fff;}
 .gen-btn.teal{background:var(--teal);color:#fff;}
+.gen-btn.orange{background:var(--orange);color:#fff;}
+.gen-btn.red{background:var(--red);color:#fff;}
+.gen-btn.navy-btn{background:var(--navy);color:#fff;}
 .gen-btn:disabled{opacity:.5;cursor:not-allowed;}
 
 .loading{text-align:center;padding:36px;color:var(--muted);font-size:13px;}
@@ -117,6 +128,9 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
 .tb.purple{background:var(--purple-l);color:var(--purple);}
 .tb.sea{background:var(--sea-l);color:var(--sea);}
 .tb.teal{background:var(--teal-l);color:var(--teal);}
+.tb.orange{background:var(--orange-l);color:var(--orange);}
+.tb.red{background:var(--red-l);color:var(--red);}
+.tb.navy2{background:#E8EDF4;color:var(--navy);}
 .all-cp{width:100%;padding:8px;background:var(--white);color:var(--green);border:1px solid var(--green);border-radius:9px;font-size:12px;font-weight:500;cursor:pointer;font-family:'Noto Sans JP',sans-serif;margin-top:7px;}
 .rs{margin-bottom:16px;}
 .err{background:#FFF0F0;border:1px solid #F0B0B0;border-radius:7px;padding:12px;font-size:13px;color:#A03030;}
@@ -148,6 +162,7 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
 .send-btn:disabled{opacity:.4;cursor:not-allowed;}
 .send-btn.sea{background:var(--sea);}.send-btn.green{background:var(--green);}
 .send-btn.purple{background:var(--purple);}.send-btn.teal{background:var(--teal);}
+.send-btn.orange{background:var(--orange);}.send-btn.navy-btn{background:var(--navy);}
 .quick{padding:9px 13px;border-top:1px solid var(--border);background:var(--white);}
 .ql{font-size:11px;color:var(--muted);margin-bottom:6px;}
 .qbs{display:flex;flex-wrap:wrap;gap:5px;}
@@ -300,6 +315,39 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
           <div class="dc-title">壱岐ライフシミュレーター</div>
           <div class="dc-desc">現在地・家族構成・年収を入力すると、壱岐移住後の生活を試算・比較。</div>
           <div class="dc-wow">📊 移住後の生活を可視化</div>
+          <button class="dc-btn">体験する →</button>
+        </div>
+      </div>
+    </div>
+    <div class="cat-section">
+      <div class="cat-label">🏗 建設・運送・その他</div>
+      <div class="demo-grid">
+        <div class="dc t-orange" onclick="goDemo('construction')">
+          <div class="dc-num">DEMO 10</div><div class="dc-icon">🏗</div>
+          <div class="dc-title">仕様書を読み込むだけでリスクアセスメント＋安全書類を自動生成</div>
+          <div class="dc-desc">公共工事の設計書・仕様書をアップロードするだけで、工種ごとのリスクと安全書類を自動作成。</div>
+          <div class="dc-wow">📄 書類を読んでリスクを判断</div>
+          <button class="dc-btn">体験する →</button>
+        </div>
+        <div class="dc t-red" onclick="goDemo('transport')">
+          <div class="dc-num">DEMO 11</div><div class="dc-icon">🚛</div>
+          <div class="dc-title">この運行計画は法令違反になりますか？</div>
+          <div class="dc-desc">運行管理者が運行計画を入力すると、改正労基法・改善基準告示に照らして即座に適法判定。</div>
+          <div class="dc-wow">⚖️ 法令知識をAIが即答</div>
+          <button class="dc-btn">体験する →</button>
+        </div>
+        <div class="dc t-sea" onclick="goDemo('review')">
+          <div class="dc-num">DEMO 12</div><div class="dc-icon">⭐</div>
+          <div class="dc-title">お客様の声から改善提案を自動抽出</div>
+          <div class="dc-desc">レビューや口コミを貼り付けると、課題を整理して具体的な改善アクションを提案。</div>
+          <div class="dc-wow">🧠 大量の声を瞬時に構造化</div>
+          <button class="dc-btn">体験する →</button>
+        </div>
+        <div class="dc t-navy" onclick="goDemo('sales')">
+          <div class="dc-num">DEMO 13</div><div class="dc-icon">💼</div>
+          <div class="dc-title">提案書・営業文章を会話で作る</div>
+          <div class="dc-desc">業種・課題・提案内容を話しかけるだけで、顧客向けの提案書・営業メールを自動生成。</div>
+          <div class="dc-wow">💬 どんな業種にも使える万能AI</div>
           <button class="dc-btn">体験する →</button>
         </div>
       </div>
@@ -502,6 +550,140 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
     <button class="gen-btn sea" id="simulation-btn" onclick="simGen()">移住後の生活をシミュレーションする</button>
     <div id="simulation-loading" style="display:none;margin-top:12px;" class="card"><div class="loading"><div class="spinner"></div>壱岐の生活コスト・支援金を試算中...</div></div>
     <div id="simulation-result" style="display:none;margin-top:12px;"></div>
+  </div>
+</div>
+
+<!-- DEMO 10: 建設業 -->
+<div class="page" id="page-construction">
+  <div class="inner">
+    <div class="ph"><div class="ph-icon" style="background:#FEF0E0;">🏗</div><div><div class="ph-title">仕様書を読み込むだけでリスクアセスメント＋安全書類を自動生成</div><div class="ph-sub">建設業 × 安全管理AI</div></div><div class="ph-badge">建設・運送・その他</div></div>
+    <div class="wow-banner"><div class="wow-icon">💡</div><div class="wow-text"><div class="wow-label">これぞAI</div>公共工事の設計書・仕様書をアップロードするだけで、工種ごとのリスクを抽出し、リスクアセスメント表と安全書類の下書きを自動生成。書類作成に丸1日かかっていた作業が数分で完成。</div></div>
+    <div class="card"><div class="cl orange">仕様書・設計書をアップロード（またはテキストで入力）</div>
+      <div><label>工事名・案件名</label><input type="text" id="cs-name" placeholder="例：○○地区道路改良工事" style="margin-bottom:10px;"></div>
+      <div><label>施工者名（任意）</label><input type="text" id="cs-company" placeholder="例：株式会社○○建設" style="margin-bottom:10px;"></div>
+      <div><label>仕様書・設計書の内容（テキストで貼り付け、または工事概要を入力）</label>
+        <textarea id="cs-spec" style="min-height:160px;" placeholder="例：
+【工事概要】
+・工事種別：道路改良工事（舗装工・路盤工・排水工）
+・工事場所：長崎県壱岐市芦辺町○○地先
+・工期：令和7年6月〜令和7年9月
+・主な作業：既設舗装撤去、路盤材敷均し・締固め、表層・基層舗装、側溝設置
+・使用重機：バックホウ0.45m3、振動ローラー、アスファルトフィニッシャー
+・交通規制：片側交互通行あり（一般道）
+
+（実際の仕様書・特記仕様書の内容をそのまま貼り付けてください）"></textarea>
+      </div>
+      <div style="margin-top:10px;" class="fg">
+        <div><label>主な工種</label>
+          <select id="cs-type">
+            <option value="土工・舗装工">土工・舗装工</option>
+            <option value="コンクリート工">コンクリート工</option>
+            <option value="基礎工・杭工">基礎工・杭工</option>
+            <option value="橋梁工">橋梁工</option>
+            <option value="河川・護岸工">河川・護岸工</option>
+            <option value="建築工事">建築工事</option>
+            <option value="解体工事">解体工事</option>
+          </select>
+        </div>
+        <div><label>生成する書類</label>
+          <select id="cs-doc">
+            <option value="リスクアセスメント表＋安全衛生計画書">リスクアセスメント＋安全衛生計画書</option>
+            <option value="リスクアセスメント表のみ">リスクアセスメント表のみ</option>
+            <option value="新規入場者教育資料">新規入場者教育資料</option>
+            <option value="KY活動シート（危険予知活動）">KY活動シート</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <button class="gen-btn orange" id="construction-btn" onclick="constructionGen()">リスクアセスメント＋安全書類を生成する</button>
+    <div id="construction-loading" style="display:none;margin-top:12px;" class="card"><div class="loading"><div class="spinner"></div>仕様書を解析中...リスクを抽出しています（約20秒）</div></div>
+    <div id="construction-result" style="display:none;margin-top:12px;"></div>
+  </div>
+</div>
+
+<!-- DEMO 11: 運送業 -->
+<div class="page" id="page-transport">
+  <div class="inner">
+    <div class="ph"><div class="ph-icon" style="background:#FDECEA;">🚛</div><div><div class="ph-title">この運行計画は法令違反になりますか？</div><div class="ph-sub">運送業 × 運行管理者 法令確認AI</div></div><div class="ph-badge">建設・運送・その他</div></div>
+    <div class="wow-banner"><div class="wow-icon">💡</div><div class="wow-text"><div class="wow-label">これぞAI</div>運行計画を入力すると、改正労働基準法・改善基準告示・道路交通法に照らして適法かどうかを即座に判定。2024年問題で業界全体が頭を抱えているコンプライアンス確認をAIが担います。</div></div>
+    <div class="chat-wrap">
+      <div class="chat-head" style="background:var(--red);"><div class="bot-av">⚖️</div><div><div class="bot-nm">運行管理 法令確認AI</div><div class="bot-st"><span class="odot"></span>改正労基法・改善基準告示に対応</div></div><button class="c-reset" onclick="transportReset()">リセット</button></div>
+      <div class="chat-msgs" id="transport-msgs">
+        <div class="msg bot"><div class="av">⚖️</div><div class="bubble">運行管理 法令確認AIです。<br><br>運行計画の内容を入力してください。拘束時間・運転時間・休憩・休日などを確認して、改善基準告示・労働基準法に照らした適法判定を行います。<br><br>例：「明日、東京→大阪→東京の往復。出発6時、帰着22時予定。途中休憩1時間。運転時間合計約10時間。」</div></div>
+      </div>
+      <div class="quick"><div class="ql">よくある確認ケース</div><div class="qbs">
+        <button class="qb" onclick="transportQ('東京→大阪→東京の日帰り往復。出発5時、帰着23時。運転時間合計11時間、休憩1時間。これは問題ありますか？')">長距離日帰り往復</button>
+        <button class="qb" onclick="transportQ('今週の運転者Aさんのスケジュール：月曜6時〜20時、火曜休み、水曜5時〜19時、木曜6時〜21時、金曜7時〜18時。改善基準告示的に問題ありますか？')">週間スケジュール確認</button>
+        <button class="qb" onclick="transportQ('1ヶ月の拘束時間が293時間になりそうです。これは上限を超えていますか？')">月間拘束時間の確認</button>
+        <button class="qb" onclick="transportQ('連続運転4時間後に15分休憩を取ろうと思います。これで法令上問題ないですか？')">連続運転・休憩の確認</button>
+      </div></div>
+      <div class="chat-in"><input type="text" id="transport-input" placeholder="運行計画や勤務スケジュールを入力してください..." onkeydown="if(event.key==='Enter'&&!event.isComposing)transportSend()"><button class="send-btn" style="background:var(--red);" onclick="transportSend()" id="transport-send">確認する</button></div>
+    </div>
+    <div class="card" style="margin-top:14px;">
+      <div class="cl red">このAIが参照する主な法令</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;font-size:12px;">
+        <span style="background:#FDECEA;color:var(--red);padding:3px 10px;border-radius:999px;">改善基準告示（2024年4月改正）</span>
+        <span style="background:#FDECEA;color:var(--red);padding:3px 10px;border-radius:999px;">労働基準法（時間外労働上限規制）</span>
+        <span style="background:#FDECEA;color:var(--red);padding:3px 10px;border-radius:999px;">道路交通法</span>
+        <span style="background:#FDECEA;color:var(--red);padding:3px 10px;border-radius:999px;">貨物自動車運送事業輸送安全規則</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DEMO 12: 飲食・サービス業 -->
+<div class="page" id="page-review">
+  <div class="inner">
+    <div class="ph"><div class="ph-icon" style="background:var(--sea-l);">⭐</div><div><div class="ph-title">お客様の声から改善提案を自動抽出</div><div class="ph-sub">飲食・サービス業 × 顧客フィードバックAI</div></div><div class="ph-badge">建設・運送・その他</div></div>
+    <div class="wow-banner"><div class="wow-icon">💡</div><div class="wow-text"><div class="wow-label">これぞAI</div>Googleレビュー・アンケート・SNSの口コミを大量に貼り付けるだけで、課題を自動分類して具体的な改善アクションを提案。人が読むと丸1日かかる作業が数十秒で完成。</div></div>
+    <div class="card"><div class="cl sea">お店・サービスの情報</div>
+      <div class="fg">
+        <div><label>店舗・サービス名</label><input type="text" id="rv-name" placeholder="例：壱岐牛焼肉 ○○"></div>
+        <div><label>業種</label>
+          <select id="rv-type">
+            <option value="飲食店（レストラン・カフェ）">飲食店</option>
+            <option value="宿泊施設（ホテル・旅館・民宿）">宿泊施設</option>
+            <option value="小売店・販売店">小売店・販売店</option>
+            <option value="美容院・理容院">美容院・理容院</option>
+            <option value="観光・体験施設">観光・体験施設</option>
+            <option value="その他サービス業">その他サービス業</option>
+          </select>
+        </div>
+        <div class="fgf"><label>口コミ・レビュー・アンケート結果（そのまま貼り付けてください）</label>
+          <textarea id="rv-text" style="min-height:180px;" placeholder="例（Googleレビューをそのまま貼り付け）：
+★5 壱岐牛最高でした！肉の旨みが全然違う。スタッフの方も親切で、また来たいです。
+★4 料理は美味しかったですが、待ち時間が少し長かったです。予約して行くといいかも。
+★3 味は良いのですが、店内が少し狭くて落ち着かなかったです。
+★5 島に来たら絶対ここ！ランチのセットがコスパ最高。
+★2 注文してから料理が来るまで40分以上待ちました。混んでいるのは分かりますが改善してほしいです。
+★4 地元の食材を使っていて雰囲気も良い。ただメニューの説明がもう少しあると嬉しかった。"></textarea>
+        </div>
+      </div>
+    </div>
+    <button class="gen-btn sea" id="review-btn" onclick="reviewGen()">口コミを分析して改善提案を生成する</button>
+    <div id="review-loading" style="display:none;margin-top:12px;" class="card"><div class="loading"><div class="spinner"></div>口コミを分析中...課題を整理しています</div></div>
+    <div id="review-result" style="display:none;margin-top:12px;"></div>
+  </div>
+</div>
+
+<!-- DEMO 13: 汎用営業 -->
+<div class="page" id="page-sales">
+  <div class="inner">
+    <div class="ph"><div class="ph-icon" style="background:#E8EDF4;">💼</div><div><div class="ph-title">提案書・営業文章を会話で作る</div><div class="ph-sub">どんな業種にも使える × 営業支援AI</div></div><div class="ph-badge">建設・運送・その他</div></div>
+    <div class="wow-banner"><div class="wow-icon">💡</div><div class="wow-text"><div class="wow-label">これぞAI</div>業種・顧客の課題・提案内容を話しかけるだけで、顧客向けの提案書・営業メール・FAXを自動生成。営業経験ゼロのスタッフでも、ベテランと同じクオリティの提案書が作れます。</div></div>
+    <div class="chat-wrap">
+      <div class="chat-head" style="background:var(--navy);"><div class="bot-av">💼</div><div><div class="bot-nm">営業支援AI</div><div class="bot-st"><span class="odot"></span>どんな業種・商材にも対応</div></div><button class="c-reset" onclick="salesReset()">リセット</button></div>
+      <div class="chat-msgs" id="sales-msgs">
+        <div class="msg bot"><div class="av">💼</div><div class="bubble">営業支援AIです。<br><br>作りたい文書の種類と、お客様・提案内容について教えてください。<br><br>例：「建設業の○○建設さんに、AI安全書類自動生成ツールを提案したい。先方は書類作成の手間に困っている。提案書を作ってほしい。」</div></div>
+      </div>
+      <div class="quick"><div class="ql">よく使われるシーン</div><div class="qbs">
+        <button class="qb" onclick="salesQ('地元の飲食店オーナーに、AIを使ったSNS投稿自動化を提案したい。先方はInstagramをやっているが更新が大変と言っていた。提案書を作ってほしい。')">飲食店へのSNS自動化提案</button>
+        <button class="qb" onclick="salesQ('建設会社の現場所長に、AI安全書類自動生成ツールの導入を提案したい。価格は月額3万円。提案書とメールを作ってほしい。')">建設業へのAIツール提案</button>
+        <button class="qb" onclick="salesQ('既存客の運送会社に、改善基準告示対応のAI法令確認ツールを追加提案したい。2024年問題で困っていると聞いている。営業メールを作ってほしい。')">運送業への追加提案メール</button>
+        <button class="qb" onclick="salesQ('市内の小売店に、AI活用のDX支援サービスを提案したい。具体的には在庫管理と顧客対応の効率化。FAX1枚で伝わる提案書を作ってほしい。')">小売店へのDX提案FAX</button>
+      </div></div>
+      <div class="chat-in"><input type="text" id="sales-input" placeholder="提案したい内容・相手・作りたい文書を教えてください..." onkeydown="if(event.key==='Enter'&&!event.isComposing)salesSend()"><button class="send-btn" style="background:var(--navy);" onclick="salesSend()" id="sales-send">作成する</button></div>
+    </div>
   </div>
 </div>
 
@@ -876,6 +1058,157 @@ function addMsg(wrapId,role,text,avatar,isTyping=false){
   wrap.appendChild(div); wrap.scrollTop=wrap.scrollHeight;
   return id;
 }
+// ── DEMO10: 建設業 ──
+async function constructionGen(){
+  const name=document.getElementById('cs-name').value||'工事案件';
+  const company=document.getElementById('cs-company').value||'施工者';
+  const spec=document.getElementById('cs-spec').value||'（仕様書未入力）';
+  const type=document.getElementById('cs-type').value;
+  const doc=document.getElementById('cs-doc').value;
+  setL('construction',true);
+  const p=`あなたは建設業の安全管理の専門家です。以下の工事仕様書・概要をもとに、${doc}を作成してください。
+【工事名】${name}【施工者】${company}【主な工種】${type}
+【仕様書・工事概要】
+${spec}
+
+工種ごとの具体的な危険・リスクを抽出し、実務で使える書類を作成してください。
+JSONのみ返答。前置き・マークダウン記号不要。
+{"summary":"工事概要の要約（2〜3文）","risks":[{"work":"作業名","hazard":"危険・有害要因","risk":"リスクの内容","level":"大|中|小","measure":"リスク低減措置"}],"safety_plan":{"objectives":"安全衛生目標（2〜3項目）","key_measures":["重点実施事項1","重点実施事項2","重点実施事項3","重点実施事項4"],"emergency":"緊急連絡体制の概要"},"ky_example":{"scene":"今日の作業場面","hazards":["危険ポイント1","危険ポイント2","危険ポイント3"],"action":"私たちはこうする（行動目標）"}}`;
+  try{
+    const data=await api({model:'claude-sonnet-4-6',max_tokens:2000,messages:[{role:'user',content:p}]});
+    const d=JSON.parse(data.content.find(b=>b.type==='text').text.replace(/```json|```/g,'').trim());
+    const levelColor={'大':'#A03030','中':'var(--amber)','小':'var(--green)'};
+    const levelBg={'大':'#FFF0F0','中':'var(--amber-l)','小':'var(--green-l)'};
+    const risksHtml=d.risks.map(r=>`
+      <tr>
+        <td style="padding:8px 10px;border-bottom:1px solid var(--border);font-size:12px;">${r.work}</td>
+        <td style="padding:8px 10px;border-bottom:1px solid var(--border);font-size:12px;">${r.hazard}</td>
+        <td style="padding:8px 10px;border-bottom:1px solid var(--border);font-size:12px;">${r.risk}</td>
+        <td style="padding:8px 10px;border-bottom:1px solid var(--border);text-align:center;"><span style="background:${levelBg[r.level]||'#eee'};color:${levelColor[r.level]||'#333'};font-size:11px;padding:2px 8px;border-radius:999px;font-weight:500;">${r.level}</span></td>
+        <td style="padding:8px 10px;border-bottom:1px solid var(--border);font-size:12px;">${r.measure}</td>
+      </tr>`).join('');
+    const measuresHtml=d.safety_plan.key_measures.map(m=>`<div style="padding:7px 12px;background:var(--orange-l);border-radius:6px;font-size:13px;color:var(--orange);margin-bottom:5px;">✓ ${m}</div>`).join('');
+    showR('construction',`
+      <div class="cl orange">工事概要</div>
+      <div style="background:var(--sand);border-radius:7px;padding:12px 14px;font-size:13px;line-height:1.8;margin-bottom:14px;">${d.summary}</div>
+      <div class="cl orange" style="margin-top:4px;">リスクアセスメント表</div>
+      <div style="overflow-x:auto;margin-bottom:14px;">
+        <table style="width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--border);border-radius:7px;overflow:hidden;">
+          <thead><tr style="background:var(--orange-l);">
+            <th style="padding:8px 10px;font-size:11px;color:var(--orange);text-align:left;white-space:nowrap;">作業</th>
+            <th style="padding:8px 10px;font-size:11px;color:var(--orange);text-align:left;white-space:nowrap;">危険・有害要因</th>
+            <th style="padding:8px 10px;font-size:11px;color:var(--orange);text-align:left;white-space:nowrap;">リスク内容</th>
+            <th style="padding:8px 10px;font-size:11px;color:var(--orange);text-align:center;white-space:nowrap;">レベル</th>
+            <th style="padding:8px 10px;font-size:11px;color:var(--orange);text-align:left;white-space:nowrap;">リスク低減措置</th>
+          </tr></thead>
+          <tbody>${risksHtml}</tbody>
+        </table>
+      </div>
+      <div class="cl orange">安全衛生計画（重点実施事項）</div>
+      <div style="margin-bottom:14px;">${measuresHtml}</div>
+      <div class="cl orange">KY活動シート（今日の作業）</div>
+      <div style="background:var(--sand);border-radius:7px;padding:14px;margin-bottom:10px;">
+        <div style="font-size:12px;color:var(--muted);margin-bottom:6px;">今日の作業場面</div>
+        <div style="font-size:13px;font-weight:500;margin-bottom:10px;">${d.ky_example.scene}</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:6px;">どんな危険がひそんでいるか</div>
+        ${d.ky_example.hazards.map((h,i)=>`<div style="padding:5px 0;font-size:13px;border-bottom:1px solid var(--border);">⚠️ ${h}</div>`).join('')}
+        <div style="margin-top:10px;font-size:12px;color:var(--muted);margin-bottom:4px;">私たちはこうする</div>
+        <div style="font-size:13px;font-weight:500;color:var(--orange);">→ ${d.ky_example.action}</div>
+      </div>
+      <div class="tb orange">⏱ 仕様書を貼り付けるだけでリスクアセスメント＋安全書類が完成。丸1日の作業が数分に。</div>`);
+  }catch(e){showR('construction',`<div class="err">エラー: ${e}</div>`);}
+  setL('construction',false);
+}
+
+// ── DEMO11: 運送業 法令確認 ──
+const TRANSPORT_SYS=`あなたは運送業の運行管理と労務管理の専門家AIです。ドライバーの運行計画・勤務スケジュールを入力されたら、以下の法令に照らして適法かどうかを判定してください。
+
+【参照する主な法令・基準】
+改善基準告示（2024年4月1日改正版）：
+- 1日の拘束時間：原則13時間以内（最大16時間、15時間超は週2回まで）
+- 1日の休息期間：継続11時間以上を基本（最低9時間）
+- 1週間の運転時間：2週平均で週44時間以内
+- 連続運転時間：4時間以内（30分以上の休憩が必要）
+- 1ヶ月の拘束時間：284時間以内（労使協定あり293時間）
+
+労働基準法（時間外労働上限規制・2024年4月適用）：
+- 時間外労働の上限：月45時間、年360時間（特別条項あり年960時間）
+
+【回答のルール】
+- まず「適法」「要注意」「違反の可能性」のどれかを明示する
+- 具体的にどの法令のどの基準に引っかかるかを数字で示す
+- 改善策を具体的に提案する
+- 「AIの回答は参考情報です。正確な判断は労働基準監督署や社会保険労務士にご確認ください」と必ず末尾に添える
+- 親しみやすく、でも正確な表現で`;
+
+let transportH=[];
+async function transportSend(){const i=document.getElementById('transport-input');const m=i.value.trim();if(!m)return;i.value='';await chatR('transport-msgs','transport-send',transportH,TRANSPORT_SYS,'⚖️',m);}
+function transportQ(m){chatR('transport-msgs','transport-send',transportH,TRANSPORT_SYS,'⚖️',m);}
+function transportReset(){transportH=[];document.getElementById('transport-msgs').innerHTML='<div class="msg bot"><div class="av">⚖️</div><div class="bubble">運行管理 法令確認AIです。<br><br>運行計画や勤務スケジュールを入力してください。改善基準告示・労働基準法に照らした適法判定を行います。</div></div>';}
+
+// ── DEMO12: 口コミ分析 ──
+async function reviewGen(){
+  const name=document.getElementById('rv-name').value||'店舗・サービス';
+  const type=document.getElementById('rv-type').value;
+  const text=document.getElementById('rv-text').value||'（口コミ未入力）';
+  setL('review',true);
+  const p=`あなたは${type}の経営改善コンサルタントです。以下の口コミ・レビューを分析して、課題整理と改善提案を作成してください。
+【店舗名】${name}【業種】${type}
+【口コミ・レビュー】
+${text}
+
+JSONのみ返答。前置き・マークダウン記号不要。
+{"overview":"口コミ全体の傾向（2〜3文）","good_points":["良い点1","良い点2","良い点3"],"issues":[{"category":"課題カテゴリ","detail":"具体的な課題","frequency":"多い|普通|少ない","action":"具体的な改善アクション"}],"priority_actions":["最優先アクション1","最優先アクション2","最優先アクション3"],"star_estimate":"現状の平均★評価の推定と、改善後の目標★評価"}`;
+  try{
+    const data=await api({model:'claude-sonnet-4-6',max_tokens:1200,messages:[{role:'user',content:p}]});
+    const d=JSON.parse(data.content.find(b=>b.type==='text').text.replace(/```json|```/g,'').trim());
+    const freqColor={'多い':'#A03030','普通':'var(--amber)','少ない':'var(--green)'};
+    const freqBg={'多い':'#FFF0F0','普通':'var(--amber-l)','少ない':'var(--green-l)'};
+    const issuesHtml=d.issues.map(iss=>`
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+          <span style="font-size:12px;font-weight:500;">${iss.category}</span>
+          <span style="background:${freqBg[iss.frequency]||'#eee'};color:${freqColor[iss.frequency]||'#333'};font-size:10px;padding:2px 7px;border-radius:999px;">${iss.frequency}</span>
+        </div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:6px;">${iss.detail}</div>
+        <div style="font-size:12px;color:var(--sea);"><span style="font-weight:500;">→ 改善アクション：</span>${iss.action}</div>
+      </div>`).join('');
+    showR('review',`
+      <div class="cl sea">口コミ分析結果 — ${name}</div>
+      <div style="background:var(--sea-l);border-radius:7px;padding:12px 14px;font-size:13px;color:var(--sea);line-height:1.8;margin-bottom:14px;">${d.overview}</div>
+      <div class="rs"><div class="rl" style="color:var(--green);">お客様から評価されている点</div>
+        ${d.good_points.map(g=>`<div style="padding:6px 11px;background:var(--green-l);border-radius:6px;font-size:13px;color:var(--green);margin-bottom:5px;">✓ ${g}</div>`).join('')}
+      </div>
+      <div class="rs"><div class="rl">課題と改善アクション</div>${issuesHtml}</div>
+      <div class="rs"><div class="rl" style="color:var(--sea);">最優先で取り組むこと</div>
+        ${d.priority_actions.map((a,i)=>`<div style="display:flex;gap:10px;padding:8px 12px;background:var(--sand);border-radius:7px;margin-bottom:6px;font-size:13px;align-items:flex-start;"><span style="background:var(--sea);color:#fff;border-radius:4px;padding:2px 8px;font-size:11px;white-space:nowrap;">${i+1}位</span><div>${a}</div></div>`).join('')}
+      </div>
+      <div style="background:var(--sand);border-radius:7px;padding:11px 14px;font-size:13px;margin-bottom:10px;">⭐ ${d.star_estimate}</div>
+      <div class="tb sea">⏱ 大量の口コミを読んで課題整理＋改善提案まで、人なら丸1日が数十秒で完成</div>`);
+  }catch(e){showR('review',`<div class="err">エラー: ${e}</div>`);}
+  setL('review',false);
+}
+
+// ── DEMO13: 汎用営業 ──
+const SALES_SYS=`あなたは中小企業向けの営業支援AIです。ユーザーが提案したい内容・相手・作りたい文書の種類を教えてくれたら、実際に使える営業文書を作成してください。
+
+作成できる文書：提案書、営業メール、DM・手紙、FAX案内、商品説明資料、見積もり説明文など。
+対象業種：建設業、運送業、飲食業、小売業、サービス業、農業、観光業など何でも対応。
+
+【文書作成のルール】
+- 相手の課題・悩みから始める（いきなり商品の話をしない）
+- 具体的な数字・事例があれば必ず入れる
+- 「御社の場合は〜」という個別化を意識する
+- 末尾には必ず次のアクション（面談アポ・問い合わせ先）を入れる
+- FAX・手紙の場合はA4 1枚に収まる量にする
+
+情報が不足している場合は、作成しながら「〇〇の部分は実際の情報に書き換えてください」と注記を入れる。`;
+
+let salesH=[];
+async function salesSend(){const i=document.getElementById('sales-input');const m=i.value.trim();if(!m)return;i.value='';await chatR('sales-msgs','sales-send',salesH,SALES_SYS,'💼',m);}
+function salesQ(m){chatR('sales-msgs','sales-send',salesH,SALES_SYS,'💼',m);}
+function salesReset(){salesH=[];document.getElementById('sales-msgs').innerHTML='<div class="msg bot"><div class="av">💼</div><div class="bubble">営業支援AIです。<br><br>作りたい文書の種類と、お客様・提案内容について教えてください。</div></div>';}
+
 </script>
 </body>
 </html>
