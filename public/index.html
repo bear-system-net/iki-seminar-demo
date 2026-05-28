@@ -20,20 +20,26 @@
 body{font-family:'Noto Sans JP',sans-serif;background:#F2F4F7;color:var(--text);min-height:100vh;}
 
 /* ── 2段ナビ ── */
-.g-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy);}
-.nav-top{height:48px;display:flex;align-items:center;padding:0 20px;border-bottom:1px solid rgba(255,255,255,0.08);}
-.brand{font-size:13px;font-weight:500;color:#fff;margin-right:auto;white-space:nowrap;}
-.cat-tabs{display:flex;gap:2px;}
-.cat-tab{font-size:12px;padding:6px 18px;border-radius:6px;cursor:pointer;color:rgba(255,255,255,0.55);border:none;background:transparent;font-family:'Noto Sans JP',sans-serif;white-space:nowrap;transition:all .15s;}
-.cat-tab:hover{color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.08);}
-.cat-tab.active{color:#fff;background:rgba(255,255,255,0.15);}
-.nav-sub{height:40px;display:flex;align-items:center;padding:0 20px;gap:2px;overflow-x:auto;}
-.demo-tab{font-size:11px;padding:5px 14px;border-radius:6px;cursor:pointer;color:rgba(255,255,255,0.5);border:none;background:transparent;font-family:'Noto Sans JP',sans-serif;white-space:nowrap;transition:all .15s;}
-.demo-tab:hover{color:rgba(255,255,255,0.8);background:rgba(255,255,255,0.07);}
-.demo-tab.active{color:#fff;background:rgba(255,255,255,0.18);}
-
-.page{display:none;padding-top:88px;min-height:100vh;}
+.g-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy);height:48px;display:flex;align-items:center;padding:0 20px;gap:12px;}
+.brand{font-size:13px;font-weight:500;color:#fff;cursor:pointer;}
+.back-btn{display:none;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.1);border:none;border-radius:6px;padding:5px 12px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s;}
+.back-btn:hover{background:rgba(255,255,255,0.18);color:#fff;}
+.back-btn.show{display:flex;}
+.nav-demo-title{font-size:12px;color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:260px;}
+.page{display:none;padding-top:48px;min-height:100vh;}
 .page.active{display:block;}
+@media(max-width:640px){
+  .fg{grid-template-columns:1fr;}
+  .fish-panel{grid-template-columns:1fr;}
+  .sim-result{grid-template-columns:1fr;}
+  .ph-badge{display:none;}
+  .inner{padding:16px 14px 64px;}
+  .card{padding:14px 14px;}
+  .top-hero h1{font-size:22px;}
+  .demo-grid{grid-template-columns:1fr 1fr;}
+  .nav-demo-title{display:none;}
+}
+@media(max-width:380px){.demo-grid{grid-template-columns:1fr;}}
 
 /* ── TOP ── */
 .top-hero{background:var(--navy);padding:52px 24px 44px;text-align:center;position:relative;overflow:hidden;}
@@ -209,45 +215,12 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
 </head>
 <body>
 
-<!-- ドロワーオーバーレイ -->
-<div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
-
-<!-- ドロワー -->
-<div class="drawer" id="drawer">
-  <div class="drawer-header">
-    <div class="drawer-brand">🏝 壱岐AI活用デモ</div>
-    <button class="drawer-close" onclick="closeDrawer()">×</button>
-  </div>
-  <div class="drawer-cat">🌾 農業・漁業</div>
-  <button class="drawer-item" onclick="drawerGo('diary')">① 写真→営農日誌＋病害虫診断</button>
-  <button class="drawer-item" onclick="drawerGo('subsidy')">② 会話→補助金申請書</button>
-  <button class="drawer-item" onclick="drawerGo('fishing')">③ 明日の出漁判断AI</button>
-  <div class="drawer-cat">🪸 観光・工芸</div>
-  <button class="drawer-item" onclick="drawerGo('sns')">④ 写真→SNS投稿文</button>
-  <button class="drawer-item" onclick="drawerGo('travel')">⑤ 旅プランナーAI</button>
-  <button class="drawer-item" onclick="drawerGo('dialect')">⑥ 壱岐弁→観光コンテンツ化</button>
-  <div class="drawer-cat">🏛 行政・移住</div>
-  <button class="drawer-item" onclick="drawerGo('life')">⑦ くらし相談AI</button>
-  <button class="drawer-item" onclick="drawerGo('minutes')">⑧ 議事録→TODO抽出</button>
-  <button class="drawer-item" onclick="drawerGo('simulation')">⑨ 移住シミュレーター</button>
-</div>
-
-<!-- メインナビ -->
-<div class="g-nav">
-  <div class="nav-top">
-    <div class="brand">🏝 壱岐AI活用デモ</div>
-    <div class="cat-tabs">
-      <button class="cat-tab active" onclick="setCat('agri')">🌾 農業・漁業</button>
-      <button class="cat-tab" onclick="setCat('kanko')">🪸 観光・工芸</button>
-      <button class="cat-tab" onclick="setCat('gyosei')">🏛 行政・移住</button>
-    </div>
-    <button class="hamburger" onclick="openDrawer()" aria-label="メニュー">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="nav-sub" id="nav-sub"></div>
-  <div class="mobile-crumb" id="mobile-crumb">トップ</div>
-</div>
+<!-- NAV -->
+<nav class="g-nav">
+  <div class="brand" onclick="goTop()">🏝 壱岐AI活用デモ</div>
+  <button class="back-btn" id="back-btn" onclick="goTop()">← デモ一覧に戻る</button>
+  <span class="nav-demo-title" id="nav-demo-title"></span>
+</nav>
 
 <!-- TOP -->
 <div class="page active" id="page-top">
@@ -493,72 +466,80 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
 
 <script>
 // ── NAV ──
-const CAT_DEMOS={
-  agri:[{id:'diary',label:'①写真→営農日誌'},{id:'subsidy',label:'②会話→申請書'},{id:'fishing',label:'③出漁判断AI'}],
-  kanko:[{id:'sns',label:'④写真→SNS投稿'},{id:'travel',label:'⑤旅プランナー'},{id:'dialect',label:'⑥壱岐弁コンテンツ化'}],
-  gyosei:[{id:'life',label:'⑦くらし相談'},{id:'minutes',label:'⑧議事録→TODO'},{id:'simulation',label:'⑨移住シミュレーター'}]
+// ── SHARED CHAT ──
+async function chatR(msgsId,sendId,hist,sys,avatar,userMsg){
+  addMsg(msgsId,'user',userMsg,'👤');
+  hist.push({role:'user',content:userMsg});
+  const tid=addMsg(msgsId,'bot','考えています...',avatar,true);
+  document.getElementById(sendId).disabled=true;
+  try{
+    const data=await api({model:'claude-sonnet-4-6',max_tokens:600,system:sys,messages:hist});
+    const reply=data.content.find(b=>b.type==='text')?.text||'';
+    hist.push({role:'assistant',content:reply});
+    document.getElementById(tid)?.remove();
+    addMsg(msgsId,'bot',reply,avatar);
+  }catch(e){document.getElementById(tid)?.remove();addMsg(msgsId,'bot','エラーが発生しました。',avatar);}
+  finally{document.getElementById(sendId).disabled=false;}
+}
+function addMsg(wrapId,role,text,avatar,isTyping=false){
+  const wrap=document.getElementById(wrapId);
+  const id='m'+Date.now()+Math.random().toString(36).slice(2);
+  const div=document.createElement('div');
+  div.className='msg '+role; div.id=id;
+  div.innerHTML=`<div class="av">${avatar}</div><div class="bubble ${isTyping?'typing':''}">${text.replace(/\n/g,'<br>')}</div>`;
+  wrap.appendChild(div); wrap.scrollTop=wrap.scrollHeight;
+  return id;
+}
+</script>
+</body>
+</html>const DEMO_INFO = {
+  diary:    {label:'畑の写真1枚で日誌＋病害虫診断'},
+  subsidy:  {label:'話しかけるだけで補助金申請書ができる'},
+  fishing:  {label:'明日の出漁判断AI'},
+  sns:      {label:'写真を撮ったら投稿文が生まれる'},
+  travel:   {label:'条件を言うだけで旅プランが完成'},
+  dialect:  {label:'壱岐弁→観光コンテンツ化'},
+  life:     {label:'あなたの状況に合わせた行政案内'},
+  minutes:  {label:'会議メモが即座にTODOリストに'},
+  simulation:{label:'壱岐ライフシミュレーター'}
 };
-let curCat='agri', curDemo=null;
 
-function setCat(cat){
-  curCat=cat;
-  document.querySelectorAll('.cat-tab').forEach((t,i)=>t.classList.toggle('active',['agri','kanko','gyosei'][i]===cat));
-  renderSubNav();
-  goDemo(CAT_DEMOS[cat][0].id);
-}
-
-function renderSubNav(){
-  const sub=document.getElementById('nav-sub');
-  sub.innerHTML='';
-  CAT_DEMOS[curCat].forEach(d=>{
-    const btn=document.createElement('button');
-    btn.className='demo-tab'+(curDemo===d.id?' active':'');
-    btn.textContent=d.label;
-    btn.onclick=()=>goDemo(d.id);
-    sub.appendChild(btn);
-  });
-}
-
-function goDemo(id){
-  curDemo=id;
+function goTop(){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById('page-'+id).classList.add('active');
-  renderSubNav();
-  // update drawer active
-  document.querySelectorAll('.drawer-item').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.drawer-item').forEach(b=>{
-    if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+id+"'"))b.classList.add('active');
-  });
-  // update mobile crumb
-  const all=[...CAT_DEMOS.agri,...CAT_DEMOS.kanko,...CAT_DEMOS.gyosei];
-  const demo=all.find(d=>d.id===id);
-  const crumb=document.getElementById('mobile-crumb');
-  if(crumb&&demo)crumb.textContent=demo.label;
+  document.getElementById('page-top').classList.add('active');
+  document.getElementById('back-btn').classList.remove('show');
+  document.getElementById('nav-demo-title').textContent='';
   window.scrollTo(0,0);
 }
 
-// トップから直接遷移
-function goDemoFromTop(id){
-  // カテゴリを特定
-  for(const [cat,demos] of Object.entries(CAT_DEMOS)){
-    if(demos.find(d=>d.id===id)){curCat=cat;break;}
-  }
-  document.querySelectorAll('.cat-tab').forEach((t,i)=>t.classList.toggle('active',['agri','kanko','gyosei'][i]===curCat));
-  goDemo(id);
+function goDemo(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.getElementById('back-btn').classList.add('show');
+  document.getElementById('nav-demo-title').textContent=DEMO_INFO[id]?.label||'';
+  window.scrollTo(0,0);
 }
 
 // トップのdcボタンに関数を割り当て
 document.querySelectorAll('.dc').forEach(dc=>{
-  const btn=dc.querySelector('.dc-btn');
   const onclick=dc.getAttribute('onclick');
   if(onclick){
     const id=onclick.match(/goDemo\('(\w+)'\)/)?.[1];
-    if(id){dc.onclick=()=>goDemoFromTop(id);}
+    if(id){
+      dc.removeAttribute('onclick');
+      dc.onclick=()=>goDemo(id);
+    }
   }
 });
 
-// 初期化
-renderSubNav();
+// 初期表示
+goTop();
+
+
+// compatibility stubs
+function goDemoFromTop(id){goDemo(id);}
+function drawerGo(id){goDemo(id);}
+function closeDrawer(){}
 
 // ── API ──
 async function api(payload){
@@ -903,14 +884,7 @@ JSONのみ返答。前置き・マークダウン記号不要。金額は万円�
 }
 
 // ── DRAWER ──
-function openDrawer(){
-  document.getElementById('drawer').classList.add('open');
-  document.getElementById('drawer-overlay').classList.add('open');
-}
-function closeDrawer(){
-  document.getElementById('drawer').classList.remove('open');
-  document.getElementById('drawer-overlay').classList.remove('open');
-}
+
 function drawerGo(id){
   closeDrawer();
   goDemoFromTop(id);
