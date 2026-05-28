@@ -8,188 +8,159 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy: #0B2545; --navy-mid: #1D3F60;
-  --sea: #1A6B8A; --sea-light: #E8F4F8; --sea-mid: #5BA3BC;
-  --green: #2A6B3A; --green-light: #EBF3ED;
-  --gold: #B8860B; --gold-light: #FBF5E0;
-  --amber: #C05A00; --amber-light: #FEF0E0;
-  --purple: #5A3A8A; --purple-light: #F0EAF8;
-  --sand: #F4F6F0; --white: #FFFFFF;
-  --text: #1A2820; --text-muted: #5A6B70;
-  --border: rgba(0,0,0,0.1); --radius: 14px;
+  --navy:#0B2545;--sea:#1A6B8A;--sea-light:#E8F4F8;--sea-mid:#5BA3BC;
+  --green:#2A6B3A;--green-light:#EBF3ED;
+  --amber:#C05A00;--amber-light:#FEF0E0;
+  --purple:#5A3A8A;--purple-light:#F0EAF8;
+  --sand:#F4F6F0;--white:#FFF;
+  --text:#1A2820;--muted:#5A6B70;--border:rgba(0,0,0,0.1);--r:14px;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Noto Sans JP', sans-serif; background: #F2F4F7; color: var(--text); min-height: 100vh; }
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:#F2F4F7;color:var(--text);min-height:100vh;}
 
-.g-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: var(--navy); height: 52px;
-  display: flex; align-items: center; padding: 0 16px; gap: 0; overflow-x: auto;
-}
-.g-nav .brand { font-size: 13px; font-weight: 500; color: #fff; margin-right: 16px; white-space: nowrap; }
-.g-nav .nav-tabs { display: flex; gap: 2px; }
-.nav-tab {
-  font-size: 11px; padding: 5px 12px; border-radius: 6px; cursor: pointer;
-  color: rgba(255,255,255,0.55); transition: all 0.15s; border: none; background: transparent;
-  font-family: 'Noto Sans JP', sans-serif; white-space: nowrap;
-}
-.nav-tab:hover { color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.08); }
-.nav-tab.active { color: #fff; background: rgba(255,255,255,0.15); }
-.g-nav .nav-right { margin-left: auto; font-size: 11px; color: rgba(255,255,255,0.4); white-space: nowrap; padding-left: 12px; }
+.g-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy);height:52px;display:flex;align-items:center;padding:0 16px;overflow-x:auto;}
+.brand{font-size:13px;font-weight:500;color:#fff;margin-right:16px;white-space:nowrap;}
+.nav-tabs{display:flex;gap:2px;}
+.nav-tab{font-size:11px;padding:5px 11px;border-radius:6px;cursor:pointer;color:rgba(255,255,255,0.5);border:none;background:transparent;font-family:'Noto Sans JP',sans-serif;white-space:nowrap;transition:all .15s;}
+.nav-tab:hover{color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.08);}
+.nav-tab.active{color:#fff;background:rgba(255,255,255,0.15);}
+.nav-right{margin-left:auto;font-size:11px;color:rgba(255,255,255,0.4);padding-left:12px;white-space:nowrap;}
 
-.page { display: none; padding-top: 52px; min-height: 100vh; }
-.page.active { display: block; }
+.page{display:none;padding-top:52px;min-height:100vh;}
+.page.active{display:block;}
 
-.top-hero {
-  background: var(--navy); padding: 56px 24px 48px; text-align: center; position: relative; overflow: hidden;
-}
-.top-hero::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 70% 50%, rgba(26,107,138,0.3) 0%, transparent 60%);
-}
-.top-hero .tag {
-  display: inline-block; font-size: 11px; letter-spacing: 0.1em;
-  color: var(--sea-mid); border: 1px solid rgba(91,163,188,0.4);
-  padding: 4px 14px; border-radius: 999px; margin-bottom: 20px;
-}
-.top-hero h1 { font-family: 'Noto Serif JP', serif; font-size: 26px; font-weight: 400; color: #fff; line-height: 1.5; margin-bottom: 10px; position: relative; }
-.top-hero p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.8; position: relative; }
+/* TOP */
+.top-hero{background:var(--navy);padding:56px 24px 48px;text-align:center;position:relative;overflow:hidden;}
+.top-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(26,107,138,0.3),transparent 60%);}
+.top-tag{display:inline-block;font-size:11px;letter-spacing:.1em;color:var(--sea-mid);border:1px solid rgba(91,163,188,0.4);padding:4px 14px;border-radius:999px;margin-bottom:20px;}
+.top-hero h1{font-family:'Noto Serif JP',serif;font-size:26px;font-weight:400;color:#fff;line-height:1.5;margin-bottom:10px;position:relative;}
+.top-hero p{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.8;position:relative;}
+.demo-cards{max-width:1040px;margin:0 auto;padding:32px 20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;}
+.dc{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:22px 18px;cursor:pointer;transition:transform .15s,box-shadow .15s;}
+.dc:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.08);}
+.dc-num{font-size:10px;letter-spacing:.08em;color:var(--muted);margin-bottom:10px;}
+.dc-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:12px;}
+.dc-title{font-size:14px;font-weight:500;color:var(--text);margin-bottom:6px;}
+.dc-desc{font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:12px;}
+.dc-wow{font-size:11px;font-weight:500;padding:3px 10px;border-radius:999px;display:inline-block;margin-bottom:10px;}
+.dc-btn{display:block;width:100%;padding:9px;text-align:center;border-radius:8px;font-size:12px;font-weight:500;border:none;cursor:pointer;font-family:'Noto Sans JP',sans-serif;}
 
-.demo-cards { max-width: 1000px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
-.demo-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 20px; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
-.demo-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
-.demo-card .dc-num { font-size: 10px; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px; }
-.demo-card .dc-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 12px; }
-.demo-card .dc-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
-.demo-card .dc-desc { font-size: 12px; color: var(--text-muted); line-height: 1.7; margin-bottom: 14px; }
-.demo-card .dc-target { font-size: 10px; padding: 2px 8px; border-radius: 999px; display: inline-block; }
-.demo-card .dc-btn { display: block; width: 100%; margin-top: 12px; padding: 9px; text-align: center; border-radius: 8px; font-size: 12px; font-weight: 500; border: none; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; transition: opacity 0.15s; }
-.demo-card .dc-btn:hover { opacity: 0.85; }
+/* COLOR THEMES */
+.t-green .dc-icon{background:#EBF4EE;} .t-green .dc-wow{background:#EBF4EE;color:var(--green);} .t-green .dc-btn{background:var(--green);color:#fff;}
+.t-sea .dc-icon{background:var(--sea-light);} .t-sea .dc-wow{background:var(--sea-light);color:var(--sea);} .t-sea .dc-btn{background:var(--sea);color:#fff;}
+.t-amber .dc-icon{background:var(--amber-light);} .t-amber .dc-wow{background:var(--amber-light);color:var(--amber);} .t-amber .dc-btn{background:var(--amber);color:#fff;}
+.t-purple .dc-icon{background:var(--purple-light);} .t-purple .dc-wow{background:var(--purple-light);color:var(--purple);} .t-purple .dc-btn{background:var(--purple);color:#fff;}
 
-.card-sns .dc-icon { background: #EBF4EE; }
-.card-sns .dc-target { background: #EBF4EE; color: var(--green); }
-.card-sns .dc-btn { background: var(--green); color: #fff; }
-.card-ja .dc-icon { background: var(--green-light); }
-.card-ja .dc-target { background: var(--green-light); color: var(--green); }
-.card-ja .dc-btn { background: var(--green); color: #fff; }
-.card-bot .dc-icon { background: var(--sea-light); }
-.card-bot .dc-target { background: var(--sea-light); color: var(--sea); }
-.card-bot .dc-btn { background: var(--sea); color: #fff; }
-.card-diary .dc-icon { background: var(--amber-light); }
-.card-diary .dc-target { background: var(--amber-light); color: var(--amber); }
-.card-diary .dc-btn { background: var(--amber); color: #fff; }
-.card-minutes .dc-icon { background: var(--purple-light); }
-.card-minutes .dc-target { background: var(--purple-light); color: var(--purple); }
-.card-minutes .dc-btn { background: var(--purple); color: #fff; }
-.card-guide .dc-icon { background: var(--sea-light); }
-.card-guide .dc-target { background: var(--sea-light); color: var(--sea); }
-.card-guide .dc-btn { background: var(--sea); color: #fff; }
+/* INNER PAGE */
+.inner{max-width:860px;margin:0 auto;padding:28px 20px 64px;}
+.ph{display:flex;align-items:center;gap:12px;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--border);}
+.ph-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.ph-title{font-size:16px;font-weight:500;}
+.ph-sub{font-size:12px;color:var(--muted);margin-top:2px;}
+.ph-badge{margin-left:auto;font-size:10px;padding:3px 10px;border-radius:999px;background:var(--navy);color:rgba(255,255,255,0.7);white-space:nowrap;}
+.wow-banner{background:linear-gradient(135deg,var(--navy),#1D3F60);border-radius:10px;padding:14px 18px;margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+.wow-banner .wow-icon{font-size:22px;flex-shrink:0;}
+.wow-banner .wow-text{font-size:13px;color:#fff;line-height:1.6;}
+.wow-banner .wow-label{font-size:10px;color:var(--sea-mid);letter-spacing:.06em;margin-bottom:2px;}
 
-.inner-page { max-width: 860px; margin: 0 auto; padding: 28px 20px 64px; }
-.page-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; padding-bottom: 18px; border-bottom: 1px solid var(--border); }
-.page-header .ph-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-.page-header .ph-title { font-size: 16px; font-weight: 500; color: var(--text); }
-.page-header .ph-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
-.page-header .ph-badge { margin-left: auto; font-size: 10px; padding: 3px 10px; border-radius: 999px; background: var(--navy); color: rgba(255,255,255,0.7); white-space: nowrap; }
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:20px 24px;margin-bottom:14px;}
+.cl{font-size:10px;letter-spacing:.07em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:7px;}
+.cl::before{content:'';width:3px;height:12px;border-radius:2px;display:block;}
+.cl.green{color:var(--green);} .cl.green::before{background:var(--green);}
+.cl.sea{color:var(--sea);} .cl.sea::before{background:var(--sea);}
+.cl.amber{color:var(--amber);} .cl.amber::before{background:var(--amber);}
+.cl.purple{color:var(--purple);} .cl.purple::before{background:var(--purple);}
 
-.card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 26px; margin-bottom: 14px; }
-.card-label { font-size: 10px; letter-spacing: 0.07em; color: var(--sea); text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
-.card-label::before { content: ''; width: 3px; height: 12px; background: var(--sea); border-radius: 2px; display: block; }
-.card-label.green { color: var(--green); }
-.card-label.green::before { background: var(--green); }
-.card-label.amber { color: var(--amber); }
-.card-label.amber::before { background: var(--amber); }
-.card-label.purple { color: var(--purple); }
-.card-label.purple::before { background: var(--purple); }
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.fg-full{grid-column:1/-1;}
+label{font-size:12px;color:var(--muted);display:block;margin-bottom:4px;}
+select,input[type=text],textarea{width:100%;padding:9px 12px;font-size:13px;font-family:'Noto Sans JP',sans-serif;background:#F8FAF8;border:1px solid var(--border);border-radius:8px;color:var(--text);outline:none;transition:border-color .2s;}
+select:focus,input:focus,textarea:focus{border-color:var(--sea);background:var(--white);}
+textarea{resize:vertical;min-height:90px;line-height:1.7;}
+.hint{font-size:11px;color:var(--muted);margin-top:5px;}
 
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.form-group { display: flex; flex-direction: column; gap: 5px; }
-.form-group.full { grid-column: 1 / -1; }
-label { font-size: 12px; color: var(--text-muted); }
-select, input[type="text"], textarea {
-  width: 100%; padding: 9px 12px; font-size: 13px; font-family: 'Noto Sans JP', sans-serif;
-  background: #F8FAF8; border: 1px solid var(--border); border-radius: 8px; color: var(--text); outline: none; transition: border-color 0.2s;
-}
-select:focus, input:focus, textarea:focus { border-color: var(--sea); background: var(--white); }
-textarea { resize: vertical; min-height: 100px; line-height: 1.7; }
-.hint { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
+/* IMAGE UPLOAD */
+.img-drop{border:2px dashed var(--border);border-radius:10px;padding:32px;text-align:center;cursor:pointer;transition:all .2s;background:#F8FAF8;position:relative;}
+.img-drop:hover,.img-drop.drag{border-color:var(--sea);background:var(--sea-light);}
+.img-drop input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.img-drop .drop-icon{font-size:28px;margin-bottom:8px;}
+.img-drop .drop-text{font-size:13px;color:var(--muted);}
+.img-drop .drop-sub{font-size:11px;color:var(--muted);margin-top:4px;}
+.img-preview{width:100%;max-height:200px;object-fit:cover;border-radius:8px;margin-top:12px;display:none;}
 
-.chip-wrap { display: flex; flex-wrap: wrap; gap: 7px; }
-.chip { font-size: 12px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border); cursor: pointer; color: var(--text-muted); background: var(--white); transition: all 0.15s; user-select: none; font-family: 'Noto Sans JP', sans-serif; }
-.chip:hover { border-color: var(--green); color: var(--green); }
-.chip.on { background: var(--green-light); color: var(--green); border-color: var(--green); }
-.s-chip { font-size: 12px; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border); cursor: pointer; color: var(--text-muted); background: var(--white); transition: all 0.15s; line-height: 1.4; font-family: 'Noto Sans JP', sans-serif; }
-.s-chip .chip-sub { font-size: 10px; color: var(--text-muted); display: block; margin-top: 1px; }
-.s-chip.on { background: var(--green-light); color: var(--green); border-color: var(--green); }
-.s-chip.on .chip-sub { color: var(--green); }
+.gen-btn{width:100%;padding:12px;border:none;border-radius:10px;font-size:14px;font-weight:500;font-family:'Noto Sans JP',sans-serif;cursor:pointer;transition:opacity .15s;letter-spacing:.03em;}
+.gen-btn.green{background:var(--green);color:#fff;} .gen-btn.sea{background:var(--sea);color:#fff;}
+.gen-btn.amber{background:var(--amber);color:#fff;} .gen-btn.purple{background:var(--purple);color:#fff;}
+.gen-btn:disabled{opacity:.5;cursor:not-allowed;}
 
-.gen-btn { width: 100%; padding: 12px; border: none; border-radius: 10px; font-size: 14px; font-weight: 500; font-family: 'Noto Sans JP', sans-serif; cursor: pointer; transition: opacity 0.15s; letter-spacing: 0.03em; }
-.gen-btn.green { background: var(--green); color: #fff; }
-.gen-btn.sea { background: var(--sea); color: #fff; }
-.gen-btn.amber { background: var(--amber); color: #fff; }
-.gen-btn.purple { background: var(--purple); color: #fff; }
-.gen-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-.gen-btn:hover:not(:disabled) { opacity: 0.85; }
+.loading{text-align:center;padding:40px;color:var(--muted);font-size:13px;}
+.spinner{width:22px;height:22px;border:2px solid var(--border);border-top-color:var(--sea);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px;}
+@keyframes spin{to{transform:rotate(360deg);}}
 
-.loading { text-align: center; padding: 40px; color: var(--text-muted); font-size: 13px; }
-.spinner { width: 22px; height: 22px; border: 2px solid var(--border); border-top-color: var(--sea); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 14px; }
-@keyframes spin { to { transform: rotate(360deg); } }
+.rl{font-size:10px;letter-spacing:.07em;color:var(--green);text-transform:uppercase;margin-bottom:7px;display:flex;align-items:center;justify-content:space-between;}
+.rt{font-size:14px;line-height:1.9;color:var(--text);background:var(--sand);border-radius:8px;padding:14px 16px;white-space:pre-wrap;word-break:break-word;font-family:'Noto Serif JP',serif;border:1px solid var(--border);margin-bottom:10px;}
+.hashtags{font-size:12px;color:var(--sea);line-height:1.8;margin-bottom:8px;}
+.cp-btn{font-size:11px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;cursor:pointer;background:var(--white);color:var(--muted);font-family:'Noto Sans JP',sans-serif;transition:all .15s;}
+.cp-btn:hover{border-color:var(--green);color:var(--green);}
+.cp-btn.done{background:var(--green-light);color:var(--green);border-color:var(--green);}
+.divider{border:none;border-top:1px solid var(--border);margin:16px 0;}
+.tb{display:flex;align-items:center;gap:10px;border-radius:8px;padding:10px 14px;font-size:12px;margin-top:12px;}
+.tb.green{background:var(--green-light);color:var(--green);}
+.tb.amber{background:var(--amber-light);color:var(--amber);}
+.tb.purple{background:var(--purple-light);color:var(--purple);}
+.tb.sea{background:var(--sea-light);color:var(--sea);}
+.all-cp{width:100%;padding:9px;background:var(--white);color:var(--green);border:1px solid var(--green);border-radius:10px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s;margin-top:8px;}
+.rs{margin-bottom:18px;}
+.err{background:#FFF0F0;border:1px solid #F0B0B0;border-radius:8px;padding:14px;font-size:13px;color:#A03030;}
 
-.result-label { font-size: 10px; letter-spacing: 0.07em; color: var(--green); text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; }
-.result-text { font-size: 14px; line-height: 1.9; color: var(--text); background: var(--sand); border-radius: 8px; padding: 14px 16px; white-space: pre-wrap; word-break: break-word; font-family: 'Noto Serif JP', serif; border: 1px solid var(--border); margin-bottom: 10px; }
-.hashtags { font-size: 12px; color: var(--sea); line-height: 1.8; margin-bottom: 8px; }
-.copy-btn { font-size: 11px; padding: 4px 10px; border: 1px solid var(--border); border-radius: 6px; cursor: pointer; background: var(--white); color: var(--text-muted); font-family: 'Noto Sans JP', sans-serif; transition: all 0.15s; }
-.copy-btn:hover { border-color: var(--green); color: var(--green); }
-.copy-btn.done { background: var(--green-light); color: var(--green); border-color: var(--green); }
-.copy-row { display: flex; gap: 8px; margin-top: 8px; }
-.divider { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
-.time-badge { display: flex; align-items: center; gap: 10px; background: var(--green-light); border-radius: 8px; padding: 10px 14px; font-size: 12px; color: var(--green); margin-top: 12px; }
-.time-badge.amber { background: var(--amber-light); color: var(--amber); }
-.time-badge.purple { background: var(--purple-light); color: var(--purple); }
-.all-copy-btn { width: 100%; padding: 9px; background: var(--white); color: var(--green); border: 1px solid var(--green); border-radius: 10px; font-size: 13px; font-weight: 500; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; transition: all 0.15s; margin-top: 8px; }
-.all-copy-btn:hover { background: var(--green-light); }
-.result-section { margin-bottom: 20px; }
-.error-box { background: #FFF0F0; border: 1px solid #F0B0B0; border-radius: 8px; padding: 14px; font-size: 13px; color: #A03030; }
+/* CHAT */
+.chat-wrap{background:var(--white);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+.chat-head{padding:12px 18px;display:flex;align-items:center;gap:10px;}
+.chat-head.sea{background:var(--sea);} .chat-head.green{background:var(--green);} .chat-head.purple{background:var(--purple);}
+.bot-av{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:15px;}
+.bot-nm{font-size:13px;font-weight:500;color:#fff;}
+.bot-st{font-size:11px;color:rgba(255,255,255,0.65);}
+.odot{width:6px;height:6px;border-radius:50%;background:#5FDB8A;display:inline-block;margin-right:4px;}
+.c-reset{font-size:11px;color:rgba(255,255,255,0.6);cursor:pointer;background:none;border:none;font-family:'Noto Sans JP',sans-serif;margin-left:auto;text-decoration:underline;}
+.chat-msgs{height:320px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;background:#F8FAFB;}
+.msg{display:flex;gap:8px;align-items:flex-start;max-width:88%;}
+.msg.user{flex-direction:row-reverse;align-self:flex-end;}
+.av{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;}
+.msg.bot .av{background:var(--sea-light);color:var(--sea);}
+.msg.user .av{background:var(--navy);color:#fff;}
+.bubble{padding:9px 13px;border-radius:12px;font-size:13px;line-height:1.75;word-break:break-word;}
+.msg.bot .bubble{background:var(--white);border:1px solid var(--border);color:var(--text);}
+.msg.user .bubble{background:var(--sea);color:#fff;}
+.bubble.typing{color:var(--muted);font-style:italic;}
+.chat-in{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--border);background:var(--white);}
+.chat-in input{flex:1;padding:8px 12px;font-size:13px;background:#F8FAFB;border:1px solid var(--border);border-radius:8px;outline:none;font-family:'Noto Sans JP',sans-serif;}
+.chat-in input:focus{border-color:var(--sea);background:var(--white);}
+.send-btn{padding:8px 16px;color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;white-space:nowrap;}
+.send-btn:disabled{opacity:.4;cursor:not-allowed;}
+.send-btn.sea{background:var(--sea);} .send-btn.green{background:var(--green);} .send-btn.purple{background:var(--purple);}
+.quick{padding:10px 14px;border-top:1px solid var(--border);background:var(--white);}
+.ql{font-size:11px;color:var(--muted);margin-bottom:7px;}
+.qbs{display:flex;flex-wrap:wrap;gap:6px;}
+.qb{font-size:11px;padding:4px 11px;border:1px solid var(--border);border-radius:999px;cursor:pointer;background:var(--white);color:var(--muted);font-family:'Noto Sans JP',sans-serif;transition:all .15s;}
+.qb:hover{border-color:var(--sea);color:var(--sea);}
 
-/* chat */
-.chat-wrap { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
-.chat-header { background: var(--sea); padding: 12px 18px; display: flex; align-items: center; gap: 10px; }
-.chat-header .bot-avatar { width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 15px; }
-.chat-header .bot-name { font-size: 13px; font-weight: 500; color: #fff; }
-.chat-header .bot-status { font-size: 11px; color: rgba(255,255,255,0.65); }
-.online-dot { width: 6px; height: 6px; border-radius: 50%; background: #5FDB8A; display: inline-block; margin-right: 4px; }
-.chat-messages { height: 300px; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; background: #F8FAFB; }
-.msg { display: flex; gap: 8px; align-items: flex-start; max-width: 85%; }
-.msg.user { flex-direction: row-reverse; align-self: flex-end; }
-.msg .avatar { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
-.msg.bot .avatar { background: var(--sea-light); color: var(--sea); }
-.msg.user .avatar { background: var(--navy); color: #fff; }
-.msg .bubble { padding: 9px 13px; border-radius: 12px; font-size: 13px; line-height: 1.75; word-break: break-word; }
-.msg.bot .bubble { background: var(--white); border: 1px solid var(--border); color: var(--text); }
-.msg.user .bubble { background: var(--sea); color: #fff; }
-.msg .bubble.typing { color: var(--text-muted); font-style: italic; }
-.chat-input-row { display: flex; gap: 8px; padding: 12px 14px; border-top: 1px solid var(--border); background: var(--white); }
-.chat-input-row input { flex: 1; padding: 8px 12px; font-size: 13px; background: #F8FAFB; border: 1px solid var(--border); border-radius: 8px; outline: none; font-family: 'Noto Sans JP', sans-serif; }
-.chat-input-row input:focus { border-color: var(--sea); background: var(--white); }
-.chat-send-btn { padding: 8px 16px; background: var(--sea); color: #fff; border: none; border-radius: 8px; font-size: 13px; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; white-space: nowrap; }
-.chat-send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-.quick-questions { padding: 10px 14px; border-top: 1px solid var(--border); background: var(--white); }
-.quick-label { font-size: 11px; color: var(--text-muted); margin-bottom: 7px; }
-.quick-btns { display: flex; flex-wrap: wrap; gap: 6px; }
-.q-btn { font-size: 11px; padding: 4px 11px; border: 1px solid var(--border); border-radius: 999px; cursor: pointer; background: var(--white); color: var(--text-muted); font-family: 'Noto Sans JP', sans-serif; transition: all 0.15s; }
-.q-btn:hover { border-color: var(--sea); color: var(--sea); }
-.chat-reset { font-size: 11px; color: rgba(255,255,255,0.6); cursor: pointer; background: none; border: none; font-family: 'Noto Sans JP', sans-serif; margin-left: auto; text-decoration: underline; }
-.chat-stats { display: flex; gap: 12px; margin-top: 12px; }
-.stat-item { flex: 1; background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; text-align: center; }
-.stat-num { font-size: 20px; font-weight: 500; color: var(--sea); }
-.stat-label { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+/* SUBSIDY CHAT special */
+.sub-chat .msg.bot .av{background:#EBF3ED;color:var(--green);}
+.sub-chat .msg.user .bubble{background:var(--green);}
+.sub-chat .chat-in input:focus{border-color:var(--green);}
+.progress-bar{display:flex;gap:4px;padding:12px 16px;border-top:1px solid var(--border);background:var(--white);}
+.prog-step{flex:1;height:4px;border-radius:2px;background:var(--border);transition:background .3s;}
+.prog-step.done{background:var(--green);}
+.prog-step.active{background:#97C459;}
 
-/* guide chat */
-.guide-chat .chat-header { background: #2A5A7A; }
-.guide-chat .msg.bot .avatar { background: #E8F4F8; color: #2A5A7A; }
-.guide-chat .msg.user .bubble { background: #2A5A7A; }
-.guide-chat .chat-send-btn { background: #2A5A7A; }
-.guide-chat .q-btn:hover { border-color: #2A5A7A; color: #2A5A7A; }
+/* DIARY */
+.diagnosis-card{border-radius:10px;padding:14px 16px;margin-bottom:10px;}
+.diagnosis-card.ok{background:#EBF3ED;border:1px solid #97C459;}
+.diagnosis-card.warn{background:#FEF0E0;border:1px solid #F0A050;}
+.diagnosis-card.danger{background:#FFF0F0;border:1px solid #F08080;}
+.diag-label{font-size:11px;font-weight:500;margin-bottom:4px;}
+.diag-label.ok{color:var(--green);} .diag-label.warn{color:var(--amber);} .diag-label.danger{color:#A03030;}
+.diag-text{font-size:13px;line-height:1.7;}
 </style>
 </head>
 <body>
@@ -197,13 +168,13 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.7; }
 <nav class="g-nav">
   <div class="brand">🏝 壱岐AI活用デモ</div>
   <div class="nav-tabs">
-    <button class="nav-tab active" onclick="showPage('top')">トップ</button>
-    <button class="nav-tab" onclick="showPage('sns')">①SNS生成</button>
-    <button class="nav-tab" onclick="showPage('subsidy')">②補助金申請</button>
-    <button class="nav-tab" onclick="showPage('bot')">③問い合わせbot</button>
-    <button class="nav-tab" onclick="showPage('diary')">④営農日誌</button>
-    <button class="nav-tab" onclick="showPage('minutes')">⑤議事録</button>
-    <button class="nav-tab" onclick="showPage('guide')">⑥観光ガイド</button>
+    <button class="nav-tab active" onclick="go('top')">トップ</button>
+    <button class="nav-tab" onclick="go('sns')">①写真→SNS</button>
+    <button class="nav-tab" onclick="go('subsidy')">②会話→申請書</button>
+    <button class="nav-tab" onclick="go('life')">③くらし相談</button>
+    <button class="nav-tab" onclick="go('diary')">④写真→営農日誌</button>
+    <button class="nav-tab" onclick="go('minutes')">⑤議事録→TODO</button>
+    <button class="nav-tab" onclick="go('travel')">⑥旅プランナー</button>
   </div>
   <div class="nav-right">Bear System</div>
 </nav>
@@ -211,238 +182,235 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.7; }
 <!-- TOP -->
 <div class="page active" id="page-top">
   <div class="top-hero">
-    <div class="tag">2026年6月9日 ／ 壱岐AIセミナー</div>
+    <div class="top-tag">2026年6月9日 ／ 壱岐AIセミナー</div>
     <h1>AIで変わる、島の仕事と暮らし</h1>
-    <p>6つのデモを通じて、壱岐の各業種でのAI活用を体験してください</p>
+    <p>「これぞAI」という驚きを、6つのデモで体験してください</p>
   </div>
   <div class="demo-cards">
-    <div class="demo-card card-sns" onclick="showPage('sns')">
-      <div class="dc-num">DEMO 01</div>
-      <div class="dc-icon">🪸</div>
-      <div class="dc-title">SNS投稿文ジェネレーター</div>
-      <div class="dc-desc">商品・体験情報を入力するだけで日本語＋英語のInstagram投稿文を自動生成。</div>
-      <div class="dc-target">観光・工芸向け</div>
-      <button class="dc-btn">デモを見る →</button>
+    <div class="dc t-green" onclick="go('sns')">
+      <div class="dc-num">DEMO 01</div><div class="dc-icon">📸</div>
+      <div class="dc-title">写真を撮ったら投稿文が生まれる</div>
+      <div class="dc-desc">工房の写真をアップロードするだけ。AIが写真を見て日本語＋英語のInstagram投稿文を自動生成。</div>
+      <div class="dc-wow">📸 画像を読んで文章を生成</div>
+      <button class="dc-btn">体験する →</button>
     </div>
-    <div class="demo-card card-ja" onclick="showPage('subsidy')">
-      <div class="dc-num">DEMO 02</div>
-      <div class="dc-icon">📋</div>
-      <div class="dc-title">補助金申請書ドラフト生成</div>
-      <div class="dc-desc">農家ヒアリングのメモから補助金申請書を自動作成。</div>
-      <div class="dc-target">農業・JA向け</div>
-      <button class="dc-btn">デモを見る →</button>
+    <div class="dc t-green" onclick="go('subsidy')">
+      <div class="dc-num">DEMO 02</div><div class="dc-icon">💬</div>
+      <div class="dc-title">話しかけるだけで申請書ができる</div>
+      <div class="dc-desc">AIが農家さんにヒアリングしながら、補助金申請書を自動作成。フォーム入力不要。</div>
+      <div class="dc-wow">💬 会話しながら書類を生成</div>
+      <button class="dc-btn">体験する →</button>
     </div>
-    <div class="demo-card card-bot" onclick="showPage('bot')">
-      <div class="dc-num">DEMO 03</div>
-      <div class="dc-icon">🏛</div>
-      <div class="dc-title">壱岐市AI問い合わせbot</div>
-      <div class="dc-desc">住民からの問い合わせに24時間自動応答。</div>
-      <div class="dc-target">行政・議会向け</div>
-      <button class="dc-btn">デモを見る →</button>
+    <div class="dc t-sea" onclick="go('life')">
+      <div class="dc-num">DEMO 03</div><div class="dc-icon">🏡</div>
+      <div class="dc-title">あなたの状況に合わせた行政案内</div>
+      <div class="dc-desc">「移住したい」「子供が生まれた」など状況を話すと、複数の制度・手順を組み合わせた個別アドバイス。</div>
+      <div class="dc-wow">🧠 文脈を理解して複合回答</div>
+      <button class="dc-btn">体験する →</button>
     </div>
-    <div class="demo-card card-diary" onclick="showPage('diary')">
-      <div class="dc-num">DEMO 04</div>
-      <div class="dc-icon">📓</div>
-      <div class="dc-title">営農日誌 自動生成</div>
-      <div class="dc-desc">メモ書きを入力するだけで正式な営農日誌を自動作成。</div>
-      <div class="dc-target">農家・JA向け</div>
-      <button class="dc-btn">デモを見る →</button>
+    <div class="dc t-amber" onclick="go('diary')">
+      <div class="dc-num">DEMO 04</div><div class="dc-icon">🌱</div>
+      <div class="dc-title">畑の写真1枚で日誌＋病害虫診断</div>
+      <div class="dc-desc">作物の写真をアップロードすると、生育状態を判断して営農日誌を作成。異常があれば即アラート。</div>
+      <div class="dc-wow">🔍 写真で病害虫を診断</div>
+      <button class="dc-btn">体験する →</button>
     </div>
-    <div class="demo-card card-minutes" onclick="showPage('minutes')">
-      <div class="dc-num">DEMO 05</div>
-      <div class="dc-icon">📝</div>
-      <div class="dc-title">議事録 → 要約＋TODO抽出</div>
-      <div class="dc-desc">会議メモをコピペするだけで要約とTODOリストを自動生成。</div>
-      <div class="dc-target">行政・議会向け</div>
-      <button class="dc-btn">デモを見る →</button>
+    <div class="dc t-purple" onclick="go('minutes')">
+      <div class="dc-num">DEMO 05</div><div class="dc-icon">📝</div>
+      <div class="dc-title">会議メモが即座にTODOリストに</div>
+      <div class="dc-desc">発言メモを貼るだけで、要約・決定事項・担当者別TODOを自動抽出。誰が何をいつまでにやるかが一瞬で整理。</div>
+      <div class="dc-wow">⚡ 構造を読み取って整理</div>
+      <button class="dc-btn">体験する →</button>
     </div>
-    <div class="demo-card card-guide" onclick="showPage('guide')">
-      <div class="dc-num">DEMO 06</div>
-      <div class="dc-icon">🗺</div>
-      <div class="dc-title">壱岐観光AIガイド</div>
-      <div class="dc-desc">「子連れで行けるスポットは？」など観光客の質問に即答。</div>
-      <div class="dc-target">観光・島全体向け</div>
-      <button class="dc-btn">デモを見る →</button>
+    <div class="dc t-sea" onclick="go('travel')">
+      <div class="dc-num">DEMO 06</div><div class="dc-icon">🗺</div>
+      <div class="dc-title">条件を言うだけで旅プランが完成</div>
+      <div class="dc-desc">「2泊3日・子連れ・壱岐牛必須」など条件を話すと、スポット・グルメ・移動手段を組み合わせた個別プランを提案。</div>
+      <div class="dc-wow">✨ 複数情報を組み合わせて提案</div>
+      <button class="dc-btn">体験する →</button>
     </div>
   </div>
 </div>
 
-<!-- DEMO 1: SNS -->
+<!-- DEMO 1: 写真→SNS -->
 <div class="page" id="page-sns">
-  <div class="inner-page">
-    <div class="page-header">
-      <div class="ph-icon" style="background:#EBF4EE;">🪸</div>
-      <div><div class="ph-title">工房アオとミドリ — SNS投稿文ジェネレーター</div><div class="ph-sub">Instagram投稿文を日本語＋英語で自動生成</div></div>
+  <div class="inner">
+    <div class="ph">
+      <div class="ph-icon" style="background:#EBF4EE;">📸</div>
+      <div><div class="ph-title">写真を撮ったら投稿文が生まれる</div><div class="ph-sub">工房アオとミドリ × SNS投稿自動生成</div></div>
       <div class="ph-badge">観光・工芸向け</div>
     </div>
+    <div class="wow-banner">
+      <div class="wow-icon">💡</div>
+      <div class="wow-text"><div class="wow-label">これぞAI</div>テキスト入力不要。写真を見てAIが内容を理解し、日本語＋英語の投稿文をゼロから生成します。</div>
+    </div>
     <div class="card">
-      <div class="card-label green">投稿内容の設定</div>
-      <div class="form-grid">
-        <div class="form-group"><label>今日の商品・体験</label>
-          <select id="sns-product">
-            <option value="シーグラスアート体験ワークショップ">シーグラスアート体験</option>
-            <option value="カラーサンドアート体験">カラーサンドアート体験</option>
-            <option value="シーグラスを使ったインテリアアート作品">シーグラスインテリア作品</option>
-            <option value="貝殻と流木を使ったハンドメイド雑貨">貝殻×流木ハンドメイド</option>
-            <option value="壱岐の海で集めたシーグラスのアクセサリー">シーグラスアクセサリー</option>
+      <div class="cl green">写真をアップロード</div>
+      <div class="img-drop" id="sns-drop" onclick="document.getElementById('sns-file').click()">
+        <input type="file" id="sns-file" accept="image/*" onchange="onSnsImg(event)">
+        <div class="drop-icon">🪸</div>
+        <div class="drop-text">工房の写真・作品・体験の様子をアップロード</div>
+        <div class="drop-sub">JPG / PNG / HEIC対応</div>
+      </div>
+      <img id="sns-preview" class="img-preview">
+    </div>
+    <div class="card">
+      <div class="cl green">補足情報（任意）</div>
+      <div class="fg">
+        <div><label>投稿のトーン</label>
+          <select id="sns-tone">
+            <option value="温かみがあり壱岐の自然を感じる">温かみ・自然派</option>
+            <option value="おしゃれでインバウンド向け">おしゃれ・インバウンド</option>
+            <option value="体験者の感動を伝える">感動・体験談</option>
+            <option value="SDGsや自然素材へのこだわりを伝える">SDGs・サステナブル</option>
           </select>
         </div>
-        <div class="form-group"><label>天気・季節感</label>
-          <select id="sns-weather">
-            <option value="壱岐の青い海が美しい晴れの日">晴れ・海が綺麗</option>
-            <option value="梅雨の合間の穏やかな曇り空">梅雨の合間</option>
-            <option value="夏の強い日差しと潮風">夏・潮風</option>
-            <option value="秋の澄んだ空気と静かな海">秋・澄んだ空</option>
-          </select>
-        </div>
-        <div class="form-group full"><label>投稿のトーン（複数選択可）</label>
-          <div class="chip-wrap" id="sns-tones">
-            <div class="chip on" data-val="温かみのある">温かみ</div>
-            <div class="chip on" data-val="壱岐の自然を感じる">壱岐の自然</div>
-            <div class="chip" data-val="体験者の感動を伝える">感動・体験談</div>
-            <div class="chip" data-val="インバウンド向けのおしゃれな">インバウンド向け</div>
-            <div class="chip" data-val="リニューアルオープンの新鮮な雰囲気">リニューアル感</div>
-            <div class="chip" data-val="SDGs・自然素材へのこだわり">SDGs・自然派</div>
-          </div>
-        </div>
-        <div class="form-group full"><label>一言メモ（任意）</label>
-          <input type="text" id="sns-memo" placeholder="例：今日は家族連れのお客様が来てくれました">
-        </div>
+        <div><label>一言メモ（任意）</label><input type="text" id="sns-memo" placeholder="例：今日は家族連れが来てくれました"></div>
       </div>
     </div>
-    <button class="gen-btn green" onclick="snsGenerate()" id="sns-btn">投稿文を生成する（日本語 + 英語）</button>
-    <div id="sns-loading" style="display:none;" class="card" style="margin-top:14px;"><div class="loading"><div class="spinner"></div>AIが生成中...</div></div>
-    <div id="sns-result" style="display:none; margin-top:14px;"></div>
+    <button class="gen-btn green" id="sns-btn" onclick="snsGen()" disabled>写真からInstagram投稿文を生成する</button>
+    <div id="sns-loading" style="display:none;" class="card" style="margin-top:14px;"><div class="loading"><div class="spinner"></div>写真を解析して投稿文を生成中...</div></div>
+    <div id="sns-result" style="display:none;margin-top:14px;"></div>
   </div>
 </div>
 
-<!-- DEMO 2: SUBSIDY -->
+<!-- DEMO 2: 会話→補助金申請書 -->
 <div class="page" id="page-subsidy">
-  <div class="inner-page">
-    <div class="page-header">
-      <div class="ph-icon" style="background:#EBF3ED;">📋</div>
-      <div><div class="ph-title">JA壱岐市 — 補助金申請書ドラフト生成</div><div class="ph-sub">ヒアリングメモから申請書文章を自動作成</div></div>
+  <div class="inner">
+    <div class="ph">
+      <div class="ph-icon" style="background:#EBF3ED;">💬</div>
+      <div><div class="ph-title">話しかけるだけで申請書ができる</div><div class="ph-sub">JA壱岐市 × 補助金申請書 会話型生成</div></div>
       <div class="ph-badge">農業・JA向け</div>
     </div>
-    <div class="card">
-      <div class="card-label green">対象補助金を選ぶ</div>
-      <div class="chip-wrap" id="subsidy-chips">
-        <div class="s-chip on" data-val="産地生産基盤パワーアップ事業" data-org="農林水産省">産地生産基盤パワーアップ事業<span class="chip-sub">農林水産省</span></div>
-        <div class="s-chip" data-val="農山漁村振興交付金（農泊推進型）" data-org="農林水産省">農山漁村振興交付金（農泊推進型）<span class="chip-sub">農林水産省</span></div>
-        <div class="s-chip" data-val="強い農業・担い手づくり総合支援交付金" data-org="農林水産省">強い農業・担い手づくり総合支援交付金<span class="chip-sub">農林水産省</span></div>
-        <div class="s-chip" data-val="離島活性化交付金" data-org="総務省">離島活性化交付金<span class="chip-sub">総務省</span></div>
+    <div class="wow-banner">
+      <div class="wow-icon">💡</div>
+      <div class="wow-text"><div class="wow-label">これぞAI</div>フォーム入力不要。AIが農家さんに質問しながら情報を引き出し、そのまま申請書の文章を生成します。</div>
+    </div>
+    <div class="chat-wrap sub-chat">
+      <div class="chat-head green">
+        <div class="bot-av">🌾</div>
+        <div><div class="bot-nm">JA壱岐市 AIアシスタント</div><div class="bot-st"><span class="odot"></span>補助金申請書を一緒に作ります</div></div>
+        <button class="c-reset" onclick="subReset()">最初から</button>
+      </div>
+      <div class="progress-bar" id="sub-progress">
+        <div class="prog-step active"></div><div class="prog-step"></div><div class="prog-step"></div><div class="prog-step"></div><div class="prog-step"></div>
+      </div>
+      <div class="chat-msgs" id="sub-messages">
+        <div class="msg bot"><div class="av">🌾</div><div class="bubble">こんにちは！補助金申請書を一緒に作りましょう。<br><br>まず、どの補助金への申請をお考えですか？</div></div>
+      </div>
+      <div class="quick" id="sub-quick">
+        <div class="ql">よく使われる補助金</div>
+        <div class="qbs">
+          <button class="qb" onclick="subQuick('産地生産基盤パワーアップ事業（農林水産省）への申請を考えています')">産地生産基盤パワーアップ</button>
+          <button class="qb" onclick="subQuick('離島活性化交付金（総務省）への申請を考えています')">離島活性化交付金</button>
+          <button class="qb" onclick="subQuick('強い農業・担い手づくり総合支援交付金への申請を考えています')">担い手づくり支援交付金</button>
+        </div>
+      </div>
+      <div class="chat-in">
+        <input type="text" id="sub-input" placeholder="返答を入力してください..." onkeydown="if(event.key==='Enter'&&!event.isComposing)subSend()">
+        <button class="send-btn green" onclick="subSend()" id="sub-send">送信</button>
       </div>
     </div>
-    <div class="card">
-      <div class="card-label green">農家ヒアリング内容を入力</div>
-      <div class="form-grid">
-        <div class="form-group"><label>農家名・経営体名</label><input type="text" id="sub-farmer" placeholder="例：壱岐市勝本町　山田農園"></div>
-        <div class="form-group"><label>主な作物・品目</label><input type="text" id="sub-crop" placeholder="例：壱岐牛、アスパラガス、麦"></div>
-        <div class="form-group"><label>現在の課題</label><textarea id="sub-issue" placeholder="例：後継者不足で収穫作業が追いつかない。農機具が古く効率が悪い。"></textarea></div>
-        <div class="form-group"><label>導入したいもの・やりたいこと</label><textarea id="sub-plan" placeholder="例：スマート農業機器の導入、直売所の開設。"></textarea></div>
-        <div class="form-group"><label>事業規模・金額感（任意）</label><input type="text" id="sub-budget" placeholder="例：約500万円"></div>
-        <div class="form-group"><label>期待する効果</label><input type="text" id="sub-effect" placeholder="例：作業時間3割削減、売上2割増"></div>
-      </div>
-      <p class="hint">※ 箇条書きや話し言葉でOK。AIが申請書の文体に整えます。</p>
-    </div>
-    <button class="gen-btn green" onclick="subsidyGenerate()" id="sub-btn">申請書ドラフトを生成する</button>
-    <div id="sub-loading" style="display:none; margin-top:14px;" class="card"><div class="loading"><div class="spinner"></div>申請書の文章を構成中...（約15秒）</div></div>
-    <div id="sub-result" style="display:none; margin-top:14px;"></div>
+    <div id="sub-result" style="display:none;margin-top:14px;"></div>
   </div>
 </div>
 
-<!-- DEMO 3: BOT -->
-<div class="page" id="page-bot">
-  <div class="inner-page">
-    <div class="page-header">
-      <div class="ph-icon" style="background:#E8F4F8;">🏛</div>
-      <div><div class="ph-title">壱岐市 AI問い合わせbot</div><div class="ph-sub">住民からのよくある問い合わせに自動応答</div></div>
+<!-- DEMO 3: くらし相談 -->
+<div class="page" id="page-life">
+  <div class="inner">
+    <div class="ph">
+      <div class="ph-icon" style="background:var(--sea-light);">🏡</div>
+      <div><div class="ph-title">あなたの状況に合わせた行政案内</div><div class="ph-sub">壱岐市 くらし相談AI</div></div>
       <div class="ph-badge">行政・議会向け</div>
+    </div>
+    <div class="wow-banner">
+      <div class="wow-icon">💡</div>
+      <div class="wow-text"><div class="wow-label">これぞAI</div>「移住したい」「子供が生まれた」など状況を話すだけ。複数の制度・窓口・手順を文脈に合わせて組み合わせて回答。これは検索では絶対できません。</div>
     </div>
     <div class="chat-wrap">
-      <div class="chat-header">
-        <div class="bot-avatar">🏛</div>
-        <div><div class="bot-name">壱岐市 AIアシスタント</div><div class="bot-status"><span class="online-dot"></span>24時間対応中</div></div>
-        <button class="chat-reset" onclick="botReset()">リセット</button>
+      <div class="chat-head sea">
+        <div class="bot-av">🏡</div>
+        <div><div class="bot-nm">壱岐市 くらし相談AI</div><div class="bot-st"><span class="odot"></span>あなたの状況に合わせてご案内します</div></div>
+        <button class="c-reset" onclick="lifeReset()">リセット</button>
       </div>
-      <div class="chat-messages" id="chat-messages">
-        <div class="msg bot"><div class="avatar">🏛</div><div class="bubble">こんにちは！壱岐市AIアシスタントです。ゴミの収集日、補助金、観光施設の営業時間、市役所の手続きなど、なんでもお気軽にご質問ください。</div></div>
+      <div class="chat-msgs" id="life-messages">
+        <div class="msg bot"><div class="av">🏡</div><div class="bubble">壱岐市くらし相談AIです。<br><br>移住・子育て・農業・介護・住まいなど、あなたの状況をざっくり話してください。複数の制度や窓口をまとめてご案内します。<br><br>例：「東京から壱岐への移住を考えている40代夫婦です。農業をやりたいのですが何から始めればいいですか？」</div></div>
       </div>
-      <div class="quick-questions">
-        <div class="quick-label">よくある質問</div>
-        <div class="quick-btns">
-          <button class="q-btn" onclick="botQuick('燃えるゴミはいつ収集ですか？')">ゴミの収集日</button>
-          <button class="q-btn" onclick="botQuick('移住支援金について教えてください')">移住支援金</button>
-          <button class="q-btn" onclick="botQuick('一支国博物館の営業時間を教えてください')">博物館の営業時間</button>
-          <button class="q-btn" onclick="botQuick('市役所の開庁時間はいつですか？')">市役所の窓口</button>
-          <button class="q-btn" onclick="botQuick('農業を始めるための補助金はありますか？')">農業の補助金</button>
+      <div class="quick">
+        <div class="ql">こんな相談が来ています</div>
+        <div class="qbs">
+          <button class="qb" onclick="lifeQuick('福岡から壱岐への移住を考えています。子供が2人いて、農業も少しやってみたいです。')">移住＋子育て＋農業</button>
+          <button class="qb" onclick="lifeQuick('先月子供が生まれました。もらえる給付金や手続きを全部教えてください。')">出産後の手続き一覧</button>
+          <button class="qb" onclick="lifeQuick('壱岐で農業を新たに始めたいです。農地の取得から補助金まで教えてください。')">新規就農の手順</button>
+          <button class="qb" onclick="lifeQuick('80代の親の介護で困っています。島内で使えるサービスを教えてください。')">高齢者介護の相談</button>
         </div>
       </div>
-      <div class="chat-input-row">
-        <input type="text" id="chat-input" placeholder="質問を入力してください..." onkeydown="if(event.key==='Enter'&&!event.isComposing)botSend()">
-        <button class="chat-send-btn" onclick="botSend()" id="bot-send-btn">送信</button>
+      <div class="chat-in">
+        <input type="text" id="life-input" placeholder="状況を話してください（例：移住を考えている30代です）" onkeydown="if(event.key==='Enter'&&!event.isComposing)lifeSend()">
+        <button class="send-btn sea" onclick="lifeSend()" id="life-send">相談する</button>
       </div>
-    </div>
-    <div class="chat-stats" id="chat-stats" style="display:none;">
-      <div class="stat-item"><div class="stat-num" id="stat-count">0</div><div class="stat-label">このデモでの応答数</div></div>
-      <div class="stat-item"><div class="stat-num">24h</div><div class="stat-label">対応時間</div></div>
-      <div class="stat-item"><div class="stat-num">〜10秒</div><div class="stat-label">平均応答時間</div></div>
     </div>
   </div>
 </div>
 
-<!-- DEMO 4: 営農日誌 -->
+<!-- DEMO 4: 写真→営農日誌 -->
 <div class="page" id="page-diary">
-  <div class="inner-page">
-    <div class="page-header">
-      <div class="ph-icon" style="background:#FEF0E0;">📓</div>
-      <div><div class="ph-title">営農日誌 自動生成</div><div class="ph-sub">メモ書きを正式な営農日誌に変換</div></div>
+  <div class="inner">
+    <div class="ph">
+      <div class="ph-icon" style="background:var(--amber-light);">🌱</div>
+      <div><div class="ph-title">畑の写真1枚で日誌＋病害虫診断</div><div class="ph-sub">農家向け × 作物状態AI診断</div></div>
       <div class="ph-badge">農家・JA向け</div>
     </div>
-    <div class="card">
-      <div class="card-label amber">今日の作業メモを入力</div>
-      <div class="form-grid">
-        <div class="form-group"><label>農家名</label><input type="text" id="diary-farmer" placeholder="例：山田農園（勝本町）"></div>
-        <div class="form-group"><label>作物・品目</label><input type="text" id="diary-crop" placeholder="例：アスパラガス"></div>
-        <div class="form-group"><label>今日の天気</label>
-          <select id="diary-weather">
-            <option value="晴れ">晴れ</option>
-            <option value="曇り">曇り</option>
-            <option value="雨">雨</option>
-            <option value="晴れのち曇り">晴れのち曇り</option>
-          </select>
-        </div>
-        <div class="form-group"><label>気温（任意）</label><input type="text" id="diary-temp" placeholder="例：22℃"></div>
-        <div class="form-group full"><label>今日やった作業（話し言葉・箇条書きでOK）</label>
-          <textarea id="diary-memo" placeholder="例：
-・朝8時から収穫。アスパラ約3kg取れた
-・午後は水やりと雑草取り
-・一部に黄変してる葉っぱがあった、様子見る
-・明日は追肥の予定"></textarea>
-        </div>
-      </div>
-      <p class="hint">※ スマホの音声入力でそのまま話した内容でも大丈夫です</p>
+    <div class="wow-banner">
+      <div class="wow-icon">💡</div>
+      <div class="wow-text"><div class="wow-label">これぞAI</div>写真を見てAIが作物の状態を判断。病害虫・生育不良の兆候があれば即アラート。日誌も同時に自動作成。</div>
     </div>
-    <button class="gen-btn amber" onclick="diaryGenerate()" id="diary-btn">営農日誌を生成する</button>
-    <div id="diary-loading" style="display:none; margin-top:14px;" class="card"><div class="loading"><div class="spinner"></div>営農日誌を作成中...</div></div>
-    <div id="diary-result" style="display:none; margin-top:14px;"></div>
+    <div class="card">
+      <div class="cl amber">作物の写真をアップロード</div>
+      <div class="img-drop" id="diary-drop" onclick="document.getElementById('diary-file').click()">
+        <input type="file" id="diary-file" accept="image/*" onchange="onDiaryImg(event)">
+        <div class="drop-icon">🌱</div>
+        <div class="drop-text">作物・葉・土の写真をアップロード</div>
+        <div class="drop-sub">葉の変色・虫食い・生育状態なども診断します</div>
+      </div>
+      <img id="diary-preview" class="img-preview">
+    </div>
+    <div class="card">
+      <div class="cl amber">基本情報</div>
+      <div class="fg">
+        <div><label>農家名</label><input type="text" id="diary-farmer" placeholder="例：山田農園（勝本町）"></div>
+        <div><label>作物・品目</label><input type="text" id="diary-crop" placeholder="例：アスパラガス"></div>
+        <div><label>今日の天気</label>
+          <select id="diary-weather"><option>晴れ</option><option>曇り</option><option>雨</option><option>晴れのち曇り</option></select>
+        </div>
+        <div><label>気温（任意）</label><input type="text" id="diary-temp" placeholder="例：22℃"></div>
+        <div class="fg-full"><label>追加メモ（任意）</label><input type="text" id="diary-memo" placeholder="例：午前中に収穫、約3kg"></div>
+      </div>
+    </div>
+    <button class="gen-btn amber" id="diary-btn" onclick="diaryGen()" disabled>写真から営農日誌＋診断を生成する</button>
+    <div id="diary-loading" style="display:none;" class="card" style="margin-top:14px;"><div class="loading"><div class="spinner"></div>写真を解析中...作物の状態を診断しています</div></div>
+    <div id="diary-result" style="display:none;margin-top:14px;"></div>
   </div>
 </div>
 
-<!-- DEMO 5: 議事録 -->
+<!-- DEMO 5: 議事録→TODO -->
 <div class="page" id="page-minutes">
-  <div class="inner-page">
-    <div class="page-header">
-      <div class="ph-icon" style="background:#F0EAF8;">📝</div>
-      <div><div class="ph-title">議事録 → 要約＋TODO自動抽出</div><div class="ph-sub">会議メモから要約とアクションリストを生成</div></div>
+  <div class="inner">
+    <div class="ph">
+      <div class="ph-icon" style="background:var(--purple-light);">📝</div>
+      <div><div class="ph-title">会議メモが即座にTODOリストに</div><div class="ph-sub">行政・議会 × 議事録自動整理</div></div>
       <div class="ph-badge">行政・議会向け</div>
     </div>
+    <div class="wow-banner">
+      <div class="wow-icon">💡</div>
+      <div class="wow-text"><div class="wow-label">これぞAI</div>発言の流れを読んで「誰が・何を・いつまでに」を自動抽出。1〜2時間かかっていた議事録整理が、貼り付けるだけで完成。</div>
+    </div>
     <div class="card">
-      <div class="card-label purple">会議情報</div>
-      <div class="form-grid">
-        <div class="form-group"><label>会議名</label><input type="text" id="min-title" placeholder="例：壱岐市AI活用推進委員会 第1回"></div>
-        <div class="form-group"><label>開催日</label><input type="text" id="min-date" placeholder="例：2026年6月9日"></div>
-        <div class="form-group full"><label>発言メモ・議事メモ（コピペまたは入力）</label>
+      <div class="cl purple">会議情報</div>
+      <div class="fg">
+        <div><label>会議名</label><input type="text" id="min-title" placeholder="例：壱岐市AI活用推進委員会 第1回"></div>
+        <div><label>開催日</label><input type="text" id="min-date" placeholder="例：2026年6月9日"></div>
+        <div class="fg-full"><label>発言メモ（コピペでOK）</label>
           <textarea id="min-memo" style="min-height:180px;" placeholder="例：
 市長：今日はAI活用について議論したい。まず現状を共有してほしい。
 田中課長：現在、市役所への問い合わせ電話が月約800件。8割が定型的な内容。
@@ -454,292 +422,414 @@ textarea { resize: vertical; min-height: 100px; line-height: 1.7; }
         </div>
       </div>
     </div>
-    <button class="gen-btn purple" onclick="minutesGenerate()" id="min-btn">要約＋TODOを生成する</button>
-    <div id="min-loading" style="display:none; margin-top:14px;" class="card"><div class="loading"><div class="spinner"></div>議事録を解析中...</div></div>
-    <div id="min-result" style="display:none; margin-top:14px;"></div>
+    <button class="gen-btn purple" id="min-btn" onclick="minGen()">要約＋TODOを生成する</button>
+    <div id="min-loading" style="display:none;" class="card" style="margin-top:14px;"><div class="loading"><div class="spinner"></div>議事録を解析中...</div></div>
+    <div id="min-result" style="display:none;margin-top:14px;"></div>
   </div>
 </div>
 
-<!-- DEMO 6: 観光ガイド -->
-<div class="page" id="page-guide">
-  <div class="inner-page">
-    <div class="page-header">
-      <div class="ph-icon" style="background:#E8F4F8;">🗺</div>
-      <div><div class="ph-title">壱岐観光AIガイド</div><div class="ph-sub">観光客の質問に即答。島全体の情報を一元管理</div></div>
+<!-- DEMO 6: 旅プランナー -->
+<div class="page" id="page-travel">
+  <div class="inner">
+    <div class="ph">
+      <div class="ph-icon" style="background:var(--sea-light);">🗺</div>
+      <div><div class="ph-title">条件を言うだけで旅プランが完成</div><div class="ph-sub">壱岐 旅プランナーAI</div></div>
       <div class="ph-badge">観光・島全体向け</div>
     </div>
-    <div class="chat-wrap guide-chat">
-      <div class="chat-header">
-        <div class="bot-avatar">🗺</div>
-        <div><div class="bot-name">壱岐島 観光AIガイド</div><div class="bot-status"><span class="online-dot"></span>多言語対応・24時間</div></div>
-        <button class="chat-reset" onclick="guideReset()">リセット</button>
+    <div class="wow-banner">
+      <div class="wow-icon">💡</div>
+      <div class="wow-text"><div class="wow-label">これぞAI</div>「子連れ・2泊・壱岐牛必須・フェリーで来る」など複数の条件を組み合わせて、移動時間・食事・宿まで考慮した個別プランを瞬時に提案。</div>
+    </div>
+    <div class="chat-wrap">
+      <div class="chat-head sea">
+        <div class="bot-av">🗺</div>
+        <div><div class="bot-nm">壱岐 旅プランナーAI</div><div class="bot-st"><span class="odot"></span>あなただけの旅プランを作ります</div></div>
+        <button class="c-reset" onclick="travelReset()">リセット</button>
       </div>
-      <div class="chat-messages" id="guide-messages">
-        <div class="msg bot"><div class="avatar">🗺</div><div class="bubble">壱岐島へようこそ！観光スポット、グルメ、交通、宿泊など、何でも聞いてください。日本語・English・中文に対応しています。<br><br>Welcome to Iki Island! Ask me anything about sightseeing, food, transport, and accommodation.</div></div>
+      <div class="chat-msgs" id="travel-messages">
+        <div class="msg bot"><div class="av">🗺</div><div class="bubble">壱岐旅プランナーです！<br><br>日程・人数・こだわり条件などを教えてください。スポット・グルメ・移動手段・宿泊まで含めた、あなただけのプランを作ります。<br><br>例：「来月、夫婦2人で1泊2日。壱岐牛は絶対食べたい。博多からフェリーで行きます。歴史スポットも好きです。」</div></div>
       </div>
-      <div class="quick-questions">
-        <div class="quick-label">よくある質問</div>
-        <div class="quick-btns">
-          <button class="q-btn" onclick="guideQuick('子連れで楽しめるスポットを教えてください')">子連れ向けスポット</button>
-          <button class="q-btn" onclick="guideQuick('壱岐牛が食べられるお店はありますか？')">壱岐牛が食べたい</button>
-          <button class="q-btn" onclick="guideQuick('博多から壱岐への行き方を教えてください')">博多からのアクセス</button>
-          <button class="q-btn" onclick="guideQuick('壱岐の海水浴場はどこがおすすめですか？')">海水浴場</button>
-          <button class="q-btn" onclick="guideQuick('What are the must-see spots in Iki Island?')">English OK</button>
+      <div class="quick">
+        <div class="ql">こんなプランが人気です</div>
+        <div class="qbs">
+          <button class="qb" onclick="travelQuick('小学生の子供2人連れで2泊3日。海で遊びたい。壱岐牛も食べたい。博多からジェットフォイルで行きます。')">子連れ2泊3日</button>
+          <button class="qb" onclick="travelQuick('夫婦2人で1泊2日の癒し旅。歴史や文化に興味あり。シーグラスアート体験もしたい。')">夫婦1泊・文化体験</button>
+          <button class="qb" onclick="travelQuick('友人3人で日帰り。壱岐の絶景と海鮮を楽しみたい。朝一のジェットフォイルで行きます。')">友人と日帰り弾丸</button>
+          <button class="qb" onclick="travelQuick('I want to visit Iki Island for 2 nights with my partner. We love nature and local food. Coming from Fukuoka.')">English plan</button>
         </div>
       </div>
-      <div class="chat-input-row">
-        <input type="text" id="guide-input" placeholder="観光について何でも聞いてください..." onkeydown="if(event.key==='Enter'&&!event.isComposing)guideSend()">
-        <button class="chat-send-btn" onclick="guideSend()" id="guide-send-btn">送信</button>
+      <div class="chat-in">
+        <input type="text" id="travel-input" placeholder="旅の条件を話してください..." onkeydown="if(event.key==='Enter'&&!event.isComposing)travelSend()">
+        <button class="send-btn sea" onclick="travelSend()" id="travel-send">プランを作る</button>
       </div>
-    </div>
-    <div class="card" style="margin-top:14px;">
-      <div class="card-label">このガイドが変える壱岐の観光</div>
-      <p style="font-size:13px;color:var(--text-muted);line-height:1.8;">島内の観光案内所は限られた時間しか営業できません。このAIガイドが24時間・多言語で対応することで、インバウンド観光客の受け入れ体制が強化されます。工房アオとミドリさんの情報、JA直売所の情報、壱岐牛レストランの情報を統合すれば、島全体の経済循環につながります。</p>
     </div>
   </div>
 </div>
 
 <script>
-const PAGES = ['top','sns','subsidy','bot','diary','minutes','guide'];
-function showPage(name) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('page-' + name).classList.add('active');
-  const idx = PAGES.indexOf(name);
-  if (idx >= 0) document.querySelectorAll('.nav-tab')[idx].classList.add('active');
-  window.scrollTo(0, 0);
+const PAGES=['top','sns','subsidy','life','diary','minutes','travel'];
+function go(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  const i=PAGES.indexOf(name);
+  if(i>=0)document.querySelectorAll('.nav-tab')[i].classList.add('active');
+  window.scrollTo(0,0);
 }
 
-document.querySelectorAll('#sns-tones .chip').forEach(c => c.addEventListener('click', () => c.classList.toggle('on')));
-document.querySelectorAll('#subsidy-chips .s-chip').forEach(c => c.addEventListener('click', () => {
-  document.querySelectorAll('#subsidy-chips .s-chip').forEach(x => x.classList.remove('on'));
-  c.classList.add('on');
-}));
-
-async function callClaude(payload) {
-  const res = await fetch('/api/claude', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-  const data = await res.json();
-  if (!res.ok) throw new Error(JSON.stringify(data));
-  return data;
+async function api(payload){
+  const r=await fetch('/api/claude',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+  const d=await r.json();
+  if(!r.ok)throw new Error(JSON.stringify(d));
+  return d;
 }
 
-// ─── DEMO 1: SNS ───
-async function snsGenerate() {
-  const product = document.getElementById('sns-product').value;
-  const weather = document.getElementById('sns-weather').value;
-  const memo = document.getElementById('sns-memo').value;
-  const tones = [...document.querySelectorAll('#sns-tones .chip.on')].map(c => c.dataset.val).join('、') || '自然体で温かみのある';
-  setLoading('sns', true);
-  const prompt = `あなたは工房アオとミドリ（長崎県壱岐島の体験型ハンドメイド工房）のSNS担当です。
-【商品・体験】${product}【天気・季節】${weather}【トーン】${tones}【追加メモ】${memo||'なし'}
+function resizeImg(file,maxW=800){
+  return new Promise(res=>{
+    const reader=new FileReader();
+    reader.onload=e=>{
+      const img=new Image();
+      img.onload=()=>{
+        const scale=Math.min(1,maxW/img.width);
+        const canvas=document.createElement('canvas');
+        canvas.width=img.width*scale; canvas.height=img.height*scale;
+        canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
+        res(canvas.toDataURL('image/jpeg',0.8).split(',')[1]);
+      };
+      img.src=e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function setL(id,on){
+  const l=document.getElementById(id+'-loading');
+  const b=document.getElementById(id+'-btn');
+  if(l)l.style.display=on?'block':'none';
+  if(b)b.disabled=on;
+  if(on){const r=document.getElementById(id+'-result');if(r)r.style.display='none';}
+}
+function showR(id,html){
+  const el=document.getElementById(id+'-result');
+  el.innerHTML='<div class="card">'+html+'</div>';
+  el.style.display='block';
+}
+function cp(id,btn){
+  const t=document.getElementById(id)?.innerText;
+  if(!t)return;
+  navigator.clipboard.writeText(t).then(()=>{const o=btn.textContent;btn.textContent='コピーしました';btn.classList.add('done');setTimeout(()=>{btn.textContent=o;btn.classList.remove('done');},2000);});
+}
+
+// ─── DEMO 1: 写真→SNS ───
+let snsImgB64=null;
+function onSnsImg(e){
+  const f=e.target.files[0]; if(!f)return;
+  const prev=document.getElementById('sns-preview');
+  prev.src=URL.createObjectURL(f); prev.style.display='block';
+  resizeImg(f).then(b64=>{snsImgB64=b64; document.getElementById('sns-btn').disabled=false;});
+}
+async function snsGen(){
+  if(!snsImgB64){alert('写真をアップロードしてください');return;}
+  const tone=document.getElementById('sns-tone').value;
+  const memo=document.getElementById('sns-memo').value;
+  setL('sns',true);
+  const prompt=`あなたは工房アオとミドリ（長崎県壱岐島の体験型ハンドメイド工房）のSNS担当です。
+この写真を見て、Instagram投稿文を作成してください。
+【トーン】${tone}
+【追加メモ】${memo||'なし'}
+写真に写っているもの・雰囲気・色合いを読み取って、リアルな投稿文を書いてください。
 JSONのみ返答。前置き・マークダウン記号不要。
-{"ja":{"text":"日本語投稿文（150〜200字、改行あり、絵文字なし）","hashtags":["タグ1","タグ2","タグ3","タグ4","タグ5","タグ6","タグ7","タグ8"]},"en":{"text":"English post (80-120 words, natural tone)","hashtags":["tag1","tag2","tag3","tag4","tag5"]}}`;
-  try {
-    const data = await callClaude({ model: 'claude-sonnet-4-6', max_tokens: 1000, messages: [{ role: 'user', content: prompt }] });
-    const parsed = JSON.parse(data.content.find(b => b.type === 'text').text.replace(/```json|```/g,'').trim());
-    window._sns = parsed;
-    showResult('sns', `
-      <div class="result-label">日本語<button class="copy-btn" onclick="cp('ja-text',this)">コピー</button></div>
-      <div class="result-text" id="ja-text">${parsed.ja.text}</div>
-      <div class="hashtags">${parsed.ja.hashtags.map(t=>'#'+t).join('　')}</div>
-      <div class="copy-row"><button class="copy-btn" onclick="cpAll('ja',this)">タグ込みでコピー</button></div>
-      <hr class="divider">
-      <div class="result-label">English<button class="copy-btn" onclick="cp('en-text',this)">Copy</button></div>
-      <div class="result-text" id="en-text">${parsed.en.text}</div>
-      <div class="hashtags">${parsed.en.hashtags.map(t=>'#'+t).join('　')}</div>
-      <div class="copy-row"><button class="copy-btn" onclick="cpAll('en',this)">Copy with tags</button></div>
-      <div class="time-badge">⏱ 手書きなら30〜60分かかる作業が、約10秒で完成</div>`);
-  } catch(e) { showResult('sns', `<div class="error-box">エラー: ${e.toString()}</div>`); }
-  setLoading('sns', false);
+{"photo_desc":"写真に写っているものの説明（1文）","ja":{"text":"日本語投稿文（150〜200字、改行あり、絵文字なし）","hashtags":["タグ1","タグ2","タグ3","タグ4","タグ5","タグ6","タグ7","タグ8"]},"en":{"text":"English post (80-120 words, natural tone)","hashtags":["tag1","tag2","tag3","tag4","tag5"]}}`;
+  try{
+    const data=await api({model:'claude-sonnet-4-6',max_tokens:1000,messages:[{role:'user',content:[{type:'image',source:{type:'base64',media_type:'image/jpeg',data:snsImgB64}},{type:'text',text:prompt}]}]});
+    const d=JSON.parse(data.content.find(b=>b.type==='text').text.replace(/```json|```/g,'').trim());
+    window._sns=d;
+    showR('sns',`
+      <div class="cl green">AIが写真から読み取った内容</div>
+      <div style="background:var(--sea-light);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--sea);margin-bottom:16px;">📸 ${d.photo_desc}</div>
+      <div class="rl">日本語投稿文<button class="cp-btn" onclick="cp('ja-t',this)">コピー</button></div>
+      <div class="rt" id="ja-t">${d.ja.text}</div>
+      <div class="hashtags">${d.ja.hashtags.map(t=>'#'+t).join('　')}</div>
+      <div style="margin-bottom:4px;"><button class="cp-btn" onclick="cpAll('ja',this)">タグ込みでコピー</button></div>
+      <div class="divider"></div>
+      <div class="rl">English<button class="cp-btn" onclick="cp('en-t',this)">Copy</button></div>
+      <div class="rt" id="en-t">${d.en.text}</div>
+      <div class="hashtags">${d.en.hashtags.map(t=>'#'+t).join('　')}</div>
+      <div><button class="cp-btn" onclick="cpAll('en',this)">Copy with tags</button></div>
+      <div class="tb green">⏱ 写真を撮ったら、そのままInstagramに投稿できる状態まで約10秒</div>`);
+  }catch(e){showR('sns',`<div class="err">エラー: ${e.toString()}</div>`);}
+  setL('sns',false);
+}
+function cpAll(lang,btn){
+  if(!window._sns)return;
+  const d=window._sns[lang];
+  navigator.clipboard.writeText(d.text+'\n\n'+d.hashtags.map(h=>'#'+h).join(' ')).then(()=>{const o=btn.textContent;btn.textContent='コピーしました';btn.classList.add('done');setTimeout(()=>{btn.textContent=o;btn.classList.remove('done');},2000);});
 }
 
-// ─── DEMO 2: SUBSIDY ───
-async function subsidyGenerate() {
-  const subsidy = document.querySelector('#subsidy-chips .s-chip.on')?.dataset.val || '産地生産基盤パワーアップ事業';
-  const org = document.querySelector('#subsidy-chips .s-chip.on')?.dataset.org || '農林水産省';
-  const farmer = document.getElementById('sub-farmer').value || '壱岐市内農業経営体';
-  const crop = document.getElementById('sub-crop').value || '未入力';
-  const issue = document.getElementById('sub-issue').value || '未入力';
-  const plan = document.getElementById('sub-plan').value || '未入力';
-  const budget = document.getElementById('sub-budget').value || '詳細検討中';
-  const effect = document.getElementById('sub-effect').value || '生産性向上';
-  setLoading('sub', true);
-  const prompt = `農林水産省・自治体への補助金申請書作成の専門家として、以下の情報から申請書ドラフトを作成してください。
-【補助金】${subsidy}（${org}）【申請者】${farmer}【作物】${crop}【課題】${issue}【計画】${plan}【予算】${budget}【期待効果】${effect}【地域】長崎県壱岐市（離島・SDGs未来都市）
-JSONのみ返答。前置き不要。
-{"overview":"（1）事業概要：200〜300字","necessity":"（2）事業の必要性：200〜300字。離島特有の事情も含む","expected_effect":"（3）期待される効果：200〜300字。定量・定性両面"}`;
-  try {
-    const data = await callClaude({ model: 'claude-sonnet-4-6', max_tokens: 1500, messages: [{ role: 'user', content: prompt }] });
-    const parsed = JSON.parse(data.content.find(b => b.type === 'text').text.replace(/```json|```/g,'').trim());
-    window._sub = parsed;
-    showResult('sub', `
-      <div class="card-label green">${subsidy} — 生成されたドラフト</div>
-      <div class="result-section"><div class="result-label">（1）事業概要<button class="copy-btn" onclick="cp('sub-ov',this)">コピー</button></div><div class="result-text" id="sub-ov">${parsed.overview}</div></div>
-      <div class="result-section"><div class="result-label">（2）事業の必要性<button class="copy-btn" onclick="cp('sub-ne',this)">コピー</button></div><div class="result-text" id="sub-ne">${parsed.necessity}</div></div>
-      <div class="result-section"><div class="result-label">（3）期待される効果<button class="copy-btn" onclick="cp('sub-ef',this)">コピー</button></div><div class="result-text" id="sub-ef">${parsed.expected_effect}</div></div>
-      <button class="all-copy-btn" onclick="subCopyAll()">3セクションまとめてコピー（Word貼り付け用）</button>
-      <div class="time-badge">⏱ 担当者が1〜3時間かけていた下書きが約15秒で完成。あとは数字と固有名詞の確認だけ。</div>`);
-  } catch(e) { showResult('sub', `<div class="error-box">エラー: ${e.toString()}</div>`); }
-  setLoading('sub', false);
+// ─── DEMO 2: 会話→補助金申請書 ───
+const SUB_SYS=`あなたはJA壱岐市の補助金申請書作成AIアシスタントです。農家さんと会話しながら、補助金申請書に必要な情報を引き出してください。
+
+会話の流れ：
+1. 対象補助金を確認
+2. 農家名・経営体名を聞く
+3. 主な作物・品目を聞く
+4. 現在の課題を聞く（具体的に引き出す）
+5. 導入したいもの・やりたいことを聞く
+6. 事業規模・予算感を聞く
+7. 期待する効果を聞く
+8. 情報が揃ったら「申請書を作成します」と言い、以下のJSONのみを出力する：
+
+GENERATE_APPLICATION:{"subsidy":"補助金名","farmer":"農家名","crop":"作物","issue":"課題","plan":"計画","budget":"予算","effect":"効果"}
+
+ルール：
+- 1回の返答で1〜2個の質問のみ。短く親しみやすく。
+- 情報が揃ってきたら「あと〇つ確認させてください」と伝える
+- 壱岐市の離島という特性（輸送コスト・後継者不足・観光との連携）を意識して質問を深掘り
+- 農家さんが話しやすい言葉遣いで`;
+
+let subHistory=[];
+let subStep=0;
+
+async function subSend(){
+  const i=document.getElementById('sub-input');
+  const m=i.value.trim(); if(!m)return; i.value='';
+  await subReply(m);
 }
-function subCopyAll() {
-  if (!window._sub) return;
+async function subQuick(m){ document.getElementById('sub-input').value=''; await subReply(m); }
+
+async function subReply(userMsg){
+  addMsg('sub-messages','user',userMsg,'👨‍🌾');
+  subHistory.push({role:'user',content:userMsg});
+  document.getElementById('sub-quick').style.display='none';
+  const tid=addMsg('sub-messages','bot','考えています...','🌾',true);
+  document.getElementById('sub-send').disabled=true;
+  try{
+    const data=await api({model:'claude-sonnet-4-6',max_tokens:500,system:SUB_SYS,messages:subHistory});
+    const reply=data.content.find(b=>b.type==='text')?.text||'';
+    subHistory.push({role:'assistant',content:reply});
+    document.getElementById(tid)?.remove();
+    subStep=Math.min(subStep+1,5);
+    updateSubProgress();
+    if(reply.includes('GENERATE_APPLICATION:')){
+      addMsg('sub-messages','bot','情報が揃いました！申請書を作成します...','🌾');
+      const jsonStr=reply.match(/GENERATE_APPLICATION:(\{[\s\S]+\})/)?.[1];
+      if(jsonStr){
+        const info=JSON.parse(jsonStr);
+        await generateSubsidy(info);
+      }
+    } else {
+      addMsg('sub-messages','bot',reply,'🌾');
+    }
+  }catch(e){
+    document.getElementById(tid)?.remove();
+    addMsg('sub-messages','bot','エラーが発生しました。もう一度お試しください。','🌾');
+  } finally {document.getElementById('sub-send').disabled=false;}
+}
+
+function updateSubProgress(){
+  const steps=document.querySelectorAll('#sub-progress .prog-step');
+  steps.forEach((s,i)=>{
+    s.classList.remove('done','active');
+    if(i<subStep)s.classList.add('done');
+    else if(i===subStep)s.classList.add('active');
+  });
+}
+
+async function generateSubsidy(info){
+  const prompt=`補助金申請書作成の専門家として、以下の情報から申請書ドラフトを作成してください。
+【補助金】${info.subsidy}【申請者】${info.farmer}【作物】${info.crop}
+【課題】${info.issue}【計画】${info.plan}【予算】${info.budget}【期待効果】${info.effect}
+【地域】長崎県壱岐市（離島・SDGs未来都市）
+JSONのみ返答。前置き不要。
+{"overview":"（1）事業概要：200〜300字","necessity":"（2）事業の必要性：200〜300字。離島特有の事情も含む","expected_effect":"（3）期待される効果：200〜300字"}`;
+  try{
+    const data=await api({model:'claude-sonnet-4-6',max_tokens:1500,messages:[{role:'user',content:prompt}]});
+    const d=JSON.parse(data.content.find(b=>b.type==='text').text.replace(/```json|```/g,'').trim());
+    window._sub=d;
+    document.getElementById('sub-result').innerHTML=`<div class="card">
+      <div class="cl green">${info.subsidy} — 申請書ドラフト完成</div>
+      <div class="rs"><div class="rl" style="color:var(--green);">（1）事業概要<button class="cp-btn" onclick="cp('s-ov',this)">コピー</button></div><div class="rt" id="s-ov">${d.overview}</div></div>
+      <div class="rs"><div class="rl" style="color:var(--green);">（2）事業の必要性<button class="cp-btn" onclick="cp('s-ne',this)">コピー</button></div><div class="rt" id="s-ne">${d.necessity}</div></div>
+      <div class="rs"><div class="rl" style="color:var(--green);">（3）期待される効果<button class="cp-btn" onclick="cp('s-ef',this)">コピー</button></div><div class="rt" id="s-ef">${d.expected_effect}</div></div>
+      <button class="all-cp" onclick="subCpAll()">3セクションまとめてコピー（Word貼り付け用）</button>
+      <div class="tb green">⏱ 会話するだけで申請書の下書きが完成。フォーム入力ゼロ。</div>
+    </div>`;
+    document.getElementById('sub-result').style.display='block';
+    updateSubProgress();
+    document.querySelectorAll('#sub-progress .prog-step').forEach(s=>{s.classList.remove('active');s.classList.add('done');});
+  }catch(e){console.error(e);}
+}
+function subCpAll(){
+  if(!window._sub)return;
   navigator.clipboard.writeText(`【事業概要】\n${window._sub.overview}\n\n【事業の必要性】\n${window._sub.necessity}\n\n【期待される効果】\n${window._sub.expected_effect}`);
 }
-
-// ─── DEMO 3: BOT ───
-const BOT_SYSTEM = `あなたは長崎県壱岐市の市役所AI窓口アシスタントです。住民からの問い合わせに丁寧かつ簡潔に日本語で答えてください。
-壱岐市：人口約25,000人、離島、SDGs未来都市（2018年）。主要産業：農業（壱岐牛・麦・アスパラガス）、漁業、観光。
-ゴミ：燃えるゴミ週2回、燃えないゴミ月2回、資源ゴミ月1〜2回、粗大ゴミ要申込（環境課0920-45-1111）
-子育て：児童手当（中学修了まで）、保育所8か所、支援センター4か所
-観光：一支国博物館9:00〜17:00・月曜休・500円、原の辻・猿岩は無料
-市役所：平日8:30〜17:15、電話0920-48-1111
-移住支援金・農業補助あり。150字以内で簡潔に。不明な点は「市役所（0920-48-1111）へ」と案内。`;
-let botHistory = [], botCount = 0;
-async function botSend() { const i = document.getElementById('chat-input'); const m = i.value.trim(); if(!m) return; i.value=''; await botReply(m,'chat-messages','bot-send-btn',botHistory,'bot','🏛'); }
-async function botQuick(m) { await botReply(m,'chat-messages','bot-send-btn',botHistory,'bot','🏛'); }
-function botReset() { botHistory=[]; botCount=0; document.getElementById('stat-count').textContent='0'; document.getElementById('chat-stats').style.display='none'; document.getElementById('chat-messages').innerHTML='<div class="msg bot"><div class="avatar">🏛</div><div class="bubble">こんにちは！壱岐市AIアシスタントです。ゴミの収集日、補助金、観光施設の営業時間、市役所の手続きなど、なんでもお気軽にご質問ください。</div></div>'; }
-
-// ─── DEMO 4: 営農日誌 ───
-async function diaryGenerate() {
-  const farmer = document.getElementById('diary-farmer').value || '壱岐市内農家';
-  const crop = document.getElementById('diary-crop').value || '（未入力）';
-  const weather = document.getElementById('diary-weather').value;
-  const temp = document.getElementById('diary-temp').value || '記録なし';
-  const memo = document.getElementById('diary-memo').value || '（未入力）';
-  setLoading('diary', true);
-  const today = new Date().toLocaleDateString('ja-JP', {year:'numeric',month:'long',day:'numeric'});
-  const prompt = `あなたは農業記録の専門家です。以下のメモを正式な営農日誌の形式に整えてください。
-【農家名】${farmer}【作物】${crop}【日付】${today}【天気】${weather}【気温】${temp}【作業メモ】${memo}
-
-以下のJSON形式で返答してください。前置き・マークダウン記号不要。
-{"date":"${today}","farmer":"${farmer}","crop":"${crop}","weather":"${weather} ${temp}","work_summary":"本日の作業概要（2〜3文、である調）","work_detail":"作業詳細（箇条書き、である調、各項目を改行で区切る）","observation":"観察・気づき事項（作物の状態、病害虫の有無など、なければ「特記事項なし」）","tomorrow":"明日の予定（メモから読み取れる場合のみ、なければ「未定」）"}`;
-  try {
-    const data = await callClaude({ model: 'claude-sonnet-4-6', max_tokens: 800, messages: [{ role: 'user', content: prompt }] });
-    const d = JSON.parse(data.content.find(b => b.type === 'text').text.replace(/```json|```/g,'').trim());
-    window._diary = d;
-    showResult('diary', `
-      <div class="card-label amber">営農日誌 — ${d.date}</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
-        <div style="background:var(--sand);border-radius:8px;padding:12px;font-size:12px;"><span style="color:var(--text-muted);">農家名</span><br><strong>${d.farmer}</strong></div>
-        <div style="background:var(--sand);border-radius:8px;padding:12px;font-size:12px;"><span style="color:var(--text-muted);">作物</span><br><strong>${d.crop}</strong></div>
-        <div style="background:var(--sand);border-radius:8px;padding:12px;font-size:12px;"><span style="color:var(--text-muted);">天気・気温</span><br><strong>${d.weather}</strong></div>
-      </div>
-      <div class="result-section"><div class="result-label">作業概要<button class="copy-btn" onclick="cp('d-sum',this)">コピー</button></div><div class="result-text" id="d-sum">${d.work_summary}</div></div>
-      <div class="result-section"><div class="result-label">作業詳細<button class="copy-btn" onclick="cp('d-det',this)">コピー</button></div><div class="result-text" id="d-det">${d.work_detail}</div></div>
-      <div class="result-section"><div class="result-label">観察・気づき<button class="copy-btn" onclick="cp('d-obs',this)">コピー</button></div><div class="result-text" id="d-obs">${d.observation}</div></div>
-      <div class="result-section"><div class="result-label">明日の予定<button class="copy-btn" onclick="cp('d-tom',this)">コピー</button></div><div class="result-text" id="d-tom">${d.tomorrow}</div></div>
-      <button class="all-copy-btn" onclick="diaryCopyAll()">日誌全体をコピー（Word貼り付け用）</button>
-      <div class="time-badge amber">⏱ スマホで話した内容が、そのまま正式な営農日誌に。毎日10分の記録作業がゼロに。</div>`, 'amber');
-  } catch(e) { showResult('diary', `<div class="error-box">エラー: ${e.toString()}</div>`); }
-  setLoading('diary', false);
+function subReset(){
+  subHistory=[]; subStep=0; updateSubProgress();
+  document.getElementById('sub-messages').innerHTML='<div class="msg bot"><div class="av">🌾</div><div class="bubble">こんにちは！補助金申請書を一緒に作りましょう。<br><br>まず、どの補助金への申請をお考えですか？</div></div>';
+  document.getElementById('sub-quick').style.display='block';
+  document.getElementById('sub-result').style.display='none';
 }
-function diaryCopyAll() {
-  if (!window._diary) return;
-  const d = window._diary;
-  navigator.clipboard.writeText(`営農日誌\n日付：${d.date}\n農家名：${d.farmer}\n作物：${d.crop}\n天気：${d.weather}\n\n【作業概要】\n${d.work_summary}\n\n【作業詳細】\n${d.work_detail}\n\n【観察・気づき】\n${d.observation}\n\n【明日の予定】\n${d.tomorrow}`);
+
+// ─── DEMO 3: くらし相談 ───
+const LIFE_SYS=`あなたは長崎県壱岐市の「くらし相談AI」です。住民の状況を理解して、複数の制度・窓口・手順を組み合わせた個別アドバイスを提供します。
+
+【壱岐市の主な制度・サービス】
+移住支援：移住支援金（UIターン、最大100万円）、空き家バンク、移住相談窓口（地域振興課）
+子育て：出産祝い金、児童手当（中学修了まで）、保育所8か所、子育て支援センター4か所、医療費助成
+農業：農地取得支援、新規就農者向け次世代人材投資資金、JA壱岐市への相談
+高齢者・介護：介護保険サービス、地域包括支援センター、在宅介護支援
+住まい：空き家改修補助金、移住者向け住宅支援
+SDGs：壱岐市は2018年SDGs未来都市に離島初選定
+
+【回答のルール】
+- 相手の状況を正確に把握してから回答する
+- 複数の制度が関係する場合は、優先順位をつけて整理する
+- 「まず〇〇、次に〇〇」という手順で案内する
+- 担当窓口・連絡先を具体的に示す
+- 離島ならではの視点（フェリー・交通・季節性など）も考慮する
+- 検索では出てこない「あなたの状況に合わせた」アドバイスを心がける`;
+
+let lifeHistory=[];
+async function lifeSend(){const i=document.getElementById('life-input');const m=i.value.trim();if(!m)return;i.value='';await chatReply('life',m,LIFE_SYS,'🏡','life-send','life-messages');}
+async function lifeQuick(m){await chatReply('life',m,LIFE_SYS,'🏡','life-send','life-messages');}
+function lifeReset(){lifeHistory=[];document.getElementById('life-messages').innerHTML='<div class="msg bot"><div class="av">🏡</div><div class="bubble">壱岐市くらし相談AIです。<br><br>移住・子育て・農業・介護・住まいなど、あなたの状況をざっくり話してください。複数の制度や窓口をまとめてご案内します。</div></div>';}
+
+// ─── DEMO 4: 写真→営農日誌 ───
+let diaryImgB64=null;
+function onDiaryImg(e){
+  const f=e.target.files[0]; if(!f)return;
+  const prev=document.getElementById('diary-preview');
+  prev.src=URL.createObjectURL(f); prev.style.display='block';
+  resizeImg(f).then(b64=>{diaryImgB64=b64; document.getElementById('diary-btn').disabled=false;});
+}
+async function diaryGen(){
+  if(!diaryImgB64){alert('写真をアップロードしてください');return;}
+  const farmer=document.getElementById('diary-farmer').value||'壱岐市内農家';
+  const crop=document.getElementById('diary-crop').value||'（未記入）';
+  const weather=document.getElementById('diary-weather').value;
+  const temp=document.getElementById('diary-temp').value||'記録なし';
+  const memo=document.getElementById('diary-memo').value||'なし';
+  const today=new Date().toLocaleDateString('ja-JP',{year:'numeric',month:'long',day:'numeric'});
+  setL('diary',true);
+  const prompt=`あなたは農業の専門家です。この写真と情報から、営農日誌と作物診断を作成してください。
+【農家名】${farmer}【作物】${crop}【日付】${today}【天気】${weather}【気温】${temp}【追加メモ】${memo}
+
+写真をよく見て、以下を判断してください：
+1. 作物の生育状態（良好/注意/要対応）
+2. 病害虫・生育不良の兆候
+3. 今日の作業内容（写真から推測）
+
+JSONのみ返答。前置き・マークダウン記号不要。
+{"diagnosis":{"status":"ok|warn|danger","label":"生育状態の一言判定","detail":"診断の詳細（2〜3文）","action":"推奨アクション（問題なければ「継続管理」）"},"diary":{"work_summary":"本日の作業概要（2文、である調）","work_detail":"作業詳細（改行区切りの箇条書き、である調）","observation":"観察事項（写真から読み取れること）","tomorrow":"明日の推奨作業"}}`;
+  try{
+    const data=await api({model:'claude-sonnet-4-6',max_tokens:1000,messages:[{role:'user',content:[{type:'image',source:{type:'base64',media_type:'image/jpeg',data:diaryImgB64}},{type:'text',text:prompt}]}]});
+    const d=JSON.parse(data.content.find(b=>b.type==='text').text.replace(/```json|```/g,'').trim());
+    window._diary=d;
+    const diagClass=d.diagnosis.status==='ok'?'ok':d.diagnosis.status==='warn'?'warn':'danger';
+    const diagEmoji=d.diagnosis.status==='ok'?'✅':d.diagnosis.status==='warn'?'⚠️':'🚨';
+    showR('diary',`
+      <div class="cl amber">AI診断結果</div>
+      <div class="diagnosis-card ${diagClass}">
+        <div class="diag-label ${diagClass}">${diagEmoji} ${d.diagnosis.label}</div>
+        <div class="diag-text">${d.diagnosis.detail}</div>
+        ${d.diagnosis.action!=='継続管理'?`<div style="margin-top:8px;font-size:12px;font-weight:500;color:var(--amber);">👉 推奨アクション：${d.diagnosis.action}</div>`:''}
+      </div>
+      <div class="cl amber" style="margin-top:16px;">営農日誌</div>
+      <div class="rs"><div class="rl" style="color:var(--amber);">作業概要<button class="cp-btn" onclick="cp('d-sum',this)">コピー</button></div><div class="rt" id="d-sum">${d.diary.work_summary}</div></div>
+      <div class="rs"><div class="rl" style="color:var(--amber);">作業詳細<button class="cp-btn" onclick="cp('d-det',this)">コピー</button></div><div class="rt" id="d-det">${d.diary.work_detail}</div></div>
+      <div class="rs"><div class="rl" style="color:var(--amber);">観察事項<button class="cp-btn" onclick="cp('d-obs',this)">コピー</button></div><div class="rt" id="d-obs">${d.diary.observation}</div></div>
+      <div class="rs"><div class="rl" style="color:var(--amber);">明日の推奨作業<button class="cp-btn" onclick="cp('d-tom',this)">コピー</button></div><div class="rt" id="d-tom">${d.diary.tomorrow}</div></div>
+      <div class="tb amber">⏱ 写真1枚で病害虫診断＋営農日誌が同時完成。毎日の記録負担がゼロに。</div>`);
+  }catch(e){showR('diary',`<div class="err">エラー: ${e.toString()}</div>`);}
+  setL('diary',false);
 }
 
 // ─── DEMO 5: 議事録 ───
-async function minutesGenerate() {
-  const title = document.getElementById('min-title').value || '会議';
-  const date = document.getElementById('min-date').value || '本日';
-  const memo = document.getElementById('min-memo').value || '（未入力）';
-  setLoading('min', true);
-  const prompt = `あなたは行政の会議議事録作成の専門家です。以下の発言メモから要約とTODOリストを作成してください。
+async function minGen(){
+  const title=document.getElementById('min-title').value||'会議';
+  const date=document.getElementById('min-date').value||'本日';
+  const memo=document.getElementById('min-memo').value||'（未入力）';
+  setL('min',true);
+  const prompt=`行政の会議議事録作成の専門家として、以下の発言メモから要約とTODOリストを作成してください。
 【会議名】${title}【開催日】${date}
 【発言メモ】
 ${memo}
-
 JSONのみ返答。前置き・マークダウン記号不要。
-{"summary":"会議の要約（200字以内、ですます調、議論の背景・結論を含む）","decisions":["決定事項1","決定事項2"],"todos":[{"who":"担当者名","what":"やること","when":"期限（メモから読み取れる場合）"},{"who":"担当者名","what":"やること","when":"期限"}],"next_meeting":"次回会議（メモから読み取れる場合、なければ「未定」）"}`;
-  try {
-    const data = await callClaude({ model: 'claude-sonnet-4-6', max_tokens: 1000, messages: [{ role: 'user', content: prompt }] });
-    const d = JSON.parse(data.content.find(b => b.type === 'text').text.replace(/```json|```/g,'').trim());
-    window._minutes = d;
-    const todosHtml = d.todos.map(t => `<div style="display:flex;gap:12px;padding:10px 12px;background:var(--sand);border-radius:8px;margin-bottom:8px;font-size:13px;"><span style="background:var(--purple);color:#fff;border-radius:4px;padding:2px 8px;font-size:11px;white-space:nowrap;height:fit-content;">${t.who}</span><div><div style="font-weight:500;color:var(--text);">${t.what}</div><div style="font-size:11px;color:var(--text-muted);margin-top:2px;">期限：${t.when}</div></div></div>`).join('');
-    const decsHtml = d.decisions.map(dec => `<div style="padding:8px 12px;background:var(--purple-light);border-radius:6px;font-size:13px;color:var(--purple);margin-bottom:6px;">✓ ${dec}</div>`).join('');
-    showResult('min', `
-      <div class="card-label purple">${title} — 要約＋TODO</div>
-      <div class="result-section"><div class="result-label" style="color:var(--purple);">会議の要約<button class="copy-btn" onclick="cp('m-sum',this)">コピー</button></div><div class="result-text" id="m-sum">${d.summary}</div></div>
-      <div class="result-section"><div class="result-label" style="color:var(--purple);">決定事項</div>${decsHtml}</div>
-      <div class="result-section"><div class="result-label" style="color:var(--purple);">TODOリスト<button class="copy-btn" onclick="minCopyTodo(this)">コピー</button></div>${todosHtml}</div>
-      <div style="background:var(--sand);border-radius:8px;padding:12px 14px;font-size:13px;margin-bottom:12px;"><span style="color:var(--text-muted);font-size:11px;">次回会議</span><br>${d.next_meeting}</div>
-      <div class="time-badge purple">⏱ 議事録の清書・TODO整理に1〜2時間かかっていた作業が、会議終了後すぐに完成。</div>`, 'purple');
-  } catch(e) { showResult('min', `<div class="error-box">エラー: ${e.toString()}</div>`); }
-  setLoading('min', false);
+{"summary":"会議の要約（200字以内、ですます調）","decisions":["決定事項1","決定事項2"],"todos":[{"who":"担当者名","what":"やること","when":"期限"}],"next_meeting":"次回会議情報"}`;
+  try{
+    const data=await api({model:'claude-sonnet-4-6',max_tokens:1000,messages:[{role:'user',content:prompt}]});
+    const d=JSON.parse(data.content.find(b=>b.type==='text').text.replace(/```json|```/g,'').trim());
+    window._min=d;
+    const todosHtml=d.todos.map(t=>`<div style="display:flex;gap:10px;padding:9px 12px;background:var(--sand);border-radius:8px;margin-bottom:7px;font-size:13px;align-items:flex-start;"><span style="background:var(--purple);color:#fff;border-radius:4px;padding:2px 8px;font-size:11px;white-space:nowrap;">${t.who}</span><div><div style="font-weight:500;">${t.what}</div><div style="font-size:11px;color:var(--muted);margin-top:2px;">期限：${t.when}</div></div></div>`).join('');
+    const decsHtml=d.decisions.map(dec=>`<div style="padding:7px 12px;background:var(--purple-light);border-radius:6px;font-size:13px;color:var(--purple);margin-bottom:6px;">✓ ${dec}</div>`).join('');
+    showR('min',`
+      <div class="cl purple">${title} — 整理完了</div>
+      <div class="rs"><div class="rl" style="color:var(--purple);">会議の要約<button class="cp-btn" onclick="cp('m-sum',this)">コピー</button></div><div class="rt" id="m-sum">${d.summary}</div></div>
+      <div class="rs"><div class="rl" style="color:var(--purple);">決定事項</div>${decsHtml}</div>
+      <div class="rs"><div class="rl" style="color:var(--purple);">TODOリスト<button class="cp-btn" onclick="minCpTodo(this)">コピー</button></div>${todosHtml}</div>
+      <div style="background:var(--sand);border-radius:8px;padding:11px 14px;font-size:13px;margin-bottom:10px;"><span style="color:var(--muted);font-size:11px;">次回</span><br>${d.next_meeting}</div>
+      <div class="tb purple">⏱ 発言メモを貼るだけで、誰が何をいつまでにやるかが一瞬で整理</div>`);
+  }catch(e){showR('min',`<div class="err">エラー: ${e.toString()}</div>`);}
+  setL('min',false);
 }
-function minCopyTodo(btn) {
-  if (!window._minutes) return;
-  const t = window._minutes.todos.map(t => `・${t.who}：${t.what}（${t.when}）`).join('\n');
-  navigator.clipboard.writeText(t).then(() => { btn.textContent='コピーしました'; btn.classList.add('done'); setTimeout(()=>{btn.textContent='コピー';btn.classList.remove('done');},2000); });
+function minCpTodo(btn){
+  if(!window._min)return;
+  const t=window._min.todos.map(t=>`・${t.who}：${t.what}（${t.when}）`).join('\n');
+  navigator.clipboard.writeText(t).then(()=>{const o=btn.textContent;btn.textContent='コピーしました';btn.classList.add('done');setTimeout(()=>{btn.textContent=o;btn.classList.remove('done');},2000);});
 }
 
-// ─── DEMO 6: 観光ガイド ───
-const GUIDE_SYSTEM = `あなたは長崎県壱岐島の観光AIガイドです。観光客の質問に親切・丁寧・簡潔に答えてください。日本語・英語・中国語に対応します。
+// ─── DEMO 6: 旅プランナー ───
+const TRAVEL_SYS=`あなたは壱岐島の観光プランナーAIです。旅行者の条件を聞いて、具体的で実現可能な旅プランを提案してください。
+
 【壱岐島の観光情報】
-主要スポット：壱岐市立一支国博物館（9-17時、月曜休、入館500円）、原の辻遺跡（国史跡）、猿岩（壱岐を代表する奇岩）、辰ノ島（無人島、海が美しい）、はらほげ地蔵、男嶽神社
-グルメ：壱岐牛（ブランド牛）、壱岐うどん、サザエの壺焼き、壱岐の島焼酎、ウニ丼
-海水浴場：筒城浜（県内最大級）、辰ノ島海水浴場、小島海水浴場
-体験：工房アオとミドリ（シーグラスアート体験）、釣り、シュノーケリング、農業体験
-アクセス：博多港からジェットフォイル約65分、フェリー約2時間10分
-宿泊：島内に旅館・民宿・ホテル多数
-回答は200字以内で簡潔に。英語で聞かれたら英語で、中国語なら中国語で答える。`;
-let guideHistory = [];
-async function guideSend() { const i = document.getElementById('guide-input'); const m = i.value.trim(); if(!m) return; i.value=''; await botReply(m,'guide-messages','guide-send-btn',guideHistory,'guide','🗺',GUIDE_SYSTEM); }
-async function guideQuick(m) { await botReply(m,'guide-messages','guide-send-btn',guideHistory,'guide','🗺',GUIDE_SYSTEM); }
-function guideReset() { guideHistory=[]; document.getElementById('guide-messages').innerHTML='<div class="msg bot"><div class="avatar">🗺</div><div class="bubble">壱岐島へようこそ！観光スポット、グルメ、交通、宿泊など、何でも聞いてください。<br><br>Welcome to Iki Island!</div></div>'; }
+スポット：一支国博物館（9-17時,月曜休,500円）、原の辻遺跡、猿岩、辰ノ島（無人島・絶景）、はらほげ地蔵、男嶽神社、左京鼻
+グルメ：壱岐牛（ブランド牛）、壱岐うどん、サザエ壺焼き、ウニ丼、壱岐焼酎、海鮮丼
+体験：工房アオとミドリ（シーグラスアート、要予約）、釣り、シュノーケリング、農業体験
+海水浴：筒城浜（県内最大級）、辰ノ島、小島
+アクセス：博多港→ジェットフォイル65分（約2200円）/ フェリー2時間10分（約1000円）。島内はレンタカー推奨。
+宿泊：旅館・民宿・ホテル多数。1泊8000〜20000円程度。
 
-// ─── SHARED BOT REPLY ───
-async function botReply(userMsg, messagesId, sendBtnId, history, type, avatar, systemPrompt) {
-  addMsg(messagesId, 'user', userMsg, '👤');
-  history.push({ role: 'user', content: userMsg });
-  const typingId = addMsg(messagesId, 'bot', '...', avatar, true);
-  document.getElementById(sendBtnId).disabled = true;
-  const sys = systemPrompt || BOT_SYSTEM;
-  try {
-    const data = await callClaude({ model: 'claude-sonnet-4-6', max_tokens: 400, system: sys, messages: history });
-    const reply = data.content.find(b => b.type === 'text')?.text || '';
-    history.push({ role: 'assistant', content: reply });
-    document.getElementById(typingId)?.remove();
-    addMsg(messagesId, 'bot', reply, avatar);
-    if (type === 'bot') { botCount++; document.getElementById('stat-count').textContent = botCount; document.getElementById('chat-stats').style.display = 'flex'; }
-  } catch(e) {
-    document.getElementById(typingId)?.remove();
-    addMsg(messagesId, 'bot', 'エラーが発生しました。もう一度お試しください。', avatar);
-  } finally { document.getElementById(sendBtnId).disabled = false; }
+【回答のルール】
+- 日程・人数・こだわりが不明なら最初に確認する
+- フェリー/ジェットフォイルの時間を考慮したリアルなプランを作る
+- 子連れ・カップル・友人グループなど属性に合わせたスポット選び
+- 英語で聞かれたら英語で答える
+- 移動時間・食事時間を考慮した現実的なタイムライン
+- 工房アオとミドリ、壱岐牛レストランなど具体的な体験・店名を入れる`;
+
+let travelHistory=[];
+async function travelSend(){const i=document.getElementById('travel-input');const m=i.value.trim();if(!m)return;i.value='';await chatReply('travel',m,TRAVEL_SYS,'🗺','travel-send','travel-messages');}
+async function travelQuick(m){await chatReply('travel',m,TRAVEL_SYS,'🗺','travel-send','travel-messages');}
+function travelReset(){travelHistory=[];document.getElementById('travel-messages').innerHTML='<div class="msg bot"><div class="av">🗺</div><div class="bubble">壱岐旅プランナーです！<br><br>日程・人数・こだわり条件などを教えてください。あなただけのプランを作ります。</div></div>';}
+
+// ─── SHARED CHAT REPLY ───
+const histories={life:lifeHistory,travel:travelHistory};
+async function chatReply(key,userMsg,sys,avatar,sendId,msgsId){
+  const hist=key==='life'?lifeHistory:travelHistory;
+  addMsg(msgsId,'user',userMsg,'👤');
+  hist.push({role:'user',content:userMsg});
+  const tid=addMsg(msgsId,'bot','考えています...',avatar,true);
+  document.getElementById(sendId).disabled=true;
+  try{
+    const data=await api({model:'claude-sonnet-4-6',max_tokens:600,system:sys,messages:hist});
+    const reply=data.content.find(b=>b.type==='text')?.text||'';
+    hist.push({role:'assistant',content:reply});
+    document.getElementById(tid)?.remove();
+    addMsg(msgsId,'bot',reply,avatar);
+  }catch(e){
+    document.getElementById(tid)?.remove();
+    addMsg(msgsId,'bot','エラーが発生しました。もう一度お試しください。',avatar);
+  }finally{document.getElementById(sendId).disabled=false;}
 }
-function addMsg(wrapId, role, text, avatar, isTyping=false) {
-  const wrap = document.getElementById(wrapId);
-  const id = 'msg-' + Date.now() + Math.random();
-  const div = document.createElement('div');
-  div.className = 'msg ' + role; div.id = id;
-  div.innerHTML = `<div class="avatar">${avatar}</div><div class="bubble ${isTyping?'typing':''}">${text.replace(/\n/g,'<br>')}</div>`;
-  wrap.appendChild(div); wrap.scrollTop = wrap.scrollHeight;
+
+function addMsg(wrapId,role,text,avatar,isTyping=false){
+  const wrap=document.getElementById(wrapId);
+  const id='m'+Date.now()+Math.random().toString(36).slice(2);
+  const div=document.createElement('div');
+  div.className='msg '+role; div.id=id;
+  div.innerHTML=`<div class="av">${avatar}</div><div class="bubble ${isTyping?'typing':''}">${text.replace(/\n/g,'<br>')}</div>`;
+  wrap.appendChild(div); wrap.scrollTop=wrap.scrollHeight;
   return id;
-}
-
-// ─── UTILS ───
-function setLoading(prefix, on) {
-  document.getElementById(prefix+'-loading').style.display = on ? 'block' : 'none';
-  document.getElementById(prefix+'-btn').disabled = on;
-  if (!on) {} else { document.getElementById(prefix+'-result').style.display='none'; }
-}
-function showResult(prefix, html, color) {
-  const el = document.getElementById(prefix+'-result');
-  el.innerHTML = `<div class="card">${html}</div>`;
-  el.style.display = 'block';
-}
-function cp(id, btn) {
-  const t = document.getElementById(id)?.innerText;
-  if (!t) return;
-  navigator.clipboard.writeText(t).then(() => { const o=btn.textContent; btn.textContent='コピーしました'; btn.classList.add('done'); setTimeout(()=>{btn.textContent=o;btn.classList.remove('done');},2000); });
-}
-function cpAll(lang, btn) {
-  if (!window._sns) return;
-  const d = window._sns[lang];
-  const t = d.text + '\n\n' + d.hashtags.map(h=>'#'+h).join(' ');
-  navigator.clipboard.writeText(t).then(() => { const o=btn.textContent; btn.textContent='コピーしました'; btn.classList.add('done'); setTimeout(()=>{btn.textContent=o;btn.classList.remove('done');},2000); });
 }
 </script>
 </body>
