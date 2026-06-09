@@ -873,14 +873,25 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
 <script>
 // ── NAV ──
 const DEMO_LABELS = {
-  diary:'畑の写真1枚で日誌＋病害虫診断', subsidy:'話しかけるだけで補助金申請書ができる',
-  fishing:'明日の出漁判断AI', sns:'写真を撮ったら投稿文が生まれる',
-  travel:'条件を言うだけで旅プランが完成', dialect:'壱岐弁→島の記憶を観光コンテンツに',
-  life:'あなたの状況に合わせた行政案内', minutes:'会議メモが即座にTODOリストに',
-  simulation:'壱岐ライフシミュレーター'
+  diary:'畑の写真1枚で日誌＋病害虫診断',
+  subsidy:'話しかけるだけで補助金申請書ができる',
+  fishing:'明日の出漁判断AI',
+  sns:'写真を撮ったら投稿文が生まれる',
+  travel:'条件を言うだけで旅プランが完成',
+  dialect:'壱岐弁→島の記憶を観光コンテンツに',
+  life:'あなたの状況に合わせた行政案内',
+  minutes:'会議メモが即座にTODOリストに',
+  simulation:'壱岐ライフシミュレーター',
+  construction:'仕様書からリスクアセスメント＋安全書類を自動生成',
+  transport:'この運行計画は法令違反になりますか？',
+  review:'お客様の声から改善提案を自動抽出',
+  sales:'提案書・営業文章を会話で作る',
+  welfare:'相談記録→支援計画書・ケース記録を自動作成',
+  kanko:'1回入力でプレスリリース・SNS・多言語案内を同時生成',
+  disability:'利用者の様子メモ→支援記録・個別支援計画書を自動作成'
 };
 
-function goTop(){
+window.goTop = function goTop(){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-top').classList.add('active');
   document.getElementById('back-btn').classList.remove('show');
@@ -888,7 +899,7 @@ function goTop(){
   window.scrollTo(0,0);
 }
 
-function goDemo(id){
+window.goDemo = function goDemo(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
   document.getElementById('back-btn').classList.add('show');
