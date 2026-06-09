@@ -463,7 +463,7 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
 <!-- DEMO 04: 写真→SNS -->
 <div class="page" id="page-sns">
   <div class="inner">
-    <div class="ph"><div class="ph-icon" style="background:#EBF4EE;">📸</div><div><div class="ph-title">写真を撮ったら投稿文が生まれる</div><div class="ph-sub">工房アオとミドリ × SNS投稿自動生成</div></div><div class="ph-badge">観光・工芸</div></div>
+    <div class="ph"><div class="ph-icon" style="background:#EBF4EE;">📸</div><div><div class="ph-title">写真を撮ったら投稿文が生まれる</div><div class="ph-sub">工房アオトミドリ × SNS投稿自動生成</div></div><div class="ph-badge">観光・工芸</div></div>
     <div class="wow-banner"><div class="wow-icon">💡</div><div class="wow-text"><div class="wow-label">これぞAI</div>テキスト入力不要。写真を見てAIが内容を理解し、日本語＋英語の投稿文をゼロから生成します。</div></div>
     <div class="card"><div class="cl green">写真をアップロード</div>
       <div class="img-drop" onclick="document.getElementById('sf').click()">
@@ -1106,7 +1106,7 @@ async function snsGen(){
   const tone=document.getElementById('sns-tone').value;
   const memo=document.getElementById('sns-memo').value;
   setL('sns',true);
-  const p=`工房アオとミドリ（長崎県壱岐島の体験型ハンドメイド工房）のSNS担当として、この写真を見てInstagram投稿文を作成してください。
+  const p=`工房アオトミドリ（長崎県壱岐島の体験型ハンドメイド工房）のSNS担当として、この写真を見てInstagram投稿文を作成してください。
 【トーン】${tone}【追加メモ】${memo||'なし'}
 写真に写っているもの・雰囲気・色合いを読み取って投稿文を書いてください。
 JSONのみ。{"photo_desc":"写真の説明（1文）","ja":{"text":"日本語投稿文（150〜200字、改行あり、絵文字なし）","hashtags":["タグ1","タグ2","タグ3","タグ4","タグ5","タグ6","タグ7","タグ8"]},"en":{"text":"English post (80-120 words)","hashtags":["tag1","tag2","tag3","tag4","tag5"]}}`;
@@ -1138,7 +1138,7 @@ function cpAll(lang,btn){
 
 // ── DEMO05: 旅プランナー ──
 const TRAVEL_SYS=`あなたは壱岐島の観光プランナーAIです。旅行者の条件を聞いて具体的な旅プランを提案してください。
-壱岐島情報：スポット（一支国博物館9-17時/月休/500円、原の辻遺跡、猿岩、辰ノ島、はらほげ地蔵）、グルメ（壱岐牛、壱岐うどん、サザエ壺焼き、ウニ丼、壱岐焼酎）、体験（工房アオとミドリ・シーグラスアート要予約）、アクセス（博多→ジェットフォイル65分/フェリー2時間10分）。
+壱岐島情報：スポット（一支国博物館9-17時/月休/500円、原の辻遺跡、猿岩、辰ノ島、はらほげ地蔵）、グルメ（壱岐牛、壱岐うどん、サザエ壺焼き、ウニ丼、壱岐焼酎）、体験（工房アオトミドリ・シーグラスアート要予約）、アクセス（博多→ジェットフォイル65分/フェリー2時間10分）。
 条件が不明なら最初に確認。フェリー時間を考慮したリアルなプランを。英語で聞かれたら英語で答える。`;
 let travelH=[];
 async function travelSend(){const i=document.getElementById('travel-input');const m=i.value.trim();if(!m)return;i.value='';await chatR('travel-msgs','travel-send',travelH,TRAVEL_SYS,'🗺',m);}
