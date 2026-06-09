@@ -238,8 +238,8 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
 <body>
 
 <nav class="g-nav">
-  <div class="brand" onclick="goTop()">🏝 壱岐AI活用デモ</div>
-  <button class="back-btn" id="back-btn" onclick="goTop()">← デモ一覧に戻る</button>
+  <div class="brand" data-action="gotop">🏝 壱岐AI活用デモ</div>
+  <button class="back-btn" id="back-btn" data-action="gotop">← デモ一覧に戻る</button>
   <span class="nav-title" id="nav-title"></span>
 </nav>
 
@@ -254,21 +254,21 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
     <div class="cat-section">
       <div class="cat-label">🌾 農業・漁業</div>
       <div class="demo-grid">
-        <div class="dc t-amber" onclick="goDemo('diary')">
+        <div class="dc t-amber" data-demo="diary">
           <div class="dc-num">DEMO 01</div><div class="dc-icon">🌱</div>
           <div class="dc-title">畑の写真1枚で日誌＋病害虫診断</div>
           <div class="dc-desc">写真を見てAIが作物の状態を判断。異常があれば即アラート。</div>
           <div class="dc-wow">🔍 写真で病害虫を診断</div>
           <button class="dc-btn">体験する →</button>
         </div>
-        <div class="dc t-green" onclick="goDemo('subsidy')">
+        <div class="dc t-green" data-demo="subsidy">
           <div class="dc-num">DEMO 02</div><div class="dc-icon">💬</div>
           <div class="dc-title">話しかけるだけで補助金申請書ができる</div>
           <div class="dc-desc">AIが農家さんにヒアリングしながら申請書を自動作成。</div>
           <div class="dc-wow">💬 会話しながら書類を生成</div>
           <button class="dc-btn">体験する →</button>
         </div>
-        <div class="dc t-teal" onclick="goDemo('fishing')">
+        <div class="dc t-teal" data-demo="fishing">
           <div class="dc-num">DEMO 03</div><div class="dc-icon">🎣</div>
           <div class="dc-title">明日の出漁判断AI</div>
           <div class="dc-desc">天気・海況・市場価格を入力すると、出漁すべきか・何を狙うかを総合判断。</div>
@@ -280,21 +280,21 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
     <div class="cat-section">
       <div class="cat-label">🪸 観光・工芸</div>
       <div class="demo-grid">
-        <div class="dc t-green" onclick="goDemo('sns')">
+        <div class="dc t-green" data-demo="sns">
           <div class="dc-num">DEMO 04</div><div class="dc-icon">📸</div>
           <div class="dc-title">写真を撮ったら投稿文が生まれる</div>
           <div class="dc-desc">工房の写真をアップするだけで日本語＋英語のInstagram投稿文を自動生成。</div>
           <div class="dc-wow">📸 画像を読んで文章を生成</div>
           <button class="dc-btn">体験する →</button>
         </div>
-        <div class="dc t-sea" onclick="goDemo('travel')">
+        <div class="dc t-sea" data-demo="travel">
           <div class="dc-num">DEMO 05</div><div class="dc-icon">🗺</div>
           <div class="dc-title">条件を言うだけで旅プランが完成</div>
           <div class="dc-desc">「2泊・子連れ・壱岐牛必須」など複数条件を組み合わせた個別プランを提案。</div>
           <div class="dc-wow">✨ 複数情報を組み合わせて提案</div>
           <button class="dc-btn">体験する →</button>
         </div>
-        <div class="dc t-purple" onclick="goDemo('dialect')">
+        <div class="dc t-purple" data-demo="dialect">
           <div class="dc-num">DEMO 06</div><div class="dc-icon">🗣</div>
           <div class="dc-title">壱岐弁→島の記憶を観光コンテンツに</div>
           <div class="dc-desc">島のお年寄りの言葉をAIが翻訳し、観光向けストーリーに変換。</div>
@@ -306,21 +306,21 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
     <div class="cat-section">
       <div class="cat-label">🏛 行政・移住</div>
       <div class="demo-grid">
-        <div class="dc t-sea" onclick="goDemo('life')">
+        <div class="dc t-sea" data-demo="life">
           <div class="dc-num">DEMO 07</div><div class="dc-icon">🏡</div>
           <div class="dc-title">あなたの状況に合わせた行政案内</div>
           <div class="dc-desc">複数の制度・窓口・手順を文脈に合わせて組み合わせて回答。</div>
           <div class="dc-wow">🧠 文脈を理解して複合回答</div>
           <button class="dc-btn">体験する →</button>
         </div>
-        <div class="dc t-purple" onclick="goDemo('minutes')">
+        <div class="dc t-purple" data-demo="minutes">
           <div class="dc-num">DEMO 08</div><div class="dc-icon">📝</div>
           <div class="dc-title">会議メモが即座にTODOリストに</div>
           <div class="dc-desc">発言メモを貼るだけで要約・決定事項・担当者別TODOを自動抽出。</div>
           <div class="dc-wow">⚡ 構造を読み取って整理</div>
           <button class="dc-btn">体験する →</button>
         </div>
-        <div class="dc t-sea" onclick="goDemo('simulation')">
+        <div class="dc t-sea" data-demo="simulation">
           <div class="dc-num">DEMO 09</div><div class="dc-icon">📊</div>
           <div class="dc-title">壱岐ライフシミュレーター</div>
           <div class="dc-desc">現在地・家族構成・年収を入力すると、壱岐移住後の生活を試算・比較。</div>
@@ -332,28 +332,28 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
     <div class="cat-section">
       <div class="cat-label">🏗 建設・運送・その他</div>
       <div class="demo-grid">
-        <div class="dc t-orange" onclick="goDemo('construction')">
+        <div class="dc t-orange" data-demo="construction">
           <div class="dc-num">DEMO 10</div><div class="dc-icon">🏗</div>
           <div class="dc-title">仕様書を読み込むだけでリスクアセスメント＋安全書類を自動生成</div>
           <div class="dc-desc">公共工事の設計書・仕様書をアップロードするだけで、工種ごとのリスクと安全書類を自動作成。</div>
           <div class="dc-wow">📄 書類を読んでリスクを判断</div>
           <button class="dc-btn">体験する →</button>
         </div>
-        <div class="dc t-red" onclick="goDemo('transport')">
+        <div class="dc t-red" data-demo="transport">
           <div class="dc-num">DEMO 11</div><div class="dc-icon">🚛</div>
           <div class="dc-title">この運行計画は法令違反になりますか？</div>
           <div class="dc-desc">運行管理者が運行計画を入力すると、改正労基法・改善基準告示に照らして即座に適法判定。</div>
           <div class="dc-wow">⚖️ 法令知識をAIが即答</div>
           <button class="dc-btn">体験する →</button>
         </div>
-        <div class="dc t-sea" onclick="goDemo('review')">
+        <div class="dc t-sea" data-demo="review">
           <div class="dc-num">DEMO 12</div><div class="dc-icon">⭐</div>
           <div class="dc-title">お客様の声から改善提案を自動抽出</div>
           <div class="dc-desc">レビューや口コミを貼り付けると、課題を整理して具体的な改善アクションを提案。</div>
           <div class="dc-wow">🧠 大量の声を瞬時に構造化</div>
           <button class="dc-btn">体験する →</button>
         </div>
-        <div class="dc t-navy" onclick="goDemo('sales')">
+        <div class="dc t-navy" data-demo="sales">
           <div class="dc-num">DEMO 13</div><div class="dc-icon">💼</div>
           <div class="dc-title">提案書・営業文章を会話で作る</div>
           <div class="dc-desc">業種・課題・提案内容を話しかけるだけで、顧客向けの提案書・営業メールを自動生成。</div>
@@ -365,21 +365,21 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
     <div class="cat-section">
       <div class="cat-label">🤝 福祉・観光連盟</div>
       <div class="demo-grid">
-        <div class="dc t-rose" onclick="goDemo('welfare')">
+        <div class="dc t-rose" data-demo="welfare">
           <div class="dc-num">DEMO 14</div><div class="dc-icon">🤝</div>
           <div class="dc-title">相談記録→支援計画書・ケース記録を自動作成</div>
           <div class="dc-desc">相談内容のメモを入力するだけで、支援方針・関係機関への連絡文・経過記録を自動生成。</div>
           <div class="dc-wow">📋 記録業務を大幅に削減</div>
           <button class="dc-btn">体験する →</button>
         </div>
-        <div class="dc t-indigo" onclick="goDemo('kanko')">
+        <div class="dc t-indigo" data-demo="kanko">
           <div class="dc-num">DEMO 15</div><div class="dc-icon">🗾</div>
           <div class="dc-title">1回入力でプレスリリース・SNS・多言語案内を同時生成</div>
           <div class="dc-desc">観光スポット・イベント情報を1度入力するだけで、複数チャンネル向けの文章を一気に生成。</div>
           <div class="dc-wow">✨ 1入力→多出力で広報を効率化</div>
           <button class="dc-btn">体験する →</button>
         </div>
-        <div class="dc t-rose" onclick="goDemo('disability')">
+        <div class="dc t-rose" data-demo="disability">
           <div class="dc-num">DEMO 16</div><div class="dc-icon">🌸</div>
           <div class="dc-title">利用者の様子メモ→支援記録・個別支援計画書を自動作成</div>
           <div class="dc-desc">現場スタッフのメモ書きから、正式な支援記録と個別支援計画書の下書きを自動生成。</div>
@@ -891,22 +891,34 @@ const DEMO_LABELS = {
   disability:'利用者の様子メモ→支援記録・個別支援計画書を自動作成'
 };
 
-window.goTop = function goTop(){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+function goTop(){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
   document.getElementById('page-top').classList.add('active');
   document.getElementById('back-btn').classList.remove('show');
   document.getElementById('nav-title').textContent='';
   window.scrollTo(0,0);
 }
 
-window.goDemo = function goDemo(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById('page-'+id).classList.add('active');
+function goDemo(id){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  var target=document.getElementById('page-'+id);
+  if(target) target.classList.add('active');
   document.getElementById('back-btn').classList.add('show');
   document.getElementById('nav-title').textContent=DEMO_LABELS[id]||'';
   window.scrollTo(0,0);
 }
 
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('[data-demo]').forEach(function(el){
+    el.addEventListener('click', function(){
+      goDemo(el.getAttribute('data-demo'));
+    });
+  });
+  document.querySelectorAll('[data-action="gotop"]').forEach(function(el){
+    el.addEventListener('click', goTop);
+  });
+  goTop();
+});
 // ── API ──
 async function api(payload){
   const r=await fetch('/api/claude',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
