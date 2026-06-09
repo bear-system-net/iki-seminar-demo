@@ -1437,7 +1437,7 @@ JSONのみ返答。前置き・マークダウン記号不要。
       <div style="display:flex;gap:9px;padding:8px 11px;background:var(--sand);border-radius:7px;margin-bottom:6px;font-size:13px;align-items:flex-start;">
         <div style="flex:1;"><div style="font-weight:500;">${a.action}</div><div style="font-size:11px;color:var(--muted);margin-top:2px;">${a.who} ／ ${a.when}</div></div>
       </div>`).join('');
-    const policyHtml=d.support_policy..split('\n').filter(s=>s.trim())).map(s=>`<div style="padding:6px 11px;background:var(--rose-l);border-radius:6px;font-size:13px;color:var(--rose);margin-bottom:5px;">✓ ${s.trim()}</div>`).join('');
+    const policyHtml=d.support_policy.split('\n').filter(s=>s.trim()).map(s=>`<div style="padding:6px 11px;background:var(--rose-l);border-radius:6px;font-size:13px;color:var(--rose);margin-bottom:5px;">✓ ${s.trim()}</div>`).join('');
     showR('welfare',`
       <div class="cl rose">相談支援記録</div>
       <div class="rs"><div class="rl" style="color:var(--rose);">相談概要<button class="cp-btn" onclick="cp('wf-sum',this)">コピー</button></div><div class="rt" id="wf-sum">${d.case_summary}</div></div>
