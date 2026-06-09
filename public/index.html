@@ -891,33 +891,50 @@ const DEMO_LABELS = {
   disability:'利用者の様子メモ→支援記録・個別支援計画書を自動作成'
 };
 
-function goTop(){
+function showPage(id){
   document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
-  document.getElementById('page-top').classList.add('active');
-  document.getElementById('back-btn').classList.remove('show');
-  document.getElementById('nav-title').textContent='';
+  if(id){
+    var target=document.getElementById('page-'+id);
+    if(target) target.classList.add('active');
+    document.getElementById('back-btn').classList.add('show');
+    document.getElementById('nav-title').textContent=DEMO_LABELS[id]||'';
+  } else {
+    document.getElementById('page-top').classList.add('active');
+    document.getElementById('back-btn').classList.remove('show');
+    document.getElementById('nav-title').textContent='';
+  }
   window.scrollTo(0,0);
+}
+
+function goTop(){
+  history.pushState({page:null},'','#');
+  showPage(null);
 }
 
 function goDemo(id){
-  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
-  var target=document.getElementById('page-'+id);
-  if(target) target.classList.add('active');
-  document.getElementById('back-btn').classList.add('show');
-  document.getElementById('nav-title').textContent=DEMO_LABELS[id]||'';
-  window.scrollTo(0,0);
+  history.pushState({page:id},'','#'+id);
+  showPage(id);
 }
 
-document.addEventListener('DOMContentLoaded', function(){
+window.addEventListener('popstate',function(e){
+  showPage(e.state&&e.state.page?e.state.page:null);
+});
+
+document.addEventListener('DOMContentLoaded',function(){
   document.querySelectorAll('[data-demo]').forEach(function(el){
-    el.addEventListener('click', function(){
-      goDemo(el.getAttribute('data-demo'));
-    });
+    el.addEventListener('click',function(){goDemo(el.getAttribute('data-demo'));});
   });
   document.querySelectorAll('[data-action="gotop"]').forEach(function(el){
-    el.addEventListener('click', goTop);
+    el.addEventListener('click',goTop);
   });
-  goTop();
+  var hash=location.hash.replace('#','');
+  if(hash&&document.getElementById('page-'+hash)){
+    history.replaceState({page:hash},'','#'+hash);
+    showPage(hash);
+  } else {
+    history.replaceState({page:null},'',location.pathname);
+    showPage(null);
+  }
 });
 // ── API ──
 async function api(payload){
