@@ -15,6 +15,8 @@
   --teal:#1A7A6A;--teal-l:#E4F5F2;
   --orange:#C06000;--orange-l:#FEF0E0;
   --red:#B03020;--red-l:#FDECEA;
+  --rose:#A03060;--rose-l:#FDEEF4;
+  --indigo:#3A3A8A;--indigo-l:#EEF0FA;
   --sand:#F4F6F0;--white:#FFF;
   --text:#1A2820;--muted:#5A6B70;--border:rgba(0,0,0,0.1);--r:14px;
 }
@@ -61,6 +63,8 @@ body{font-family:'Noto Sans JP',sans-serif;background:#F2F4F7;color:var(--text);
 .t-orange .dc-icon{background:#FEF0E0;}.t-orange .dc-wow{background:#FEF0E0;color:#C06000;}.t-orange .dc-btn{background:#C06000;color:#fff;}
 .t-red .dc-icon{background:#FDECEA;}.t-red .dc-wow{background:#FDECEA;color:#B03020;}.t-red .dc-btn{background:#B03020;color:#fff;}
 .t-navy .dc-icon{background:#E8EDF4;}.t-navy .dc-wow{background:#E8EDF4;color:var(--navy);}.t-navy .dc-btn{background:var(--navy);color:#fff;}
+.t-rose .dc-icon{background:#FDEEF4;}.t-rose .dc-wow{background:#FDEEF4;color:#A03060;}.t-rose .dc-btn{background:#A03060;color:#fff;}
+.t-indigo .dc-icon{background:#EEF0FA;}.t-indigo .dc-wow{background:#EEF0FA;color:#3A3A8A;}.t-indigo .dc-btn{background:#3A3A8A;color:#fff;}
 
 /* INNER PAGE */
 .inner{max-width:860px;margin:0 auto;padding:24px 20px 64px;}
@@ -85,6 +89,8 @@ body{font-family:'Noto Sans JP',sans-serif;background:#F2F4F7;color:var(--text);
 .cl.orange{color:var(--orange);}.cl.orange::before{background:var(--orange);}
 .cl.red{color:var(--red);}.cl.red::before{background:var(--red);}
 .cl.navy2{color:var(--navy);}.cl.navy2::before{background:var(--navy);}
+.cl.rose{color:var(--rose);}.cl.rose::before{background:var(--rose);}
+.cl.indigo{color:var(--indigo);}.cl.indigo::before{background:var(--indigo);}
 
 .fg{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
 .fgf{grid-column:1/-1;}
@@ -109,6 +115,8 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
 .gen-btn.orange{background:var(--orange);color:#fff;}
 .gen-btn.red{background:var(--red);color:#fff;}
 .gen-btn.navy-btn{background:var(--navy);color:#fff;}
+.gen-btn.rose{background:var(--rose);color:#fff;}
+.gen-btn.indigo{background:var(--indigo);color:#fff;}
 .gen-btn:disabled{opacity:.5;cursor:not-allowed;}
 
 .loading{text-align:center;padding:36px;color:var(--muted);font-size:13px;}
@@ -131,6 +139,8 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
 .tb.orange{background:var(--orange-l);color:var(--orange);}
 .tb.red{background:var(--red-l);color:var(--red);}
 .tb.navy2{background:#E8EDF4;color:var(--navy);}
+.tb.rose{background:var(--rose-l);color:var(--rose);}
+.tb.indigo{background:var(--indigo-l);color:var(--indigo);}
 .all-cp{width:100%;padding:8px;background:var(--white);color:var(--green);border:1px solid var(--green);border-radius:9px;font-size:12px;font-weight:500;cursor:pointer;font-family:'Noto Sans JP',sans-serif;margin-top:7px;}
 .rs{margin-bottom:16px;}
 .err{background:#FFF0F0;border:1px solid #F0B0B0;border-radius:7px;padding:12px;font-size:13px;color:#A03030;}
@@ -348,6 +358,32 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
           <div class="dc-title">提案書・営業文章を会話で作る</div>
           <div class="dc-desc">業種・課題・提案内容を話しかけるだけで、顧客向けの提案書・営業メールを自動生成。</div>
           <div class="dc-wow">💬 どんな業種にも使える万能AI</div>
+          <button class="dc-btn">体験する →</button>
+        </div>
+      </div>
+    </div>
+    <div class="cat-section">
+      <div class="cat-label">🤝 福祉・観光連盟</div>
+      <div class="demo-grid">
+        <div class="dc t-rose" onclick="goDemo('welfare')">
+          <div class="dc-num">DEMO 14</div><div class="dc-icon">🤝</div>
+          <div class="dc-title">相談記録→支援計画書・ケース記録を自動作成</div>
+          <div class="dc-desc">相談内容のメモを入力するだけで、支援方針・関係機関への連絡文・経過記録を自動生成。</div>
+          <div class="dc-wow">📋 記録業務を大幅に削減</div>
+          <button class="dc-btn">体験する →</button>
+        </div>
+        <div class="dc t-indigo" onclick="goDemo('kanko')">
+          <div class="dc-num">DEMO 15</div><div class="dc-icon">🗾</div>
+          <div class="dc-title">1回入力でプレスリリース・SNS・多言語案内を同時生成</div>
+          <div class="dc-desc">観光スポット・イベント情報を1度入力するだけで、複数チャンネル向けの文章を一気に生成。</div>
+          <div class="dc-wow">✨ 1入力→多出力で広報を効率化</div>
+          <button class="dc-btn">体験する →</button>
+        </div>
+        <div class="dc t-rose" onclick="goDemo('disability')">
+          <div class="dc-num">DEMO 16</div><div class="dc-icon">🌸</div>
+          <div class="dc-title">利用者の様子メモ→支援記録・個別支援計画書を自動作成</div>
+          <div class="dc-desc">現場スタッフのメモ書きから、正式な支援記録と個別支援計画書の下書きを自動生成。</div>
+          <div class="dc-wow">📝 現場の負担を劇的に削減</div>
           <button class="dc-btn">体験する →</button>
         </div>
       </div>
@@ -684,6 +720,153 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
       </div></div>
       <div class="chat-in"><input type="text" id="sales-input" placeholder="提案したい内容・相手・作りたい文書を教えてください..." onkeydown="if(event.key==='Enter'&&!event.isComposing)salesSend()"><button class="send-btn" style="background:var(--navy);" onclick="salesSend()" id="sales-send">作成する</button></div>
     </div>
+  </div>
+</div>
+
+<!-- DEMO 14: 社会福祉協議会 -->
+<div class="page" id="page-welfare">
+  <div class="inner">
+    <div class="ph"><div class="ph-icon" style="background:var(--rose-l);">🤝</div><div><div class="ph-title">相談記録→支援計画書・ケース記録を自動作成</div><div class="ph-sub">社会福祉協議会 × 支援記録AI</div></div><div class="ph-badge">福祉・観光連盟</div></div>
+    <div class="wow-banner"><div class="wow-icon">💡</div><div class="wow-text"><div class="wow-label">これぞAI</div>相談内容のメモを入力するだけで、支援方針・関係機関への連絡文・経過記録を自動生成。記録業務に費やしていた時間を、本来の相談支援業務に使えます。</div></div>
+    <div class="card"><div class="cl rose">相談内容を入力</div>
+      <div class="fg">
+        <div><label>相談者の状況（個人情報は伏せてください）</label>
+          <select id="wf-type">
+            <option value="高齢者の独居・生活困窮">高齢者の独居・生活困窮</option>
+            <option value="介護・認知症に関する相談">介護・認知症の相談</option>
+            <option value="障害者・障害児の生活支援">障害者・障害児の支援</option>
+            <option value="子育て・ひとり親家庭の相談">子育て・ひとり親家庭</option>
+            <option value="生活困窮・経済的問題">生活困窮・経済的問題</option>
+            <option value="近隣トラブル・地域の問題">近隣トラブル・地域の問題</option>
+          </select>
+        </div>
+        <div><label>相談日・対応者（任意）</label>
+          <input type="text" id="wf-date" placeholder="例：2026年6月9日 / 担当：田中">
+        </div>
+        <div class="fgf"><label>相談内容・ヒアリングメモ（話し言葉・箇条書きでOK）</label>
+          <textarea id="wf-memo" style="min-height:160px;" placeholder="例：
+・70代男性、一人暮らし。息子から相談の連絡あり。
+・最近、食事がとれていない様子、体重が減っている。
+・認知症の疑いあり、同じことを何度も話す。
+・近所の民生委員から孤立している可能性を指摘された。
+・本人はまだ施設入所を拒否している。
+・経済状況は年金のみ、生活費はギリギリとのこと。
+・まず介護保険の申請と、フードバンクへの連携を検討したい。"></textarea>
+        </div>
+        <div><label>生成する書類</label>
+          <select id="wf-doc">
+            <option value="相談支援経過記録＋支援方針">相談支援経過記録＋支援方針</option>
+            <option value="関係機関への連絡文">関係機関への連絡文</option>
+            <option value="個別支援計画書の骨子">個別支援計画書の骨子</option>
+          </select>
+        </div>
+      </div>
+      <p class="hint">※ 個人が特定できる情報（氏名・住所・生年月日）は入力しないでください</p>
+    </div>
+    <button class="gen-btn rose" id="welfare-btn" onclick="welfareGen()">支援書類を自動作成する</button>
+    <div id="welfare-loading" style="display:none;margin-top:12px;" class="card"><div class="loading"><div class="spinner"></div>相談内容を解析して書類を作成中...</div></div>
+    <div id="welfare-result" style="display:none;margin-top:12px;"></div>
+  </div>
+</div>
+
+<!-- DEMO 15: 観光連盟 -->
+<div class="page" id="page-kanko">
+  <div class="inner">
+    <div class="ph"><div class="ph-icon" style="background:var(--indigo-l);">🗾</div><div><div class="ph-title">1回入力でプレスリリース・SNS・多言語案内を同時生成</div><div class="ph-sub">観光連盟 × 広報コンテンツ一括生成AI</div></div><div class="ph-badge">福祉・観光連盟</div></div>
+    <div class="wow-banner"><div class="wow-icon">💡</div><div class="wow-text"><div class="wow-label">これぞAI</div>情報を1度入力するだけで、プレスリリース・Instagram投稿・Facebook投稿・英語案内・中国語案内を同時に生成。これまで5つの文章を個別に書いていた作業が一瞬で完成。</div></div>
+    <div class="card"><div class="cl indigo">観光情報を入力</div>
+      <div class="fg">
+        <div><label>スポット名・イベント名</label>
+          <input type="text" id="kk-name" placeholder="例：壱岐島 夏の海開き祭り2026">
+        </div>
+        <div><label>種別</label>
+          <select id="kk-type">
+            <option value="観光スポット">観光スポット</option>
+            <option value="季節のイベント・祭り">イベント・祭り</option>
+            <option value="グルメ・食材の旬">グルメ・食材の旬</option>
+            <option value="体験・アクティビティ">体験・アクティビティ</option>
+            <option value="新施設・リニューアル">新施設・リニューアル</option>
+          </select>
+        </div>
+        <div class="fgf"><label>基本情報（日時・場所・料金・アクセスなど）</label>
+          <textarea id="kk-info" style="min-height:130px;" placeholder="例：
+・開催日時：2026年7月19日（土）〜20日（日）10:00〜19:00
+・場所：壱岐島 辰ノ島海水浴場
+・内容：海開き神事、SUP体験、壱岐牛バーベキュー、花火大会
+・料金：入場無料（SUP体験・バーベキューは別途料金）
+・アクセス：郷ノ浦港からシャトルバスあり（片道500円）
+・問い合わせ：壱岐観光連盟 0920-XX-XXXX"></textarea>
+        </div>
+        <div><label>アピールポイント</label>
+          <input type="text" id="kk-point" placeholder="例：離島ならではの透明度抜群の海、地元食材のグルメ">
+        </div>
+        <div><label>ターゲット</label>
+          <select id="kk-target">
+            <option value="ファミリー・子連れ">ファミリー・子連れ</option>
+            <option value="カップル・夫婦">カップル・夫婦</option>
+            <option value="インバウンド（外国人観光客）">インバウンド</option>
+            <option value="シニア層">シニア層</option>
+            <option value="全世代">全世代</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <button class="gen-btn indigo" id="kanko-btn" onclick="kankoGen()">5種類のコンテンツを一括生成する</button>
+    <div id="kanko-loading" style="display:none;margin-top:12px;" class="card"><div class="loading"><div class="spinner"></div>プレスリリース・SNS・多言語案内を同時生成中...</div></div>
+    <div id="kanko-result" style="display:none;margin-top:12px;"></div>
+  </div>
+</div>
+
+<!-- DEMO 16: 障害者施設 -->
+<div class="page" id="page-disability">
+  <div class="inner">
+    <div class="ph"><div class="ph-icon" style="background:var(--rose-l);">🌸</div><div><div class="ph-title">利用者の様子メモ→支援記録・個別支援計画書を自動作成</div><div class="ph-sub">障害者施設 × 支援記録AI</div></div><div class="ph-badge">福祉・観光連盟</div></div>
+    <div class="wow-banner"><div class="wow-icon">💡</div><div class="wow-text"><div class="wow-label">これぞAI</div>現場スタッフが書いたメモ書きから、正式な支援記録と個別支援計画書の下書きを自動生成。記録業務に毎日1〜2時間費やしていた時間を、利用者との関わりに使えます。</div></div>
+    <div class="card"><div class="cl rose">利用者の情報とメモを入力</div>
+      <div class="fg">
+        <div><label>利用者の状況（個人情報は伏せてください）</label>
+          <select id="ds-type">
+            <option value="知的障害（軽度〜中度）">知的障害（軽度〜中度）</option>
+            <option value="知的障害（重度）">知的障害（重度）</option>
+            <option value="精神障害">精神障害</option>
+            <option value="身体障害">身体障害</option>
+            <option value="発達障害（自閉スペクトラム症など）">発達障害</option>
+            <option value="重複障害">重複障害</option>
+          </select>
+        </div>
+        <div><label>サービス種別</label>
+          <select id="ds-service">
+            <option value="就労継続支援B型">就労継続支援B型</option>
+            <option value="生活介護">生活介護</option>
+            <option value="グループホーム">グループホーム</option>
+            <option value="放課後等デイサービス">放課後等デイサービス</option>
+            <option value="就労移行支援">就労移行支援</option>
+            <option value="居宅介護">居宅介護</option>
+          </select>
+        </div>
+        <div class="fgf"><label>今日の様子・支援メモ（話し言葉・箇条書きでOK）</label>
+          <textarea id="ds-memo" style="min-height:160px;" placeholder="例：
+・午前中は作業（袋詰め）に集中できていた。普段より丁寧。
+・昼食は完食。野菜が少し残ったが声かけで食べた。
+・午後、隣の利用者と口論になりかけた。スタッフが間に入って落ち着いた。
+・3時のおやつの時間はニコニコしていた。
+・帰り際に「明日また来る」と自分から言えた。
+・最近、言葉で気持ちを伝えられる場面が増えてきた。
+・来週の個別支援会議に向けて、コミュニケーション面の目標を整理したい。"></textarea>
+        </div>
+        <div><label>生成する書類</label>
+          <select id="ds-doc">
+            <option value="支援記録（日誌）＋所見">支援記録（日誌）＋所見</option>
+            <option value="個別支援計画書の短期目標と支援内容">個別支援計画書（短期目標・支援内容）</option>
+            <option value="モニタリング記録">モニタリング記録</option>
+          </select>
+        </div>
+      </div>
+      <p class="hint">※ 氏名・生年月日・住所など個人が特定できる情報は入力しないでください</p>
+    </div>
+    <button class="gen-btn rose" id="disability-btn" onclick="disabilityGen()">支援記録・計画書を自動作成する</button>
+    <div id="disability-loading" style="display:none;margin-top:12px;" class="card"><div class="loading"><div class="spinner"></div>支援メモを解析して書類を作成中...</div></div>
+    <div id="disability-result" style="display:none;margin-top:12px;"></div>
   </div>
 </div>
 
@@ -1208,6 +1391,130 @@ let salesH=[];
 async function salesSend(){const i=document.getElementById('sales-input');const m=i.value.trim();if(!m)return;i.value='';await chatR('sales-msgs','sales-send',salesH,SALES_SYS,'💼',m);}
 function salesQ(m){chatR('sales-msgs','sales-send',salesH,SALES_SYS,'💼',m);}
 function salesReset(){salesH=[];document.getElementById('sales-msgs').innerHTML='<div class="msg bot"><div class="av">💼</div><div class="bubble">営業支援AIです。<br><br>作りたい文書の種類と、お客様・提案内容について教えてください。</div></div>';}
+
+// ── DEMO14: 社会福祉協議会 ──
+async function welfareGen(){
+  const type=document.getElementById('wf-type').value;
+  const date=document.getElementById('wf-date').value||'本日';
+  const memo=document.getElementById('wf-memo').value||'（メモ未入力）';
+  const doc=document.getElementById('wf-doc').value;
+  setL('welfare',true);
+  const p=`あなたは社会福祉協議会のベテランソーシャルワーカーです。以下の相談メモをもとに、${doc}を作成してください。
+【相談種別】${type}【対応日】${date}
+【相談内容・ヒアリングメモ】
+${memo}
+
+専門的かつ温かみのある表現で、実務で使える書類を作成してください。
+JSONのみ返答。前置き・マークダウン記号不要。
+{"case_summary":"相談概要（3〜4文、です・ます調）","assessment":"アセスメント（生活課題の整理、強みと課題を含む、4〜5文）","support_policy":"支援方針（具体的な支援の方向性、3〜4項目の箇条書き）","action_plan":[{"action":"具体的なアクション","who":"担当・連携機関","when":"時期・期限"}],"contact_letter":"関係機関への連絡文の下書き（100〜150字、ですます調）"}`;
+  try{
+    const data=await api({model:'claude-sonnet-4-6',max_tokens:1500,messages:[{role:'user',content:p}]});
+    const d=JSON.parse(data.content.find(b=>b.type==='text').text.replace(/```json|```/g,'').trim());
+    const actionsHtml=d.action_plan.map(a=>`
+      <div style="display:flex;gap:9px;padding:8px 11px;background:var(--sand);border-radius:7px;margin-bottom:6px;font-size:13px;align-items:flex-start;">
+        <div style="flex:1;"><div style="font-weight:500;">${a.action}</div><div style="font-size:11px;color:var(--muted);margin-top:2px;">${a.who} ／ ${a.when}</div></div>
+      </div>`).join('');
+    const policyHtml=d.support_policy..split('\n').filter(s=>s.trim())).map(s=>`<div style="padding:6px 11px;background:var(--rose-l);border-radius:6px;font-size:13px;color:var(--rose);margin-bottom:5px;">✓ ${s.trim()}</div>`).join('');
+    showR('welfare',`
+      <div class="cl rose">相談支援記録</div>
+      <div class="rs"><div class="rl" style="color:var(--rose);">相談概要<button class="cp-btn" onclick="cp('wf-sum',this)">コピー</button></div><div class="rt" id="wf-sum">${d.case_summary}</div></div>
+      <div class="rs"><div class="rl" style="color:var(--rose);">アセスメント<button class="cp-btn" onclick="cp('wf-ass',this)">コピー</button></div><div class="rt" id="wf-ass">${d.assessment}</div></div>
+      <div class="rs"><div class="rl" style="color:var(--rose);">支援方針</div>${policyHtml}</div>
+      <div class="rs"><div class="rl" style="color:var(--rose);">アクションプラン</div>${actionsHtml}</div>
+      <div class="rs"><div class="rl" style="color:var(--rose);">関係機関への連絡文（下書き）<button class="cp-btn" onclick="cp('wf-let',this)">コピー</button></div><div class="rt" id="wf-let">${d.contact_letter}</div></div>
+      <div class="tb rose">⏱ 相談メモを入力するだけで支援記録・計画書・連絡文が同時完成。記録業務の時間を相談支援に。</div>`);
+  }catch(e){showR('welfare',`<div class="err">エラー: ${e}</div>`);}
+  setL('welfare',false);
+}
+
+// ── DEMO15: 観光連盟 ──
+async function kankoGen(){
+  const name=document.getElementById('kk-name').value||'観光スポット・イベント';
+  const type=document.getElementById('kk-type').value;
+  const info=document.getElementById('kk-info').value||'（情報未入力）';
+  const point=document.getElementById('kk-point').value||'壱岐島ならではの魅力';
+  const target=document.getElementById('kk-target').value;
+  setL('kanko',true);
+  const p=`あなたは観光PRの専門家です。以下の情報をもとに、5種類の広報コンテンツを同時に作成してください。
+【名称】${name}【種別】${type}【ターゲット】${target}
+【基本情報】${info}
+【アピールポイント】${point}
+
+JSONのみ返答。前置き・マークダウン記号不要。
+{"press_release":"プレスリリース（400〜500字、ですます調、リード文+本文+開催概要の構成）","instagram":"Instagram投稿文（150〜200字、改行あり、絵文字なし）","instagram_tags":["タグ1","タグ2","タグ3","タグ4","タグ5","タグ6","タグ7","タグ8"],"facebook":"Facebook投稿文（200〜250字、親しみやすい文体）","english":"English announcement (100-150 words, friendly tone)","chinese":"中文介绍（100-150字，简体中文）"}`;
+  try{
+    const data=await api({model:'claude-sonnet-4-6',max_tokens:2000,messages:[{role:'user',content:p}]});
+    const d=JSON.parse(data.content.find(b=>b.type==='text').text.replace(/```json|```/g,'').trim());
+    const tabs=[
+      {id:'kk-pr',label:'📰 プレスリリース',text:d.press_release,tags:null},
+      {id:'kk-ig',label:'📸 Instagram',text:d.instagram,tags:d.instagram_tags},
+      {id:'kk-fb',label:'👍 Facebook',text:d.facebook,tags:null},
+      {id:'kk-en',label:'🇬🇧 English',text:d.english,tags:null},
+      {id:'kk-zh',label:'🇨🇳 中文',text:d.chinese,tags:null},
+    ];
+    const tabBtns=tabs.map((t,i)=>`<button onclick="showKankoTab(${i})" id="ktab-${i}" style="font-size:12px;padding:6px 12px;border:1px solid var(--border);border-radius:6px;cursor:pointer;background:${i===0?'var(--indigo)':'var(--white)'};color:${i===0?'#fff':'var(--muted)'};font-family:var(--font-sans, sans-serif);transition:all .15s;">${t.label}</button>`).join('');
+    const tabContents=tabs.map((t,i)=>`<div id="kcont-${i}" style="display:${i===0?'block':'none'}">
+      <div class="rt" id="${t.id}" style="margin-top:10px;">${t.text}</div>
+      ${t.tags?`<div class="hashtags">${t.tags.map(tag=>'#'+tag).join('　')}</div>`:''}
+      <div style="margin-top:6px;"><button class="cp-btn" onclick="cp('${t.id}',this)">コピー</button></div>
+    </div>`).join('');
+    window._kankoTabs=tabs.length;
+    showR('kanko',`
+      <div class="cl indigo">5種類のコンテンツが同時完成 — ${name}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">${tabBtns}</div>
+      ${tabContents}
+      <div class="tb indigo">⏱ 1度の入力でプレスリリース・Instagram・Facebook・英語・中国語が同時完成</div>`);
+  }catch(e){showR('kanko',`<div class="err">エラー: ${e}</div>`);}
+  setL('kanko',false);
+}
+function showKankoTab(idx){
+  for(let i=0;i<(window._kankoTabs||5);i++){
+    const cont=document.getElementById('kcont-'+i);
+    const btn=document.getElementById('ktab-'+i);
+    if(cont)cont.style.display=i===idx?'block':'none';
+    if(btn){btn.style.background=i===idx?'var(--indigo)':'var(--white)';btn.style.color=i===idx?'#fff':'var(--muted)';}
+  }
+}
+
+// ── DEMO16: 障害者施設 ──
+async function disabilityGen(){
+  const type=document.getElementById('ds-type').value;
+  const service=document.getElementById('ds-service').value;
+  const memo=document.getElementById('ds-memo').value||'（メモ未入力）';
+  const doc=document.getElementById('ds-doc').value;
+  setL('disability',true);
+  const p=`あなたは障害福祉サービスの専門家です。以下の支援メモをもとに、${doc}を作成してください。
+【障害種別】${type}【サービス種別】${service}
+【今日の様子・支援メモ】
+${memo}
+
+利用者の尊厳を大切にした温かみのある表現で、実務で使える書類を作成してください。
+JSONのみ返答。前置き・マークダウン記号不要。
+{"daily_record":{"situation":"本日の様子（3〜4文、である調）","support":"提供した支援内容（2〜3文、である調）","observation":"支援者の気づき・所見（2〜3文、である調）"},"short_term_goals":[{"area":"支援領域（例：コミュニケーション・生活スキルなど）","goal":"短期目標（具体的・測定可能な表現）","support_content":"支援内容","period":"目標期間"}],"positive_note":"本日の良かった点・成長が見られた点（スタッフのモチベーションになる前向きな一文）"}`;
+  try{
+    const data=await api({model:'claude-sonnet-4-6',max_tokens:1200,messages:[{role:'user',content:p}]});
+    const d=JSON.parse(data.content.find(b=>b.type==='text').text.replace(/```json|```/g,'').trim());
+    const goalsHtml=d.short_term_goals.map(g=>`
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+          <span style="background:var(--rose-l);color:var(--rose);font-size:11px;padding:2px 8px;border-radius:999px;font-weight:500;">${g.area}</span>
+          <span style="font-size:11px;color:var(--muted);">${g.period}</span>
+        </div>
+        <div style="font-size:13px;font-weight:500;margin-bottom:4px;">目標：${g.goal}</div>
+        <div style="font-size:12px;color:var(--muted);">支援内容：${g.support_content}</div>
+      </div>`).join('');
+    showR('disability',`
+      <div class="cl rose">支援記録（日誌）</div>
+      <div class="rs"><div class="rl" style="color:var(--rose);">本日の様子<button class="cp-btn" onclick="cp('ds-sit',this)">コピー</button></div><div class="rt" id="ds-sit">${d.daily_record.situation}</div></div>
+      <div class="rs"><div class="rl" style="color:var(--rose);">提供した支援内容<button class="cp-btn" onclick="cp('ds-sup',this)">コピー</button></div><div class="rt" id="ds-sup">${d.daily_record.support}</div></div>
+      <div class="rs"><div class="rl" style="color:var(--rose);">支援者の気づき・所見<button class="cp-btn" onclick="cp('ds-obs',this)">コピー</button></div><div class="rt" id="ds-obs">${d.daily_record.observation}</div></div>
+      <div class="cl rose" style="margin-top:4px;">個別支援計画（短期目標）</div>
+      ${goalsHtml}
+      <div style="background:var(--rose-l);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--rose);line-height:1.7;margin-bottom:10px;">🌸 ${d.positive_note}</div>
+      <div class="tb rose">⏱ 現場メモを入力するだけで支援記録＋個別支援計画書が完成。毎日1〜2時間の記録業務を大幅に削減。</div>`);
+  }catch(e){showR('disability',`<div class="err">エラー: ${e}</div>`);}
+  setL('disability',false);
+}
 
 </script>
 </body>
